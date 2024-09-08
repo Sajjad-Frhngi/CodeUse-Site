@@ -1,0 +1,99 @@
+@font-face {
+   font-family: 'Dirooz';
+   src: url('../CodeUse-Site/resources/fonts/Dirooz.eot') format('eot');
+   src: url('../CodeUse-Site/resources/fonts/Dirooz.ttf') format('ttf');
+   src: url('../CodeUse-Site/resources/fonts/Dirooz.woff') format('woff');
+   src: url('../CodeUse-Site/resources/fonts/Dirooz.woff2') format('woff2');
+ }
+
+
+
+.item-navbar {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0 4px;
+
+}
+
+.itemnav {
+   font-family: Dirooz;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    transition: all 0.25s ease-in-out;
+    padding: 0.75rem;
+}
+
+.itemnav:hover {
+    color: #0800ff;
+}
+
+.navbar {
+    background-color: #d5d5d5;
+    width: 100%;
+    top: 0;
+    justify-content: space-between;
+}
+
+
+.box-name {
+    width: 280px;
+    height: 50px;
+    background-color: rgb(120, 198, 213);
+    left: 38.5%;
+    top: 120px;
+    border-radius: 30px;
+    box-shadow: 2px 5px 20px rgb(245, 249, 255);
+ }
+
+ .box-name text {
+    color: aliceblue;
+ }
+
+ @keyframes move {
+    25% {
+       color: #6f7fc0;
+    }
+
+    50% {
+       color: #326852;
+    }
+
+    75%{
+       color: rgb(157, 110, 59);
+    }
+
+    100% {
+       color: #842121;
+
+    }
+ }
+
+ .text {
+    margin: 4px 2px 2px 2px;
+    font-size: 20px;
+    padding: 8px;
+    color: rgb(58, 207, 96);
+    animation: move ease 1s infinite;
+ }
+
+.logo{
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
