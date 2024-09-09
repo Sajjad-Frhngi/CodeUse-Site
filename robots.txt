@@ -1,0 +1,4 @@
+User-agent: *
+Allow: *
+Disallow: /aboutus.html
+Sitemap: https://www.codeuse.ir/sitemap.xml
