@@ -133,75 +133,169 @@ table {
 }
 /* End CSS Reset */
 
-.item-navbar {
-  justify-content: space-between;
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-  margin: 0 4px;
+@media screen and (max-width: 767px) {
 }
 
-.itemnav {
-  font-family: Dirooz;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 20px;
-  color: black;
-  transition: all 0.25s ease-in-out;
-  padding: 0.75rem;
+@media screen and (min-width: 768px) and (max-width: 1023px) {
 }
 
-.itemnav:hover {
-  color: #0800ff;
-}
-
-.navbar {
-  background-color: #d5d5d5;
-  width: 100%;
-  top: 0;
-  justify-content: space-between;
-}
-
-.box-name {
-  width: 280px;
-  height: 50px;
-  background-color: rgb(120, 198, 213);
-  left: 38.5%;
-  top: 120px;
-  border-radius: 30px;
-  box-shadow: 2px 5px 20px rgb(245, 249, 255);
-}
-
-.box-name text {
-  color: aliceblue;
-}
-
-@keyframes move {
-  25% {
-    color: #6f7fc0;
+@media screen and (min-width: 1024px) {
+  .hamburger-menu {
+    display: none;
   }
 
-  50% {
-    color: #326852;
+  .item-navbar {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
   }
 
-  75% {
-    color: rgb(157, 110, 59);
+  .itemnav {
+    font-family: Dirooz;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    font-weight: bolder;
+    transition: all 0.25s ease-in-out;
+    padding: 0.25rem;
+    margin: 0 3rem;
   }
 
-  100% {
-    color: #842121;
+  .item-navbar img {
+    margin: 0 0 0 5rem;
   }
-}
 
-.text {
-  margin: 4px 2px 2px 2px;
-  font-size: 20px;
-  padding: 8px;
-  color: rgb(58, 207, 96);
-  animation: move ease 1s infinite;
-}
+  .itemnav:hover {
+    color: #0800ff;
+  }
 
-.logo {
-  color: #000;
+  .navbar {
+    display: flex;
+    background-color: #d5d5d555;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    width: 12rem;
+    margin: 0.5rem;
+  }
+
+  .header {
+    position: relative;
+    height: 40vw;
+  }
+
+  .header::before {
+    content: "";
+    background-image: url(../images/baseImg/mainImg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5; /* فقط opacity پس‌زمینه */
+    filter: blur(5px); /* فقط blur برای پس‌زمینه */
+    z-index: -1; /* این باعث می‌شود که پس‌زمینه زیر محتوا قرار بگیرد */
+  }
+  .header title,
+  .box-name,
+  .text,
+  .best {
+    opacity: 100%;
+    filter: none;
+    opacity: 100%;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bolder;
+    font-family: Dirooz;
+    padding: 1.5rem 0;
+    text-shadow: 3px 3px 5px #8ca8be;
+  }
+
+  .text {
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    font-family: Dirooz;
+    padding: 1rem;
+    font-weight: bolder;
+    color: black;
+    animation: move ease 3s infinite;
+  }
+
+  .box-name {
+    display: flex;
+    margin: 0 auto;
+    width: fit-content;
+    border-radius: 1rem;
+    background-color: #47c8e9;
+  }
+
+  @keyframes move {
+    25% {
+      box-shadow: 2px 5px 20px #315098;
+      border-radius: 1rem;
+    }
+    50% {
+      border-radius: 1rem;
+      box-shadow: 2px 5px 20px #ff99bb;
+    }
+    100% {
+      border-radius: 1rem;
+      box-shadow: 2px 5px 20px #a5ffab;
+    }
+  }
+
+  .best {
+    display: flex;
+    justify-content: center;
+    font-family: Dirooz;
+    font-weight: bolder;
+    font-size: 2rem;
+    margin: 2rem 0;
+  }
+  .slider-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .slide {
+    flex: 0 0 auto;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .nav-btn {
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+
+  .slider::-webkit-scrollbar {
+    display: none;
+  }
 }
