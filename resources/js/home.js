@@ -57,12 +57,14 @@ window.onscroll = function () {
   var navbar = document.querySelector(".navbar");
   var sticky = navbar.offsetTop;
   if (window.pageYOffset > sticky) {
-    navbar.style.background = "#5c5c5c55";
+    navbar.style.background = "#ddddddaa";
     navbar.style.position = "fixed";
     navbar.style.top = "0";
+    navbar.style.animation = "switch-navbar 0.4s normal";
   } else {
     navbar.style.position = "relative";
     navbar.style.top = "auto";
-    navbar.style.background = "#fff";
+    navbar.style.background = "transparent";
+    navbar.style.animation = "";
   }
 };

@@ -1,4 +1,11 @@
 @font-face {
+  font-family: "Lalezar";
+  src: url("../fonts/Lalezar.ttf") format("ttf");
+  src: url("../fonts/Lalezar.woff") format("woff");
+  src: url("../fonts/Lalezar.woff2") format("woff2");
+  src: url("../fonts/Lalezar.eot") format("eot");
+}
+@font-face {
   font-family: "Dirooz";
   src: url("../CodeUse-Site/resources/fonts/Dirooz.eot") format("eot");
   src: url("../CodeUse-Site/resources/fonts/Dirooz.ttf") format("ttf");
@@ -140,6 +147,10 @@ table {
 
 /* End CSS Reset */
 
+body {
+  background: #fafafa;
+}
+
 @media screen and (max-width: 767px) {
 }
 
@@ -181,7 +192,7 @@ table {
   .navbar {
     display: flex;
     position: relative;
-    background-color: #fff;
+    background-color: transparent;
     width: 85%;
     margin: 1rem auto;
     border-radius: 5rem;
@@ -189,13 +200,29 @@ table {
     left: 0;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
-    z-index: 100;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+  }
+
+  @keyframes switch-navbar {
+    25% {
+      margin-top: 2.5rem;
+    }
+    50% {
+      margin-top: 2rem;
+    }
+    75% {
+      margin-top: 1.5rem;
+    }
+    100% {
+      margin-top: 1rem;
+    }
   }
 
   .logo {
     width: 12rem;
     margin: 0.5rem;
+    -webkit-user-drag: none;
   }
 
   .header {
@@ -280,9 +307,8 @@ table {
   .best {
     display: flex;
     justify-content: center;
-    font-family: Dirooz;
-    font-weight: bolder;
-    font-size: 1.75rem;
+    font-family: Lalezar;
+    font-size: 2rem;
     margin: 2rem 0;
   }
 
