@@ -409,14 +409,24 @@ body {
 
   .start {
     display: flex;
+    width: 50%;
     justify-content: center;
+    align-items: center;
     margin: 1rem auto;
-    padding: 1rem;
+  }
+
+  .startimg{
+    width: 30%;
+    margin: 1rem;
+  }
+
+  .start h6{
+    background: #a5c0ff;
     font-family: Lalezar;
     font-size: 1.5rem;
-    background: #a5c0ff;
+    padding: 1rem;
+    align-items: center;
     border-radius: 1.5rem;
-    width: max-content;
   }
 
   .icon-header1{
