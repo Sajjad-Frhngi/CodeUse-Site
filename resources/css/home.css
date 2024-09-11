@@ -173,7 +173,7 @@ body {
     font-family: Dirooz;
     cursor: pointer;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: black;
     font-weight: bolder;
     transition: all 0.25s ease-in-out;
@@ -186,7 +186,8 @@ body {
   }
 
   .itemnav:hover {
-    color: #0800ff;
+    color: #315098;
+    font-size: 1.35rem;
   }
 
   .navbar {
@@ -395,6 +396,7 @@ body {
     font-size: 1.2rem;
     margin: 1rem auto;
     text-align: center;
+    line-height: 2rem;
   }
 
   .icon-header {
@@ -403,5 +405,59 @@ body {
     justify-content: center;
     margin: 0.5rem auto 1.5rem auto;
     color: #315098;
+  }
+
+  .start {
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+    padding: 1rem;
+    font-family: Lalezar;
+    font-size: 1.5rem;
+    background: #a5c0ff;
+    border-radius: 1.5rem;
+    width: max-content;
+  }
+
+  .icon-header1{
+    font-size: 1.8rem;
+    margin: auto;
+    color: #315098;
+  }
+
+  h5 {
+    font-size: 2rem;
+    font-family: Lalezar;
+    text-align: right;
+    margin: 0.5rem 3rem;
+  }
+
+  .prices {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .price {
+    margin: 1rem;
+    padding: 1rem;
+    width: 28%;
+    box-shadow: 2px 2px 15px #8ca8be;
+    border-radius: 1.5rem;
+  }
+
+  .price h6 {
+    font-size: 1.5rem;
+    font-family: Dirooz;
+    text-align: center;
+    line-height: 2rem;
+  }
+  .price p {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem auto;
+    font-size: 1.25rem;
+    font-family: Dirooz;
+    text-align: center;
+    line-height: 1.5rem;
   }
 }
