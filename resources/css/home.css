@@ -5,12 +5,13 @@
   src: url("../fonts/Lalezar.woff2") format("woff2");
   src: url("../fonts/Lalezar.eot") format("eot");
 }
+
 @font-face {
   font-family: "Dirooz";
-  src: url("../CodeUse-Site/resources/fonts/Dirooz.eot") format("eot");
-  src: url("../CodeUse-Site/resources/fonts/Dirooz.ttf") format("ttf");
-  src: url("../CodeUse-Site/resources/fonts/Dirooz.woff") format("woff");
-  src: url("../CodeUse-Site/resources/fonts/Dirooz.woff2") format("woff2");
+  src: url("../fonts/Dirooz.eot") format("eot");
+  src: url("../fonts/Dirooz.ttf") format("ttf");
+  src: url("../fonts/Dirooz.woff") format("woff");
+  src: url("../fonts/Dirooz.woff2") format("woff2");
 }
 
 /* Css Reset */
@@ -151,11 +152,9 @@ body {
   background: #fafafa;
 }
 
-@media screen and (max-width: 767px) {
-}
+@media screen and (max-width: 767px) {}
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-}
+@media screen and (min-width: 768px) and (max-width: 1023px) {}
 
 @media screen and (min-width: 1024px) {
   .hamburger-menu {
@@ -187,7 +186,7 @@ body {
 
   .itemnav:hover {
     color: #315098;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
   }
 
   .navbar {
@@ -209,12 +208,15 @@ body {
     25% {
       margin-top: 2.5rem;
     }
+
     50% {
       margin-top: 2rem;
     }
+
     75% {
       margin-top: 1.5rem;
     }
+
     100% {
       margin-top: 1rem;
     }
@@ -286,22 +288,22 @@ body {
   @keyframes move {
     25% {
       border-radius: 1rem;
-      box-shadow: 2px 5px 20px #00a20b;
+      box-shadow: 2px 5px 20px #007b08;
     }
 
     50% {
-      box-shadow: 2px 5px 20px #315098;
+      box-shadow: 2px 5px 20px #122d6c;
       border-radius: 1rem;
     }
 
     75% {
       border-radius: 1rem;
-      box-shadow: 2px 5px 20px #ff99bb;
+      box-shadow: 2px 5px 20px #6b0036;
     }
 
     100% {
       border-radius: 1rem;
-      box-shadow: 2px 5px 20px #a5ffab;
+      box-shadow: 2px 5px 20px #007e43;
     }
   }
 
@@ -385,15 +387,26 @@ body {
   }
 
   .home-box h6 {
+    transition: all 0.25s ease-in-out;
     color: #315098;
     font-family: Dirooz;
     font-size: 1.75rem;
     text-align: center;
   }
+
+  .home-box a {
+    text-decoration: none;
+  }
+
+  .home-box h6:hover {
+    font-size: 1.85rem;
+    color: #5e6e94;
+  }
+
   .home-box p {
     color: #000;
     font-family: Dirooz;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin: 1rem auto;
     text-align: center;
     line-height: 2rem;
@@ -415,12 +428,12 @@ body {
     margin: 1rem auto;
   }
 
-  .startimg{
+  .startimg {
     width: 30%;
     margin: 1rem;
   }
 
-  .start h6{
+  .start h6 {
     background: #a5c0ff;
     font-family: Lalezar;
     font-size: 1.5rem;
@@ -429,7 +442,16 @@ body {
     border-radius: 1.5rem;
   }
 
-  .icon-header1{
+  .start h6:hover {
+    transition: all 0.25s ease-in-out;
+    background: #c7d1e8;
+  }
+
+  .start a {
+    text-decoration: none;
+  }
+
+  .icon-header1 {
     font-size: 1.8rem;
     margin: auto;
     color: #315098;
@@ -447,6 +469,7 @@ body {
     display: flex;
     justify-content: center;
   }
+
   .price {
     margin: 1rem;
     padding: 1rem;
@@ -461,6 +484,7 @@ body {
     text-align: center;
     line-height: 2rem;
   }
+
   .price p {
     display: flex;
     justify-content: center;
