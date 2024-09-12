@@ -149,7 +149,11 @@ table {
 /* End CSS Reset */
 
 body {
-  background: #fafafa;
+  background: #fafafaaa;
+}
+
+a{
+  text-decoration: none;
 }
 
 @media screen and (max-width: 767px) {
@@ -173,7 +177,6 @@ body {
   .itemnav {
     font-family: Dirooz;
     cursor: pointer;
-    text-decoration: none;
     font-size: 1.25rem;
     color: black;
     font-weight: bolder;
@@ -337,7 +340,6 @@ body {
   .slide {
     font-family: Dirooz;
     font-size: 1rem;
-    text-decoration: none;
     color: #000;
     font-weight: bold;
     flex: 0 0 auto;
@@ -395,12 +397,8 @@ body {
     text-align: center;
   }
 
-  .home-box a {
-    text-decoration: none;
-  }
-
   .home-box h6:hover {
-    color: #5e6e94;
+    color: #9ab3ed;
   }
 
   .home-box p {
@@ -445,10 +443,6 @@ body {
   .start h6:hover {
     transition: all 0.25s ease-in-out;
     background: #c7d1e8;
-  }
-
-  .start a {
-    text-decoration: none;
   }
 
   .icon-header1 {
@@ -502,24 +496,33 @@ body {
     justify-content: center;
     margin: 2rem auto;
   }
+
   .course {
     width: 27%;
+    margin: 1rem 2rem;
     padding: 1.5rem;
     box-shadow: 2px 2px 30px#a3a3a3;
     border-radius: 1.5rem;
   }
-
   .course img {
     display: flex;
-    width: 100%;
-    border-radius: 1.5rem;
-    margin: -5rem auto 1rem auto;
     justify-content: center;
-    transition: all 0.3s ease-in-out;
+    width: 85%;
+    height: 12rem;
+    margin: -5rem auto 1.5rem auto;
+    transition: all 0.2s ease-in-out;
+    clip-path: inset(0);
+    border-radius: 1.5rem;
+  }
+
+  .course img:hover {
+    filter: grayscale(50%);
+    border-radius: 1.5rem;
   }
 
   .course .course-name {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    color: #000;
     font-family: Lalezar;
     text-align: center;
   }
@@ -527,6 +530,43 @@ body {
   .courses i {
     font-size: 1.5rem;
     color: #315098;
-    margin: 0 0.2rem;
+    margin: 0 0 0 0.3rem;
+  }
+  .course-price,
+  .course-teacher,
+  .course-source {
+    display: inline-block;
+    font-family: Dirooz;
+    font-size: 1rem;
+    color: #000;
+    justify-content: center;
+    text-align: center;
+    margin: 0.75rem 0.5rem;
+    transition: all 0.3s ease-in-out;
+  }
+  .course-price:hover,
+  .course-source:hover {
+    color: #0062d2;
+  }
+
+  .course p {
+    display: flex;
+    font-family: Dirooz;
+    font-size: 1rem;
+    justify-content: center;
+    text-align: center;
+    margin: 0.5rem auto;
+    line-height: 1.5rem;
+  }
+
+  .course-link {
+    display: flex;
+    font-family: Lalezar;
+    font-size: 1.5rem;
+    justify-content: center;
+    text-align: center;
+    margin: 0.5rem auto;
+    color: #315098;
+    text-decoration: underline;
   }
 }
