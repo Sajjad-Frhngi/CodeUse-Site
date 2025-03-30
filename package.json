@@ -1,0 +1,41 @@
+{
+  "name": "codeuse-site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i src/input.css -o ../dist/output.css"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sajjad-Frhngi/Site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sajjad-Frhngi/Site/issues"
+  },
+  "homepage": "https://github.com/Sajjad-Frhngi/Site#readme",
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "browserslist": "^4.24.4",
+    "caniuse-lite": "^1.0.30001700",
+    "electron-to-chromium": "^1.5.103",
+    "escalade": "^3.2.0",
+    "fraction.js": "^4.3.7",
+    "nanoid": "^3.3.8",
+    "node-releases": "^2.0.19",
+    "normalize-range": "^0.1.2",
+    "picocolors": "^1.1.1",
+    "postcss-value-parser": "^4.2.0",
+    "source-map-js": "^1.2.1",
+    "update-browserslist-db": "^1.1.2"
+  }
+}

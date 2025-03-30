@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Lalezar";
+  src: url("webfonts/Lalezar.woff2") format("woff2"),
+  url("./webfonts/Lalezar.woff") format("woff"),
+  url("../src/webfonts/Lalezar.ttf") format("truetype"),
+  url("../src/webfonts/Lalezar.eot") format("embedded-opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Dirooz";
+  src: url("../src/webfonts/Dirooz.woff2") format("woff2"),
+    url("../src/webfonts/Dirooz.woff") format("woff"),
+    url("../src/webfonts/Dirooz.ttf") format("truetype"),
+    url("../src/webfonts/Dirooz.eot") format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  html {
+    @apply scroll-smooth;
+  } 
+}
