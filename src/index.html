@@ -65,252 +65,220 @@
       }
     </style>
   </head>
-  <body class="bg-[#fbf2f2aa] font-dirooz">
+  <body class="bg-[#fbf2f2aa] font-dirooz cursor-custom">
     <div class="loader-container">
       <div class="loader-bar"></div>
     </div>
     <div class="content">
       <header class="relative">
-        <div
-          class="navbar z-[9999] mx-auto flex justify-center items-center w-full sm:w-4/5 my-4 bg-transparent rounded-full"
-        >
-          <nav>
-            <ul
-              class="md:flex lg:flex justify-center items-center text-lg sm:hidden"
-            >
-              <strong>
-                <a href="../src/index.html" target="_blank" rel="noopener">
-                  <img
-                    class="w-48 ml-4 sm:ml-20"
-                    oncontextmenu="return false;"
-                    src="../src/images/baseImg/logo.png"
-                  />
-                </a>
-              </strong>
-              <a
-                class="font-semibold mx-4 sm:mx-12 transition-all ease-in-out hover:text-[#315098]"
-                href=""
-                >خانه</a
-              >
-              <a
-                class="font-semibold mx-4 sm:mx-12 transition-all ease-in-out hover:text-[#315098]"
-                href=""
-                >درباره کدیوز</a
-              >
-              <a
-                class="font-semibold mx-4 sm:mx-12 transition-all ease-in-out hover:text-[#315098]"
-                href=""
-                >دسته‌ بندی‌ها</a
-              >
-              <a
-                class="font-semibold mx-4 sm:mx-12 transition-all ease-in-out hover:text-[#315098]"
-                href=""
-                >زبان‌های پرطرفدار</a
-              >
-              <a
-                class="font-semibold mx-4 sm:mx-12 transition-all ease-in-out hover:text-[#315098]"
-                href=""
-                >رده‌های قیمتی</a
-              >
+        <div class="navbar z-[9999] mx-auto flex justify-between items-center w-full max-w-[1200px] px-4 my-4 bg-white/80 backdrop-blur-sm rounded-full shadow-sm">
+          <strong>
+            <a href="../src/index.html" target="_blank" rel="noopener">
+              <img
+                class="w-32 md:w-40 lg:w-48"
+                oncontextmenu="return false;"
+                src="../src/images/baseImg/logo.png"
+                alt="لوگو کدیوز"
+              />
+            </a>
+          </strong>
+          <nav class="hidden md:block">
+            <ul class="flex items-center space-x-2 md:space-x-4 lg:space-x-6 text-base md:text-lg">
+              <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">خانه</a></li>
+              <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">درباره کدیوز</a></li>
+              <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#categories">دسته‌بندی‌ها</a></li>
+              <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">زبان‌های پرطرفدار</a></li>
+              <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">رده‌های قیمتی</a></li>
             </ul>
           </nav>
-          <div class="md:hidden lg:hidden hamburger-menu sm:block">
-            <i class="fas fa-bars"></i>
-          </div>
+          <button id="menu-toggle" class="md:hidden flex flex-col space-y-1.5 p-3 focus:outline-none group">
+            <span class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:rotate-45 group-[.active]:translate-y-1.5"></span>
+            <span class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:opacity-0"></span>
+            <span class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:-rotate-45 group-[.active]:-translate-y-1.5"></span>
+          </button>
         </div>
       </header>
-
-      <div class="header relative lg:h-[50vw] sm:h-[50vh]">
-        <div
-          class="absolute inset-0 bg-cover bg-no-repeat blur-[2px] opacity-50"
-          style="background-image: url(../src/images/baseImg/mainImg.png)"
-        ></div>
-        <h1 class="font-dirooz text-3xl font-bold text-center py-6 z-[9999]">
-          CODEUSE | کدیوز
+      <div id="mobile-menu" class="fixed top-0 left-0 h-full w-1/2 max-w-xs bg-white shadow-2xl z-[9998] transform -translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="relative h-full p-6 pt-16">
+          <button id="close-menu" class="absolute top-4 left-4 p-2 focus:outline-none">
+            <div class="flex flex-col space-y-1.5">
+              <span class="w-6 h-0.5 bg-gray-800 rotate-45 translate-y-1.5"></span>
+              <span class="w-6 h-0.5 bg-gray-800 -rotate-45 -translate-y-1.5"></span>
+            </div>
+          </button>
+          
+          <nav class="flex flex-col space-y-6">
+            <a class="font-medium hover:text-[#315098] py-2" href="#" onclick="closeMenu()">خانه</a>
+            <a class="font-medium hover:text-[#315098] py-2" href="#" onclick="closeMenu()">درباره کدیوز</a>
+            <a class="font-medium hover:text-[#315098] py-2" href="#categories" onclick="closeMenu()">دسته‌بندی‌ها</a>
+            <a class="font-medium hover:text-[#315098] py-2" href="#" onclick="closeMenu()">زبان‌های پرطرفدار</a>
+            <a class="font-medium hover:text-[#315098] py-2" href="#" onclick="closeMenu()">رده‌های قیمتی</a>
+          </nav>
+        </div>
+      </div>
+      <div id="mobile-menu" class="fixed inset-0 z-[9999] bg-white/95 hidden flex-col items-center justify-center space-y-8 text-xl">
+        <button id="close-menu" class="absolute top-6 right-6 text-3xl p-2">
+          <i class="fas fa-times"></i>
+        </button>
+        <a class="font-medium hover:text-[#315098]" href="#">خانه</a>
+        <a class="font-medium hover:text-[#315098]" href="#">درباره کدیوز</a>
+        <a class="font-medium hover:text-[#315098]" href="#categories">دسته‌بندی‌ها</a>
+        <a class="font-medium hover:text-[#315098]" href="#">زبان‌های پرطرفدار</a>
+        <a class="font-medium hover:text-[#315098]" href="#">رده‌های قیمتی</a>
+      </div>
+      <div class="header relative min-h-[95vh]">
+        <h1 class="font-dirooz text-3xl font-bold text-center py-6 z-[9900] relative">
+            CODEUSE | کدیوز
         </h1>
-        <h3
-          class="font-lalezar text-2xl font-bold text-center text-black z-[9999]"
-        >
-          بهترین آموزشو ببین!
+        <h3 class="font-lalezar text-2xl font-bold text-center text-black z-[9900] relative">
+            بهترین آموزشو ببین!
         </h3>
         <div class="flex justify-center my-4">
-          <h3
-            class="text-2xl font-lalezar bg-[#315098aa] py-2 px-4 rounded-lg z-[9999]"
-          >
+          <h3 class="text-2xl font-lalezar bg-[#315098aa] py-2 px-4 rounded-lg z-[9900]">
             بهترین استاد، بهترین کیفیت
           </h3>
         </div>
-        <img
-          src="../src/images/baseImg/arrowimg.png"
-          alt="down-arrow"
-          class="mx-auto"
-          draggable="false"
-        />
-        <div
-          class="relative w-[90%] max-w-5xl mx-auto overflow-hidden text-center"
-        >
-          <div
-            id="slider"
-            class="md:flex lg:flex space-x-3 overflow-hidden whitespace-nowrap animate-marquee"
-          >
-            <a
-              href="#"
-              class="block py-3 w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg ml-3"
-            >
+        <img src="../src/images/baseImg/arrowimg.png" alt="down-arrow" class="mx-auto" draggable="false" />
+      
+        <div class="relative w-[90%] max-w-5xl mx-auto overflow-hidden text-center flex justify-center mt-6 sm:mt-10 z-[9000]">
+          <div id="slider" class="grid grid-cols-2 gap-2 sm:flex sm:space-x-3 overflow-hidden whitespace-nowrap sm:animate-marquee">
+            <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               HTML-CSS
             </a>
-            <a
-              href="#"
-              class="block py-3 w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg"
-            >
+            <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               JAVASCRIPT
             </a>
-            <a
-              href="#"
-              class="block py-3 w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg"
-            >
+            <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               PYTHON
             </a>
-            <a
-              href="#"
-              class="block py-3 w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg"
-            >
+            <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               JAVA
             </a>
-            <a
-              href="#"
-              class="block py-3 w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg"
-            >
+            <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               GO
             </a>
-            <a
-              href="#"
-              class="block py-3 w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg"
-            >
+            <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               DJANGO
             </a>
-            <a
-              href="#"
-              class="block py-3 w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg"
-            >
+            <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               PHP
             </a>
-            <a
-              href="#"
-              class="block py-3 w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg"
-            >
+            <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               FLUTTER
             </a>
           </div>
         </div>
-
-        <div class="boxes flex flex-col sm:flex-row sm:justify-around mt-8">
-          <div
-            class="home-box flex flex-row items-center w-80 bg-white border-[2px] border-sky-600 p-10 rounded-lg shadow-3xl z-[1000]"
-          >
-            <div class="text-center justify-center">
-              <i class="fa-solid fa-sack-dollar text-3xl mb-4"></i>
-              <h6 class="text-lg text-center">با هر بودجه‌ای، حتی رایگان!</h6>
-              <p class="text-center">میتونی بهترین آموزشو پیدا کنی!</p>
+        
+        <div class="boxes grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-8 px-8 sm:px-[1.5rem] mx-auto max-w-screen-lg">
+          <div class="home-box flex flex-col items-center w-full bg-white border-[2px] border-sky-600 p-10 rounded-lg shadow-3xl z-[1000]">
+            <div class="text-center mb-4">
+              <i class="fa-solid fa-sack-dollar text-3xl"></i>
             </div>
+            <h6 class="text-lg text-center">با هر بودجه‌ای، حتی رایگان!</h6>
+            <p class="text-center">میتونی بهترین آموزش ممکن رو پیدا کنی!</p>
+        </div>
+        <div class="home-box flex flex-col items-center w-full bg-white border-[2px] border-sky-600 p-10 rounded-lg shadow-3xl z-[1000]">
+          <div class="text-center mb-4">
+            <i class="fa-solid fa-thumbs-up text-3xl"></i>
           </div>
-          <div
-            class="home-box flex flex-row items-center w-80 bg-white border-[2px] border-sky-600 p-10 rounded-lg shadow-3xl z-[1000]"
-          >
-            <div class="text-center">
-              <i class="fa-solid fa-thumbs-up text-3xl mb-4"></i>
-              <h6 class="text-lg">گلچینی از بهترین‌ها!</h6>
-              <p class="text-md">
-                گشتیم و باکیفیت‌ترین محتوا رو برات پیدا کردیم!
-              </p>
-            </div>
+          <h6 class="text-lg text-center">گلچینی از بهترین‌ها!</h6>
+          <p class="text-center">گشتیم و باکیفیت‌ترین محتوا رو برات پیدا کردیم!</p>
+        </div>
+        <div class="home-box flex flex-col items-center w-full bg-white border-[2px] border-sky-600 p-10 rounded-lg shadow-3xl z-[1000]">
+          <div class="text-center mb-4">
+            <i class="fa-solid fa-robot text-3xl"></i>
           </div>
-          <div
-            class="home-box flex flex-row items-center w-80 bg-white border-[2px] border-sky-600 p-10 rounded-lg shadow-3xl z-[1000]"
-          >
-            <div class="text-center">
-              <i class="fa-solid fa-robot text-3xl mb-4"></i>
-              <h6 class="text-lg">هر زبانی که بخوای!</h6>
-              <p class="text-center">از هوش مصنوعی تا برنامه‌نویسی ربات!</p>
-            </div>
-          </div>
+          <h6 class="text-lg text-center">هر زبانی که بخوای!</h6>
+          <p class="text-center">از هوش مصنوعی تا برنامه‌نویسی ربات!</p>
         </div>
       </div>
-      <div class="start mt-8 text-center">
-        <a href="" class="text-lg text-black font-bold">
-          <h6>شروع یادگیری <i class="fas fa-angle-left"></i></h6>
-          <img
-            src="../src/images/baseImg/get-start.png"
-            alt="start-arrow"
-            class="mx-auto w-28"
-          />
+      <div class="flex start mt-8 text-center z-[9990] opacity-100 relative justify-center">
+        <a href="" class="block text-lg text-black font-bold max-w-max">
+          <h6 id="start" class="bg-sky-200 text-base p-2 rounded-lg hover:bg-sky-600 transition-all">شروع یادگیری ⇓</h6>
+          <img src="../src/images/baseImg/get-start.png" alt="start-arrow" class="mx-auto my-2 w-28" />
         </a>
       </div>
-      <div class="courses-section py-10 bg-[#f8f8f8]">
-        <h2 class="text-3xl text-center font-bold mb-8">برترین دوره ها</h2>
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-4"
-        >
-          <div class="course-box bg-white p-6 rounded-lg shadow-lg">
-            <img
-              src="../src/images/courses/1.jpg"
-              alt="Course 1"
-              class="w-full h-40 object-cover mb-4 rounded-md"
-            />
-            <h3 class="text-xl font-bold mb-2">دوره HTML و CSS</h3>
-            <p class="text-gray-700 mb-4">
-              در این دوره، شما با اصول طراحی صفحات وب آشنا خواهید شد.
-            </p>
-            <a href="#" class="text-[#315098] font-bold hover:underline"
-              >شروع کنید</a
-            >
+      
+        <div class="absolute inset-0 bg-cover bg-no-repeat blur-[2px] opacity-50 -z-0"
+          style="background-image: url(../src/images/baseImg/mainImg.png)">
+        </div>
+      </div>
+      <div>
+          <h2 class="font-lalezar text-3xl text-center font-bold mt-10" style="text-shadow: 3px 3px 10px rgba(206,0,0,0.75);">برترین دوره‌ها</h2>
+          <div id="courseContainer">
+            <!-- Articles will be dynamically added here -->
           </div>
-          <div class="course-box bg-white p-6 rounded-lg shadow-lg">
-            <img
-              src="../src/images/courses/2.jpg"
-              alt="Course 2"
-              class="w-full h-40 object-cover mb-4 rounded-md"
-            />
-            <h3 class="text-xl font-bold mb-2">دوره جاوااسکریپت</h3>
-            <p class="text-gray-700 mb-4">
-              یاد بگیرید چطور با جاوااسکریپت صفحات وب تعاملی بسازید.
-            </p>
-            <a href="#" class="text-[#315098] font-bold hover:underline"
-              >شروع کنید</a
-            >
+        </div>
+        <div id="categories">
+          <h6 class="font-lalezar text-3xl text-center font-bold mt-10" 
+              style="text-shadow: 3px 3px 10px rgba(206,0,0,0.75);">
+            دسته‌بندی دوره‌ها
+          </h6>
+          
+          <div class="m-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            
+            <div class="relative h-32 rounded-lg overflow-hidden bg-[url('../src/images/baseImg/py.png')] bg-center bg-no-repeat w-full">
+              <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start p-4">
+                <a href="#" class="transition-all text-white text-2xl font-bold border-b-2 border-blue-500 hover:text-blue-800">
+                  دوره‌های آموزش پایتون
+                </a>
+              </div>
+            </div>
+        
+            <div class="relative h-32 rounded-lg overflow-hidden bg-[url('../src/images/baseImg/py.png')] bg-center bg-no-repeat w-full">
+              <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start p-4">
+                <a href="#" class="transition-all text-white text-2xl font-bold border-b-2 border-blue-500 hover:text-blue-800">
+                  دوره‌های آموزش جاوااسکریپت
+                </a>
+              </div>
+            </div>
+        
+            <div class="relative h-32 rounded-lg overflow-hidden bg-[url('../src/images/baseImg/py.png')] bg-center bg-no-repeat w-full">
+              <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start p-4">
+                <a href="#" class="transition-all text-white text-2xl font-bold border-b-2 border-blue-500 hover:text-blue-800">
+                  دوره‌‌های آموزش HTML-CSS
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="course-box bg-white p-6 rounded-lg shadow-lg">
-            <img
-              src="../src/images/courseImg/python1.png"
-              alt="Course 3"
-              class="w-full h-40 object-cover mb-4 rounded-md"
-            />
-            <h3 class="text-xl font-bold mb-2">دوره پایتون</h3>
-            <p class="text-gray-700 mb-4">
-              پایتون یک زبان ساده و قدرتمند برای شروع یادگیری برنامه‌نویسی است.
-            </p>
-            <a href="#" class="text-[#315098] font-bold hover:underline"
-              >شروع کنید</a
-            >
-          </div>
-          <div class="course-box bg-white p-6 rounded-lg shadow-lg">
-            <img
-              src="../src/images/courseImg/react1.png"
-              alt="Course 4"
-              class="w-full h-40 object-cover mb-4 rounded-md"
-            />
-            <h3 class="text-xl font-bold mb-2">دوره ریکت</h3>
-            <p class="text-gray-700 mb-4">
-              جاوا یکی از محبوب‌ترین زبان‌های برنامه‌نویسی است و کاربردهای
-              بسیاری دارد.
-            </p>
-            <a href="#" class="text-[#315098] font-bold hover:underline"
-              >شروع کنید</a
-            >
-          </div>
+
+          <div>
+            <h6 class="font-lalezar text-3xl text-center font-bold mt-10" 
+                style="text-shadow: 3px 3px 10px rgba(206,0,0,0.75);">
+              رده‌های قیمتی دوره‌ها
+            </h6>
+            
+            <div class="m-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
+              
+              <div class="relative h-32 rounded-lg overflow-hidden bg-[url('../src/images/baseImg/py.png')] bg-center bg-no-repeat w-full">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start p-4">
+                  <a href="#" class="transition-all text-white text-2xl font-bold border-b-2 border-blue-500 hover:text-blue-800">
+                    رایگان
+                  </a>
+                </div>
+              </div>
+          
+              <div class="relative h-32 rounded-lg overflow-hidden bg-[url('../src/images/baseImg/py.png')] bg-center bg-no-repeat w-full">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start p-4">
+                  <a href="#" class="transition-all text-white text-2xl font-bold border-b-2 border-blue-500 hover:text-blue-800">
+                    اقتصادی
+                  </a>
+                </div>
+              </div>
+          
+              <div class="relative h-32 rounded-lg overflow-hidden bg-[url('../src/images/baseImg/py.png')] bg-center bg-no-repeat w-full">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start p-4">
+                  <a href="#" class="transition-all text-white text-2xl font-bold border-b-2 border-blue-500 hover:text-blue-800">
+                    پریمیوم
+                  </a>
+                </div>
+              </div>
+          
+            </div>  
         </div>
       </div>
     </div>
+  </div>
     <script src="../src/home.js"></script>
   </body>
 </html>
