@@ -207,3 +207,136 @@ menuToggle.addEventListener("click", () => {
 
 // رویداد کلیک برای دکمه بستن
 closeMenuBtn.addEventListener("click", closeMenu);
+
+// تابع اصلی جستجو
+function executeSearch() {
+  const searchTerm = document.getElementById("searchInputField").value.trim();
+
+  // 1. پاک کردن هایلایت‌های قبلی
+  document.querySelectorAll(".search-highlighted").forEach((el) => {
+    el.outerHTML = el.innerHTML;
+  });
+
+  // 2. اگر جستجو کوتاه است
+  if (searchTerm.length < 2) {
+    document.getElementById("searchResultsContainer").classList.add("hidden");
+    return;
+  }
+
+  // 3. جستجو فقط در عناصر دارای کلاس 'searchable'
+  const textNodes = [];
+  document.querySelectorAll(".searchable").forEach((parent) => {
+    const walker = document.createTreeWalker(
+      parent,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    );
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue.trim() !== "") {
+        textNodes.push(node);
+      }
+    }
+  });
+
+  const foundResults = [];
+  textNodes.forEach((textNode) => {
+    const content = textNode.nodeValue;
+    if (content.includes(searchTerm)) {
+      const parent = textNode.parentNode;
+
+      const highlighted = content.replace(
+        new RegExp(searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"),
+        (match) =>
+          `<span class="search-highlighted bg-yellow-300">${match}</span>`
+      );
+
+      const wrapper = document.createElement("span");
+      wrapper.innerHTML = highlighted;
+      parent.replaceChild(wrapper, textNode);
+
+      foundResults.push({
+        text: content.trim().substring(0, 60),
+        element: parent,
+      });
+    }
+  });
+
+  // 4. نمایش حداکثر 8 نتیجه
+  displaySearchResults(foundResults.slice(0, 8), searchTerm);
+
+  // 5. اسکرول به اولین نتیجه
+  if (foundResults.length > 0) {
+    setTimeout(() => {
+      foundResults[0].element.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      // هایلایت موقت
+      foundResults[0].element.classList.add(
+        "bg-blue-100",
+        "ring-2",
+        "ring-blue-400"
+      );
+      setTimeout(() => {
+        foundResults[0].element.classList.remove(
+          "bg-blue-100",
+          "ring-2",
+          "ring-blue-400"
+        );
+      }, 2000);
+    }, 100);
+  }
+}
+
+// نمایش نتایج جستجو
+function displaySearchResults(results, term) {
+  const container = document.getElementById("searchResultsContent");
+  container.innerHTML = "";
+
+  if (results.length === 0) {
+    container.innerHTML = `<div class="px-4 py-3 text-gray-500">نتیجه‌ای برای "${term}" یافت نشد</div>`;
+  } else {
+    results.forEach((result, index) => {
+      const resultItem = document.createElement("div");
+      resultItem.className =
+        "px-4 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-100";
+      resultItem.textContent = result.text;
+      resultItem.addEventListener("click", () => {
+        result.element.scrollIntoView({ behavior: "smooth", block: "center" });
+        result.element.classList.add("bg-blue-100", "ring-2", "ring-blue-400");
+        setTimeout(() => {
+          result.element.classList.remove(
+            "bg-blue-100",
+            "ring-2",
+            "ring-blue-400"
+          );
+        }, 2000);
+      });
+      container.appendChild(resultItem);
+    });
+  }
+
+  document.getElementById("searchResultsContainer").classList.remove("hidden");
+}
+
+// رویدادهای جستجو
+document
+  .getElementById("searchActionBtn")
+  .addEventListener("click", executeSearch);
+document
+  .getElementById("searchInputField")
+  .addEventListener("input", executeSearch);
+
+// بستن باکس نتایج با کلیک خارج
+document.addEventListener("click", (e) => {
+  const searchBox = document.getElementById("searchResultsContainer");
+  if (
+    !searchBox.contains(e.target) &&
+    e.target.id !== "searchInputField" &&
+    e.target.id !== "searchActionBtn"
+  ) {
+    searchBox.classList.add("hidden");
+  }
+});

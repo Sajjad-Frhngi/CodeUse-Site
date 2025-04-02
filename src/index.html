@@ -63,6 +63,40 @@
       .loaded .content {
         display: block;
       }
+
+      .search-highlight {
+  background-color: #fef08a;
+  padding: 0 2px;
+  border-radius: 2px;
+  color: #000;
+}
+
+#searchResultsBox {
+  display: none;
+}
+
+#searchResultsBox:not(.hidden) {
+  display: block;
+}
+
+.bg-blue-50 {
+  background-color: #eff6ff;
+  transition: background-color 0.3s ease;
+}
+.search-highlighted {
+  background-color: #fde047;
+  padding: 0 2px;
+  border-radius: 3px;
+  color: #000;
+}
+
+#searchResultsContainer {
+  display: none;
+}
+
+#searchResultsContainer:not(.hidden) {
+  display: block;
+}
     </style>
   </head>
   <body class="bg-[#fbf2f2aa] font-dirooz cursor-custom">
@@ -82,6 +116,31 @@
               />
             </a>
           </strong>
+
+          <!-- search boxا
+          <div class="relative flex-1 mx-4 max-w-md hidden md:block">
+            <div class="relative">
+              <input 
+                type="text" 
+                id="searchInputField"
+                class="w-full py-2 px-4 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#315098] focus:border-transparent transition-all"
+                placeholder="جستجو در صفحه..."
+                autocomplete="off"
+              >
+              <button id="searchActionBtn" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-[#315098] transition-colors">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+            
+            <div id="searchResultsContainer" class="absolute z-50 w-full mt-2 bg-white rounded-lg shadow-lg hidden overflow-hidden">
+              <div id="searchResultsContent" class="py-2 max-h-60 overflow-y-auto"></div>
+            </div>
+          </div> -->
+          <!-- Search Box - Test google CSE -->
+          <script async src="https://cse.google.com/cse.js?cx=02bc1f61377954063">
+          </script>
+          <div class="gcse-search"></div>
+
           <nav class="hidden md:block">
             <ul class="flex items-center space-x-2 md:space-x-4 lg:space-x-6 text-base md:text-lg">
               <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">خانه</a></li>
@@ -98,6 +157,7 @@
           </button>
         </div>
       </header>
+
       <div id="mobile-menu" class="fixed top-0 left-0 h-full w-1/2 max-w-xs bg-white shadow-2xl z-[9998] transform -translate-x-full transition-transform duration-300 ease-in-out">
         <div class="relative h-full p-6 pt-16">
           <button id="close-menu" class="absolute top-4 left-4 p-2 focus:outline-none">
@@ -148,7 +208,7 @@
             <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               JAVASCRIPT
             </a>
-            <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
+            <a href="../src/pages/python-page.html" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
               PYTHON
             </a>
             <a href="#" class="block py-3 w-32 sm:w-64 px-4 bg-white border border-gray-300 shadow-lg rounded-lg">
@@ -219,7 +279,7 @@
             
             <div class="relative h-32 rounded-lg overflow-hidden bg-[url('../src/images/baseImg/py.png')] bg-center bg-no-repeat w-full">
               <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-start p-4">
-                <a href="#" class="transition-all text-white text-2xl font-bold border-b-2 border-blue-500 hover:text-blue-800">
+                <a href="../src/pages/python-page.html" class="transition-all text-white text-2xl font-bold border-b-2 border-blue-500 hover:text-blue-800">
                   دوره‌های آموزش پایتون
                 </a>
               </div>

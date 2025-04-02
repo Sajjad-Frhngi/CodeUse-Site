@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دوره پایتون | کدیوز</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .emoji-rating label {
+      transition: all 0.3s ease;
+      filter: grayscale(100%);
+      opacity: 0.7;
+    }
+    .emoji-rating input:checked + label {
+      transform: scale(1.2);
+      filter: grayscale(0);
+      opacity: 1;
+    }
+    body {
+      background-color: #f0f4f8;
+    }
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+  <!-- هدر سایت -->
+  <header class="sticky top-0 z-50">
+    <div class="navbar mx-auto flex justify-between items-center w-full max-w-[1200px] px-4 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-sm">
+      <strong>
+        <a href="../src/index.html" target="_blank" rel="noopener">
+          <img
+            class="w-32 md:w-40 lg:w-48"
+            oncontextmenu="return false;"
+            src="../images/baseImg/logo.png"
+            alt="لوگو کدیوز"
+          />
+        </a>
+      </strong>
+      <nav class="hidden md:block">
+        <ul class="flex items-center space-x-2 md:space-x-4 lg:space-x-6 text-base md:text-lg">
+          <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">خانه</a></li>
+          <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">درباره کدیوز</a></li>
+          <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#categories">دسته‌بندی‌ها</a></li>
+          <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">زبان‌های پرطرفدار</a></li>
+          <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">رده‌های قیمتی</a></li>
+        </ul>
+      </nav>
+      <button id="menu-toggle" class="md:hidden flex flex-col space-y-1.5 p-3 focus:outline-none group">
+        <span class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:rotate-45 group-[.active]:translate-y-1.5"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:opacity-0"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:-rotate-45 group-[.active]:-translate-y-1.5"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- محتوای اصلی -->
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- باکس معرفی دوره -->
+      <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200 flex-1">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">دوره آموزش پایتون</h1>
+        
+        <div class="space-y-4">
+          <div class="flex items-start">
+            <span class="font-bold ml-2 min-w-[100px]">لینک سایت:</span>
+            <span class="text-blue-700"><a href="https://codeyad.com/course/learn-python">کدیاد</a></span>
+          </div>
+          <div class="flex items-start">
+            <span class="font-bold ml-2 min-w-[100px]">مدرس:</span>
+            <span class="text-gray-700">امیرحسین امیری</span>
+          </div>
+          <div class="flex items-start">
+            <span class="font-bold ml-2 min-w-[100px]">سطح:</span>
+            <span class="text-amber-600">پرمیوم</span>
+          </div>
+          <div class="flex items-start">
+            <span class="font-bold ml-2 min-w-[100px]">قیمت:</span>
+            <span class="text-green-600">رایگان</span>
+          </div>
+          
+          <p class="text-gray-600 mt-4 leading-relaxed">
+            دوره آموزش پایتون از کدیاد یک تجربه یادگیری گام به گام ارائه می‌دهد که هم مفاهیم پایه و هم پیشرفته را پوشش می‌دهد. 
+            این دوره مناسب همه سطوح از مبتدی تا پیشرفته است و شامل پروژه‌های عملی برای تقویت مهارت‌ها می‌شود.
+          </p>
+          
+          <!-- بخش امتیاز دوره -->
+          <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">امتیاز دوره</h3>
+            <div class="flex items-center">
+              <div class="flex mr-2">
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              </div>
+              <span class="text-gray-700 font-medium">5 از 5 (125 رأی)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- باکس تصویر دوره -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden flex-1">
+        <img src="../images/courseImg/python1.png" alt="دوره پایتون" class="w-full h-64 object-cover">
+        <div class="p-6">
+          <h2 class="text-xl font-bold text-gray-800 mb-4">معرفی دوره پایتون</h2>
+          <p class="text-gray-600 leading-relaxed">
+            دوره آموزش پایتون که توسط استاد امیرحسین امیری و آکادمی کدیاد ارائه شده، به صورت کاملاً رایگان در اختیار شما قرار گرفته است. 
+            این دوره پروژه‌محور بوده و شما را با چالش‌های واقعی برنامه‌نویسی آشنا می‌کند.
+          </p>
+          <div class="mt-6">
+            <a href="https://codeyad.com/course/learn-python" target="_blank" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
+              مشاهده دوره در کدیاد
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- باکس نظرسنجی -->
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden flex-1 max-w-md mx-auto">
+        <div class="bg-blue-600 px-6 py-4 text-white">
+          <h1 class="text-2xl font-bold">نظرسنجی دوره</h1>
+          <p class="mt-1">لطفاً نظر خود را ثبت کنید</p>
+        </div>
+
+        <div class="px-6 py-8">
+          <div class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">میزان رضایت شما از دوره؟</h2>
+            <div class="emoji-rating flex justify-between">
+              <div class="text-center">
+                <input type="radio" id="rating-1" name="rating" value="1" class="hidden">
+                <label for="rating-1" class="text-4xl cursor-pointer" title="خیلی ضعیف">😠</label>
+              </div>
+              <div class="text-center">
+                <input type="radio" id="rating-2" name="rating" value="2" class="hidden">
+                <label for="rating-2" class="text-4xl cursor-pointer" title="ضعیف">😕</label>
+              </div>
+              <div class="text-center">
+                <input type="radio" id="rating-3" name="rating" value="3" class="hidden">
+                <label for="rating-3" class="text-4xl cursor-pointer" title="متوسط">😐</label>
+              </div>
+              <div class="text-center">
+                <input type="radio" id="rating-4" name="rating" value="4" class="hidden">
+                <label for="rating-4" class="text-4xl cursor-pointer" title="خوب">😊</label>
+              </div>
+              <div class="text-center">
+                <input type="radio" id="rating-5" name="rating" value="5" class="hidden">
+                <label for="rating-5" class="text-4xl cursor-pointer" title="عالی">😍</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <label for="comment" class="block text-lg font-semibold mb-2">نظر شما (اختیاری)</label>
+            <textarea id="comment" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="نظرات خود را بنویسید..."></textarea>
+          </div>
+
+          <button id="submit-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md transition duration-200 flex items-center justify-center">
+            <span id="submit-text">ثبت نظر</span>
+            <span id="submit-spinner" class="hidden ml-2">
+              <i class="fas fa-circle-notch fa-spin"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- پیام تشکر -->
+  <div id="thank-you-message" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-xl shadow-xl overflow-hidden text-center p-8 max-w-md mx-4">
+      <div class="text-green-500 text-6xl mb-4">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">نظر شما ثبت شد!</h2>
+      <p class="text-gray-600 mb-6">با تشکر از مشارکت شما در بهبود کیفیت دوره‌ها</p>
+      <button id="new-survey-btn" class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200">
+        بستن
+      </button>
+    </div>
+  </div>
+
+  <!-- فوتر -->
+  <footer class="bg-blue-200 text-gray-700 py-8 mt-10">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <!-- اطلاعات تماس -->
+        <div class="mb-6 md:mb-0 text-center md:text-right">
+          <h3 class="text-lg font-bold mb-2">تماس با ما</h3>
+          <p class="flex items-center justify-center md:justify-start">
+            <i class="fas fa-phone ml-2"></i>
+        09301850186
+          </p>
+          <p class="flex items-center justify-center md:justify-start mt-2">
+            <i class="fas fa-envelope ml-2"></i>
+            codeuse.com
+          </p>
+        </div>
+
+        <!-- لینک‌های شبکه‌های اجتماعی -->
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-lg font-bold mb-4 text-center">ما را دنبال کنید</h3>
+          <div class="flex justify-center space-x-6 space-x-reverse">
+            <a href="https://instagram.com/codeuse" target="_blank" class="text-pink-600 hover:text-pink-800">
+              <i class="fab fa-instagram text-2xl"></i>
+            </a>
+            <a href="https://youtube.com/codeuse" target="_blank" class="text-red-600 hover:text-red-800">
+              <i class="fab fa-youtube text-2xl"></i>
+            </a>
+            <a href="https://t.me/codeuse" target="_blank" class="text-blue-500 hover:text-blue-700">
+              <i class="fab fa-telegram text-2xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- متن کپی رایت -->
+        <div class="text-center md:text-left">
+          <p>تمامی حقوق برای کدیوز محفوظ است </p>
+          <p class="mt-2 text-sm">این سایت به منظور آموزش و توسعه مهارت‌های برنامه‌نویسی ایجاد شده است</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!DOCTYPE html>
+  <html lang="fa" dir="rtl">
+  <head>
+    <!-- بقیه کدهای هد بدون تغییر -->
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- تمام کدهای HTML شما بدون تغییر باقی می‌ماند -->
+  
+    <script>
+      // تابع اصلی پس از بارگذاری صفحه
+      function initSurvey() {
+        const submitBtn = document.getElementById('submit-btn');
+        const thankYouMessage = document.getElementById('thank-you-message');
+        
+        // رویداد کلیک برای دکمه ثبت نظر
+        submitBtn.onclick = function(e) {
+          e.preventDefault();
+          
+          // بررسی انتخاب امتیاز
+          const ratingSelected = document.querySelector('input[name="rating"]:checked');
+          if (!ratingSelected) {
+            alert("لطفاً ابتدا امتیاز خود را انتخاب کنید");
+            return;
+          }
+          
+          // نمایش حالت در حال بارگذاری
+          const spinner = document.getElementById('submit-spinner');
+          const btnText = document.getElementById('submit-text');
+          btnText.textContent = "در حال ثبت...";
+          spinner.classList.remove('hidden');
+          this.disabled = true;
+          
+          // شبیه‌سازی ارسال داده (1 ثانیه تاخیر)
+          setTimeout(() => {
+            // نمایش پیام موفقیت
+            thankYouMessage.classList.remove('hidden');
+            
+            // بازگرداندن دکمه به حالت اولیه
+            btnText.textContent = "ثبت نظر";
+            spinner.classList.add('hidden');
+            this.disabled = false;
+          }, 1000);
+        };
+        
+        // رویداد دکمه بستن پیام
+        document.getElementById('new-survey-btn').onclick = function() {
+          thankYouMessage.classList.add('hidden');
+          document.getElementById('comment').value = "";
+          document.querySelectorAll('input[name="rating"]').forEach(el => el.checked = false);
+        };
+      }
+  
+      // اجرای تابع پس از بارگذاری کامل صفحه
+      if (document.readyState === 'complete') {
+        initSurvey();
+      } else {
+        window.addEventListener('load', initSurvey);
+      }
+    </script>
+
+</body>
+</html>
