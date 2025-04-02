@@ -223,71 +223,35 @@ function executeSearch() {
     return;
   }
 
-  // 3. جستجو فقط در عناصر دارای کلاس 'searchable'
-  const textNodes = [];
-  document.querySelectorAll(".searchable").forEach((parent) => {
-    const walker = document.createTreeWalker(
-      parent,
-      NodeFilter.SHOW_TEXT,
-      null,
-      false
-    );
-    let node;
-    while ((node = walker.nextNode())) {
-      if (node.nodeValue.trim() !== "") {
-        textNodes.push(node);
-      }
-    }
-  });
+  // 3. جستجو در صفحات
+  fetch("../../pages.json")
+    .then((response) => response.json())
+    .then((pages) => {
+      const foundResults = [];
 
-  const foundResults = [];
-  textNodes.forEach((textNode) => {
-    const content = textNode.nodeValue;
-    if (content.includes(searchTerm)) {
-      const parent = textNode.parentNode;
+      // استفاده از Promise.all برای اطمینان از پردازش تمام صفحات
+      const pagePromises = pages.map((page) => {
+        return fetch(page)
+          .then((response) => response.text())
+          .then((content) => {
+            // استخراج عنوان صفحه
+            const doc = new DOMParser().parseFromString(content, "text/html");
+            const title = doc.querySelector("title").innerText;
 
-      const highlighted = content.replace(
-        new RegExp(searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi"),
-        (match) =>
-          `<span class="search-highlighted bg-yellow-300">${match}</span>`
-      );
-
-      const wrapper = document.createElement("span");
-      wrapper.innerHTML = highlighted;
-      parent.replaceChild(wrapper, textNode);
-
-      foundResults.push({
-        text: content.trim().substring(0, 60),
-        element: parent,
+            if (title.toLowerCase().includes(searchTerm.toLowerCase())) {
+              foundResults.push({
+                text: title, // عنوان صفحه به عنوان نتیجه
+                url: page,
+              });
+            }
+          });
       });
-    }
-  });
 
-  // 4. نمایش حداکثر 8 نتیجه
-  displaySearchResults(foundResults.slice(0, 8), searchTerm);
-
-  // 5. اسکرول به اولین نتیجه
-  if (foundResults.length > 0) {
-    setTimeout(() => {
-      foundResults[0].element.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
+      // زمانی که تمام صفحات پردازش شدند، نتایج را نمایش می‌دهیم
+      Promise.all(pagePromises).then(() => {
+        displaySearchResults(foundResults, searchTerm);
       });
-      // هایلایت موقت
-      foundResults[0].element.classList.add(
-        "bg-blue-100",
-        "ring-2",
-        "ring-blue-400"
-      );
-      setTimeout(() => {
-        foundResults[0].element.classList.remove(
-          "bg-blue-100",
-          "ring-2",
-          "ring-blue-400"
-        );
-      }, 2000);
-    }, 100);
-  }
+    });
 }
 
 // نمایش نتایج جستجو
@@ -298,21 +262,13 @@ function displaySearchResults(results, term) {
   if (results.length === 0) {
     container.innerHTML = `<div class="px-4 py-3 text-gray-500">نتیجه‌ای برای "${term}" یافت نشد</div>`;
   } else {
-    results.forEach((result, index) => {
+    results.forEach((result) => {
       const resultItem = document.createElement("div");
       resultItem.className =
         "px-4 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-100";
-      resultItem.textContent = result.text;
+      resultItem.textContent = result.text; // نمایش عنوان به جای متن
       resultItem.addEventListener("click", () => {
-        result.element.scrollIntoView({ behavior: "smooth", block: "center" });
-        result.element.classList.add("bg-blue-100", "ring-2", "ring-blue-400");
-        setTimeout(() => {
-          result.element.classList.remove(
-            "bg-blue-100",
-            "ring-2",
-            "ring-blue-400"
-          );
-        }, 2000);
+        window.location.href = result.url; // رفتن به صفحه مربوطه
       });
       container.appendChild(resultItem);
     });
@@ -340,3 +296,18 @@ document.addEventListener("click", (e) => {
     searchBox.classList.add("hidden");
   }
 });
+
+const text = "بهترین استاد، بهترین کیفیت!";
+const typingText = document.getElementById("typing-text");
+
+let i = 0;
+
+function typeText() {
+  if (i < text.length) {
+    setTimeout(typeText, 200);
+    typingText.textContent += text.charAt(i);
+    i++;
+  }
+}
+typingText.classList.add("typing-animation");
+typeText();

@@ -11,7 +11,6 @@
       type="image/icon"
     />
     <link rel="stylesheet" href="../src/cssFontAw/all.css" />
-    <!-- کد CSS -->
     <style>
       .animate-marquee {
         animation: marquee 6s linear;
@@ -64,39 +63,65 @@
         display: block;
       }
 
-      .search-highlight {
-  background-color: #fef08a;
-  padding: 0 2px;
-  border-radius: 2px;
-  color: #000;
-}
+          .search-highlight {
+      background-color: #fef08a;
+      padding: 0 2px;
+      border-radius: 2px;
+      color: #000;
+    }
 
-#searchResultsBox {
-  display: none;
-}
+    #searchResultsBox {
+      display: none;
+    }
 
-#searchResultsBox:not(.hidden) {
-  display: block;
-}
+    #searchResultsBox:not(.hidden) {
+      display: block;
+    }
 
-.bg-blue-50 {
-  background-color: #eff6ff;
-  transition: background-color 0.3s ease;
-}
-.search-highlighted {
-  background-color: #fde047;
-  padding: 0 2px;
-  border-radius: 3px;
-  color: #000;
-}
+    .bg-blue-50 {
+      background-color: #eff6ff;
+      transition: background-color 0.3s ease;
+    }
+    .search-highlighted {
+      background-color: #fde047;
+      padding: 0 2px;
+      border-radius: 3px;
+      color: #000;
+    }
 
-#searchResultsContainer {
-  display: none;
-}
+    #searchResultsContainer {
+      display: none;
+    }
 
-#searchResultsContainer:not(.hidden) {
-  display: block;
-}
+    #searchResultsContainer:not(.hidden) {
+      display: block;
+    }
+
+    @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .typing-animation {
+        width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        border-left: 2px solid black; 
+        animation: typing 1s steps(20) 1s 1 normal both, blink 0.5s step-end infinite;
+        padding: 10px 5px; 
+        background-color: rgba(49, 80, 152, 0.67);
+      }
+
     </style>
   </head>
   <body class="bg-[#fbf2f2aa] font-dirooz cursor-custom">
@@ -117,7 +142,7 @@
             </a>
           </strong>
 
-          <!-- search boxا
+          <!-- search boxا -->
           <div class="relative flex-1 mx-4 max-w-md hidden md:block">
             <div class="relative">
               <input 
@@ -132,15 +157,10 @@
               </button>
             </div>
             
-            <div id="searchResultsContainer" class="absolute z-50 w-full mt-2 bg-white rounded-lg shadow-lg hidden overflow-hidden">
+            <div id="searchResultsContainer" class="absolute z-[9999] w-full mt-2 bg-white rounded-lg shadow-lg hidden overflow-hidden">
               <div id="searchResultsContent" class="py-2 max-h-60 overflow-y-auto"></div>
             </div>
-          </div> -->
-          <!-- Search Box - Test google CSE -->
-          <script async src="https://cse.google.com/cse.js?cx=02bc1f61377954063">
-          </script>
-          <div class="gcse-search"></div>
-
+          </div>
           <nav class="hidden md:block">
             <ul class="flex items-center space-x-2 md:space-x-4 lg:space-x-6 text-base md:text-lg">
               <li><a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">خانه</a></li>
@@ -176,16 +196,6 @@
           </nav>
         </div>
       </div>
-      <div id="mobile-menu" class="fixed inset-0 z-[9999] bg-white/95 hidden flex-col items-center justify-center space-y-8 text-xl">
-        <button id="close-menu" class="absolute top-6 right-6 text-3xl p-2">
-          <i class="fas fa-times"></i>
-        </button>
-        <a class="font-medium hover:text-[#315098]" href="#">خانه</a>
-        <a class="font-medium hover:text-[#315098]" href="#">درباره کدیوز</a>
-        <a class="font-medium hover:text-[#315098]" href="#categories">دسته‌بندی‌ها</a>
-        <a class="font-medium hover:text-[#315098]" href="#">زبان‌های پرطرفدار</a>
-        <a class="font-medium hover:text-[#315098]" href="#">رده‌های قیمتی</a>
-      </div>
       <div class="header relative min-h-[95vh]">
         <h1 class="font-dirooz text-3xl font-bold text-center py-6 z-[9900] relative">
             CODEUSE | کدیوز
@@ -193,10 +203,10 @@
         <h3 class="font-lalezar text-2xl font-bold text-center text-black z-[9900] relative">
             بهترین آموزشو ببین!
         </h3>
-        <div class="flex justify-center my-4">
-          <h3 class="text-2xl font-lalezar bg-[#315098aa] py-2 px-4 rounded-lg z-[9900]">
-            بهترین استاد، بهترین کیفیت
-          </h3>
+        <div class="flex justify-center my-1">
+          <div class="flex justify-center items-center rounded-lg z-[9900] p-4">
+            <h3 id="typing-text" class="text-2xl font-lalezar bg-[#315098aa] text-black"></h3>
+          </div>
         </div>
         <img src="../src/images/baseImg/arrowimg.png" alt="down-arrow" class="mx-auto" draggable="false" />
       
