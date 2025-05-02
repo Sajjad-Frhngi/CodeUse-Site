@@ -1,4 +1,9 @@
 [
-    "../src/pages/python-page.html"
+    "../src/pages/python-page.html",
+    "../src/pages/js-rocet.html",
+    "../src/pages/react-racet.html",
+    "../src/pages/robot-danup.html",
+    "../src/pages/html&css-boto.html",
+    "../src/pages/all-courses.html"
 ]
   

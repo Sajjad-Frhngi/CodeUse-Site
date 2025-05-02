@@ -55,34 +55,34 @@ document.addEventListener("DOMContentLoaded", function () {
   const topCourse = [
     {
       title: "آموزش مقدماتی پایتون",
-      image: "../src/images/courseImg/python1.png",
-      link: "../src/pages/best-music.html",
+      image: "../src/images/courseImg/jadi.png.webp",
+      link: "../src/pages/python-page.html",
       author: "جادی میرمیرانی",
       presentor: "مکتب خونه",
       price: "پریمیوم",
     },
     {
-      title: "آموزش مقدماتی پایتون",
-      image: "../src/images/courseImg/python1.png",
-      link: "../src/pages/best-music.html",
-      author: "جادی میرمیرانی",
-      presentor: "مکتب خونه",
+      title: "آموزش مقدماتی جاوااسکریپت",
+      image: "../src/images/courseImg/js.png.jpg",
+      link: "../src/pages/js-rocet.html",
+      author: "حسام موسوی",
+      presentor: "راکت",
       price: "پریمیوم",
     },
     {
-      title: "آموزش مقدماتی پایتون",
-      image: "../src/images/courseImg/python1.png",
-      link: "../src/pages/best-music.html",
-      author: "جادی میرمیرانی",
-      presentor: "مکتب خونه",
-      price: "پریمیوم",
+      title: "آموزش جامع html & css",
+      image: "../src/images/courseImg/CSS1.png",
+      link: "../src/pages/html&css-boto.html",
+      author: "میلاد عظمی",
+      presentor: "بوتواستارت",
+      price: "اقتصادی",
     },
     {
-      title: "آموزش مقدماتی پایتون",
-      image: "../src/images/courseImg/python1.png",
-      link: "../src/pages/best-music.html",
-      author: "جادی میرمیرانی",
-      presentor: "مکتب خونه",
+      title: "آموزش هوش مصنوعی",
+      image: "../src/images/courseImg/ai.png",
+      link: "../src/pages/ai-fanit.html",
+      author: "محمدرضا شاقوزی",
+      presentor: "مجتمع فنی تهران",
       price: "پریمیوم",
     },
   ];
@@ -191,45 +191,37 @@ const menuToggle = document.getElementById("menu-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
 const closeMenuBtn = document.getElementById("close-menu");
 
-// تابع برای بستن منو
 function closeMenu() {
   menuToggle.classList.remove("active");
   mobileMenu.classList.remove("translate-x-0");
   mobileMenu.classList.add("-translate-x-full");
 }
 
-// رویداد کلیک برای دکمه همبرگر
 menuToggle.addEventListener("click", () => {
   menuToggle.classList.toggle("active");
   mobileMenu.classList.toggle("-translate-x-full");
   mobileMenu.classList.toggle("translate-x-0");
 });
 
-// رویداد کلیک برای دکمه بستن
 closeMenuBtn.addEventListener("click", closeMenu);
 
-// تابع اصلی جستجو
 function executeSearch() {
   const searchTerm = document.getElementById("searchInputField").value.trim();
 
-  // 1. پاک کردن هایلایت‌های قبلی
   document.querySelectorAll(".search-highlighted").forEach((el) => {
     el.outerHTML = el.innerHTML;
   });
 
-  // 2. اگر جستجو کوتاه است
   if (searchTerm.length < 2) {
     document.getElementById("searchResultsContainer").classList.add("hidden");
     return;
   }
 
-  // 3. جستجو در صفحات
   fetch("../../pages.json")
     .then((response) => response.json())
     .then((pages) => {
       const foundResults = [];
 
-      // استفاده از Promise.all برای اطمینان از پردازش تمام صفحات
       const pagePromises = pages.map((page) => {
         return fetch(page)
           .then((response) => response.text())
@@ -240,14 +232,12 @@ function executeSearch() {
 
             if (title.toLowerCase().includes(searchTerm.toLowerCase())) {
               foundResults.push({
-                text: title, // عنوان صفحه به عنوان نتیجه
+                text: title,
                 url: page,
               });
             }
           });
       });
-
-      // زمانی که تمام صفحات پردازش شدند، نتایج را نمایش می‌دهیم
       Promise.all(pagePromises).then(() => {
         displaySearchResults(foundResults, searchTerm);
       });
@@ -311,4 +301,3 @@ function typeText() {
 }
 typingText.classList.add("typing-animation");
 typeText();
-
