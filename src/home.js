@@ -311,3 +311,4 @@ function typeText() {
 }
 typingText.classList.add("typing-animation");
 typeText();
+

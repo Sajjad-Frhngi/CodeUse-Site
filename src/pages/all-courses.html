@@ -1,9 +1,639 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>همه دوره ها | کدیوز</title>
-  </head>
-  <body></body>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>همه دوره‌ها | کدیوز</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#315098',
+                        secondary: '#f0f4f8',
+                        filter: '#f8fafc',
+                    },
+                    fontFamily: {
+                        'dirooz': ['dirooz', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .course-card {
+            transition: all 0.3s ease;
+        }
+
+        .course-card.hidden {
+            opacity: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            transform: scale(0);
+        }
+
+        .hamburger span {
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        #mobile-menu {
+            transition: right 0.3s ease;
+        }
+
+        #filter-menu {
+            transition: right 0.3s ease;
+        }
+
+        #desktop-filter-panel {
+            transition: transform 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        #desktop-filter-panel.show {
+            transform: translateX(0);
+        }
+
+        .filter-animation {
+            animation: filterPulse 0.5s ease;
+        }
+
+        @keyframes filterPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* اصلاحات جدید */
+        .navbar {
+            position: relative;
+            z-index: 1000;
+        }
+
+        #filter-menu,
+        #mobile-menu {
+            top: 80px;
+            height: calc(100vh - 80px);
+        }
+
+        #desktop-filter-panel {
+            top: 80px;
+            height: calc(100vh - 80px);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-gray-50 font-dirooz">
+
+    <header
+        class="navbar z-[9999] mx-auto flex justify-between items-center w-full max-w-[1200px] px-4  bg-white/80 backdrop-blur-sm rounded-full shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-5 max-w-[1200px] mx-auto">
+                <a href="#" class="flex items-center">
+                    <img src="../images/baseImg/logo.png" alt="کدیوز" class="h-10">
+                </a>
+
+                <nav class="hidden md:flex items-center space-x-2 space-x-reverse">
+                    <a href="https://codeuse.ir" class="px-3 py-2 text-gray-700 hover:text-primary transition">خانه</a>
+                    <a href="../pages/comment.html" class="px-3 py-2 text-gray-700 hover:text-primary transition">ارتباط
+                        با ما</a>
+                    <a href="#categories" class="px-3 py-2 text-gray-700 hover:text-primary transition">دسته‌بندی‌ها</a>
+                    <a href="#" class="px-3 py-2 text-gray-700 hover:text-primary transition">زبان‌های پرطرفدار</a>
+                    <a href="#" class="px-3 py-2 text-gray-700 hover:text-primary transition">رده‌های قیمتی</a>
+                </nav>
+                <button id="desktop-filter-toggle" class="hidden md:flex items-center text-gray-700 mr-4">
+                    <i class="fas fa-filter ml-2"></i>
+                    فیلترها
+                </button>
+                <div class="flex items-center space-x-4 space-x-reverse md:hidden">
+                    <button id="filter-toggle" class="text-gray-700">
+                        <i class="fas fa-filter text-xl"></i>
+                    </button>
+                    <button id="menu-toggle" class="flex flex-col justify-center items-center w-8 h-8">
+                        <span class="block w-6 h-0.5 bg-gray-800 mb-1.5"></span>
+                        <span class="block w-6 h-0.5 bg-gray-800 mb-1.5"></span>
+                        <span class="block w-6 h-0.5 bg-gray-800"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="filter-menu"
+        class="fixed top-20 right-[-100%] w-4/5 max-w-xs h-[calc(100vh-80px)] bg-filter shadow-2xl z-30 p-6 overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-gray-800">فیلتر دوره‌ها</h2>
+            <button id="close-filter" class="text-2xl text-gray-600">&times;</button>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-3">سطح دوره</label>
+            <div class="space-y-2">
+                <label class="flex items-center">
+                    <input type="checkbox" class="level-filter" value="رایگان" checked>
+                    <span class="mr-2">رایگان</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="level-filter" value="اقتصادی" checked>
+                    <span class="mr-2">اقتصادی</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="level-filter" value="پرمیوم" checked>
+                    <span class="mr-2">پرمیوم</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-3">محدوده قیمت</label>
+            <div class="mb-2">
+                <span id="price-value" class="text-primary font-medium">0 - 5,000,000 تومان</span>
+            </div>
+            <input type="range" id="price-range" min="0" max="5000000" step="100000" value="5000000"
+                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+            <div class="flex justify-between text-sm text-gray-500 mt-1">
+                <span>0</span>
+                <span>5,000,000</span>
+            </div>
+        </div>
+        <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-3">نوع دوره</label>
+            <select id="course-type" class="w-full p-2 border border-gray-300 rounded-lg">
+                <option value="all">همه دوره‌ها</option>
+                <option value="programming">برنامه‌نویسی</option>
+                <option value="design">طراحی</option>
+                <option value="ai">هوش مصنوعی</option>
+            </select>
+        </div>
+        <button id="apply-filter" class="w-full py-3 bg-primary text-white rounded-lg mt-4 filter-btn">
+            اعمال فیلترها
+        </button>
+    </div>
+    <div id="mobile-menu"
+        class="fixed top-20 left-[-100%] w-4/5 max-w-xs h-[calc(100vh-80px)] bg-white shadow-2xl z-40 p-6">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu" class="text-2xl text-gray-600">&times;</button>
+        </div>
+        <nav class="flex flex-col space-y-4">
+            <a href="https://codeuse.ir" class="py-2 text-gray-700 hover:text-primary transition">خانه</a>
+            <a href="#" class="py-2 text-gray-700 hover:text-primary transition">درباره کدیوز</a>
+            <a href="#categories" class="py-2 text-gray-700 hover:text-primary transition">دسته‌بندی‌ها</a>
+            <a href="#" class="py-2 text-gray-700 hover:text-primary transition">زبان‌های پرطرفدار</a>
+            <a href="#" class="py-2 text-gray-700 hover:text-primary transition">رده‌های قیمتی</a>
+        </nav>
+    </div>
+
+    <div id="desktop-filter-panel"
+        class="fixed top-20 right-0 h-[calc(100vh-80px)] w-64 bg-white shadow-lg z-20 p-6 overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold text-gray-800">فیلتر دوره‌ها</h2>
+            <button id="close-desktop-filter" class="text-2xl text-gray-600">&times;</button>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-3">سطح دوره</label>
+            <div class="space-y-2">
+                <label class="flex items-center">
+                    <input type="checkbox" class="desktop-level-filter" value="رایگان" checked>
+                    <span class="mr-2">رایگان</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="desktop-level-filter" value="اقتصادی" checked>
+                    <span class="mr-2">اقتصادی</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="desktop-level-filter" value="پرمیوم" checked>
+                    <span class="mr-2">پرمیوم</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-3">محدوده قیمت</label>
+            <div class="mb-2">
+                <span id="desktop-price-value" class="text-primary font-medium">0 - 5,000,000 تومان</span>
+            </div>
+            <input type="range" id="desktop-price-range" min="0" max="5000000" step="100000" value="5000000"
+                class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+            <div class="flex justify-between text-sm text-gray-500 mt-1">
+                <span>0</span>
+                <span>5,000,000</span>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-3">نوع دوره</label>
+            <select id="desktop-course-type" class="w-full p-2 border border-gray-300 rounded-lg">
+                <option value="all">همه دوره‌ها</option>
+                <option value="programming">برنامه‌نویسی</option>
+                <option value="design">طراحی</option>
+                <option value="ai">هوش مصنوعی</option>
+            </select>
+        </div>
+
+        <button id="desktop-apply-filter" class="w-full py-3 bg-primary text-white rounded-lg mt-4 filter-btn">
+            اعمال فیلترها
+        </button>
+    </div>
+
+    <main class="flex-grow container mx-auto px-4 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- دوره 1 -->
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="پرمیوم"
+                data-price="1699000" data-type="programming">
+                <img src="../images/courseImg/jadi.png.webp" alt="پایتون" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-gray-800">پایتون جامع | مکتب خونه</h3>
+                    <div class="flex items-center mt-2">
+                        <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">پرمیوم</span>
+                        <span class="text-green-600 font-medium mr-auto">1,699,000 تومان</span>
+                    </div>
+                    <p class="text-gray-600 mt-3 line-clamp-2">
+                        دوره جامع آموزش پایتون از مقدماتی تا پیشرفته با تدریس جادی میرمیرانی. مناسب برای شروع
+                        برنامه‌نویسی و ورود به بازار کار.
+                    </p>
+                    <a href="../pages/python-page.html"
+                        class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
+                        مشاهده بیشتر
+                    </a>
+                </div>
+            </div>
+
+            <!-- دوره 2 -->
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="پرمیوم"
+                data-price="990000" data-type="programming">
+                <img src="../images/courseImg/js.png.jpg" alt="جاوااسکریپت" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-gray-800">دوره جامع جاوا اسکریپت | راکت</h3>
+                    <div class="flex flex-col  mt-2">
+                        <div class="flex items-center">
+                            <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">پرمیوم</span>
+                            <span class="mr-3 text-yellow-600 bg-red-100 px-2 py-1 rounded text-sm">دوره دارای تخفیف است</span>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-gray-500 font-medium line-through">5,400,000 تومان</span>
+                            <span class="text-green-600 font-medium">2,430,000 تومان</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-3 line-clamp-2">
+                        آموزش جاوا اسکریپت وب‌سایت راکت، مسیری سریع و جامع برای یادگیری یکی از محبوب‌ترین و
+                        پراستفاده‌ترین زبان‌ برنامه‌نویسی...
+                    </p>
+                    <a href="../pages/js-rocet.html"
+                        class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
+                        مشاهده بیشتر
+                    </a>
+                </div>
+            </div>
+
+            
+            <!-- دوره 3  -->
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="پرمیوم"
+            data-price="750000" data-type="design">
+            <img src="../images/courseImg/boto.png" alt="طراحی وب" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-gray-800">دوره جامع HTML و CSS | بوتو استارت</h3>
+                    <div class="flex items-center mt-2">
+                        <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">پرمیوم</span>
+                        <!-- <span class="mr-3 text-yellow-600 bg-red-100 px-2 py-1 rounded text-sm">دوره دارای تخفیف است</span> -->
+                        <span class="text-green-600 font-medium mr-auto">759,000 تومان</span>
+                    </div>
+                    <p class="text-gray-600 mt-3 line-clamp-2">
+                        اولین قدم برای ورود به دنیای برنامه نویسی وب و فرانت اند یادگیری HTML&CSS است که به ما این امکان
+                        را میدهد تا ظاهر استاتیک سایت را پیاده بکنیم...
+                    </p>
+                    <a href="../pages/html&css-boto.html"
+                        class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
+                        مشاهده بیشتر
+                    </a>
+                </div>
+            </div>
+
+            <!-- دوره 4 -->
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="پرمیوم"
+            data-price="990000" data-type="programming">
+            <img src="../images/courseImg/js.png.jpg" alt="جاوااسکریپت" class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-gray-800">دوره جامع جاوا اسکریپت | راکت</h3>
+                <div class="flex flex-col  mt-2">
+                    <div class="flex items-center">
+                        <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">پرمیوم</span>
+                        <span class="mr-3 text-yellow-600 bg-red-100 px-2 py-1 rounded text-sm">دوره دارای تخفیف است</span>
+                    </div>
+                    <div class="flex flex-col items-end">
+                        <span class="text-gray-500 font-medium line-through">5,400,000 تومان</span>
+                        <span class="text-green-600 font-medium">2,430,000 تومان</span>
+                    </div>
+                </div>
+                <p class="text-gray-600 mt-3 line-clamp-2">
+                    آموزش جاوا اسکریپت وب‌سایت راکت، مسیری سریع و جامع برای یادگیری یکی از محبوب‌ترین و
+                    پراستفاده‌ترین زبان‌ برنامه‌نویسی...
+                </p>
+                <a href="../pages/js-rocet.html"
+                    class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
+                    مشاهده بیشتر
+                </a>
+            </div>
+        </div>
+
+        <!-- دوره 5 -->
+        <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="پرمیوم"
+        data-price="990000" data-type="programming">
+        <img src="../images/courseImg/js.png.jpg" alt="جاوااسکریپت" class="w-full h-48 object-cover">
+        <div class="p-4">
+            <h3 class="text-xl font-bold text-gray-800">دوره جامع جاوا اسکریپت | راکت</h3>
+            <div class="flex flex-col  mt-2">
+                <div class="flex items-center">
+                    <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">پرمیوم</span>
+                    <span class="mr-3 text-yellow-600 bg-red-100 px-2 py-1 rounded text-sm">دوره دارای تخفیف است</span>
+                </div>
+                <div class="flex flex-col items-end">
+                    <span class="text-gray-500 font-medium line-through">5,400,000 تومان</span>
+                    <span class="text-green-600 font-medium">2,430,000 تومان</span>
+                </div>
+            </div>
+            <p class="text-gray-600 mt-3 line-clamp-2">
+                آموزش جاوا اسکریپت وب‌سایت راکت، مسیری سریع و جامع برای یادگیری یکی از محبوب‌ترین و
+                پراستفاده‌ترین زبان‌ برنامه‌نویسی...
+            </p>
+            <a href="../pages/js-rocet.html"
+                class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
+                مشاهده بیشتر
+            </a>
+        </div>
+    </div>
+
+    <!-- دوره 6 -->
+    <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="پرمیوم"
+    data-price="990000" data-type="programming">
+    <img src="../images/courseImg/js.png.jpg" alt="جاوااسکریپت" class="w-full h-48 object-cover">
+    <div class="p-4">
+        <h3 class="text-xl font-bold text-gray-800">دوره جامع جاوا اسکریپت | راکت</h3>
+        <div class="flex flex-col  mt-2">
+            <div class="flex items-center">
+                <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">پرمیوم</span>
+                <span class="mr-3 text-yellow-600 bg-red-100 px-2 py-1 rounded text-sm">دوره دارای تخفیف است</span>
+            </div>
+            <div class="flex flex-col items-end">
+                <span class="text-gray-500 font-medium line-through">5,400,000 تومان</span>
+                <span class="text-green-600 font-medium">2,430,000 تومان</span>
+            </div>
+        </div>
+        <p class="text-gray-600 mt-3 line-clamp-2">
+            آموزش جاوا اسکریپت وب‌سایت راکت، مسیری سریع و جامع برای یادگیری یکی از محبوب‌ترین و
+            پراستفاده‌ترین زبان‌ برنامه‌نویسی...
+        </p>
+        <a href="../pages/js-rocet.html"
+            class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
+            مشاهده بیشتر
+        </a>
+    </div>
+</div>
+</div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-300 text-black pt-10">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+          <div class="grid md:grid-cols-3 gap-8 text-center md:text-right items-start">
+            <div>
+              <h3 class="text-lg font-bold mb-4">تماس با ما</h3>
+              <div class="flex justify-center md:justify-start gap-4">
+                <a href="https://youtube.com/c/codeuse" class="transition">
+              <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="60px" height="60px"><linearGradient id="SVGID_1_" x1="39.108" x2="8.892" y1="8.892" y2="39.108" gradientUnits="userSpaceOnUse"><stop offset=".014" stop-color="#fe6d60"/><stop offset=".046" stop-color="#fe766a"/><stop offset=".208" stop-color="#fea097"/><stop offset=".37" stop-color="#ffc2bd"/><stop offset=".532" stop-color="#ffddda"/><stop offset=".692" stop-color="#fff0ee"/><stop offset=".849" stop-color="#fffbfb"/><stop offset="1" stop-color="#fff"/></linearGradient><path fill="url(#SVGID_1_)" d="M36.542,40H11.458C9.272,40,7.5,38.281,7.5,36.162V11.838C7.5,9.719,9.272,8,11.458,8h25.083	c2.186,0,3.958,1.719,3.958,3.838v24.323C40.5,38.281,38.728,40,36.542,40z"/><path fill="#e02f24" d="M26.253,14.557h1.561v5.088c0,0.309,0.034,0.529,0.103,0.661s0.181,0.198,0.34,0.198	c0.135,0,0.265-0.04,0.39-0.124c0.124-0.082,0.217-0.189,0.277-0.317v-5.507h1.559v6.931h-1.222l-0.135-0.848h-0.034	C28.761,21.28,28.263,21.6,27.6,21.6c-0.459,0-0.799-0.151-1.018-0.452s-0.328-0.772-0.328-1.413v-5.179L26.253,14.557	L26.253,14.557z"/><path fill="#e02f24" d="M23.285,20.539c0.217-0.001,0.371-0.113,0.458-0.34c0.086-0.225,0.13-0.595,0.13-1.107v-2.16	c0-0.498-0.043-0.861-0.13-1.091c-0.086-0.231-0.24-0.344-0.459-0.344c-0.211,0-0.36,0.115-0.447,0.344	c-0.086,0.231-0.13,0.594-0.13,1.091v2.16c0,0.513,0.04,0.882,0.124,1.107S23.066,20.539,23.285,20.539z M22.056,14.731	c0.32-0.208,0.74-0.31,1.261-0.31c0.513,0,0.923,0.105,1.233,0.317c0.309,0.211,0.535,0.541,0.678,0.988	c0.143,0.448,0.215,1.046,0.215,1.791v1.007c0,0.74-0.07,1.332-0.209,1.781s-0.366,0.776-0.678,0.984	c-0.312,0.208-0.737,0.31-1.272,0.31c-0.549,0-0.981-0.105-1.295-0.317c-0.313-0.211-0.535-0.539-0.667-0.984	s-0.198-1.037-0.198-1.775v-1.007c0-0.747,0.076-1.345,0.225-1.798C21.5,15.268,21.736,14.938,22.056,14.731z"/><path fill="#e02f24" d="M17.964,12l0.621,2.907c0.158,0.715,0.275,1.326,0.351,1.831h0.046c0.053-0.362,0.169-0.968,0.351-1.82	L19.977,12h1.55l-1.798,6.411v3.075H18.19v-3.075L16.414,12H17.964z"/><path fill="#e02f24" d="M27.742,30.126c0-0.655-0.039-1.168-0.119-1.538c-0.08-0.369-0.209-0.636-0.386-0.802	s-0.423-0.248-0.734-0.248c-0.243,0-0.468,0.069-0.678,0.205c-0.211,0.136-0.373,0.316-0.487,0.539h-0.009V25.2H24.06v8.304h1.088	l0.134-0.553h0.028c0.103,0.198,0.254,0.354,0.459,0.468c0.204,0.113,0.429,0.171,0.678,0.171c0.445,0,0.772-0.205,0.983-0.616	c0.211-0.41,0.316-1.052,0.316-1.924h-0.001v-0.925L27.742,30.126L27.742,30.126z M26.416,30.975c0,0.427-0.018,0.761-0.053,1.002	c-0.035,0.243-0.093,0.414-0.177,0.516c-0.084,0.101-0.193,0.153-0.333,0.153c-0.109,0-0.209-0.027-0.301-0.077	c-0.092-0.051-0.167-0.127-0.224-0.229v-3.321c0.045-0.158,0.122-0.289,0.229-0.391c0.108-0.103,0.225-0.153,0.352-0.153	c0.135,0,0.238,0.053,0.31,0.157c0.072,0.104,0.124,0.282,0.153,0.531c0.028,0.248,0.043,0.601,0.043,1.06v0.752H26.416z M21.948,32.301c-0.051,0.108-0.128,0.198-0.234,0.267c-0.104,0.07-0.215,0.105-0.329,0.105c-0.135,0-0.229-0.055-0.286-0.167	c-0.058-0.111-0.086-0.297-0.086-0.558v-4.296h-1.319v4.371c0,0.54,0.092,0.938,0.277,1.193c0.185,0.254,0.47,0.382,0.859,0.382	c0.56,0,0.98-0.27,1.261-0.813h0.028l0.113,0.717h1.031h0.001v-5.851h-1.316V32.301z M20.086,25.497h-3.903v1.058h1.308v6.948h1.287	v-6.948h1.308L20.086,25.497z M35,33.6c0,1.32-1.08,2.4-2.4,2.4H15.4c-1.32,0-2.4-1.08-2.4-2.4v-8.2c0-1.32,1.08-2.4,2.4-2.4h17.2	c1.32,0,2.4,1.08,2.4,2.4V33.6z M31.815,31.017v-1.003c0-0.617-0.049-1.1-0.147-1.451c-0.1-0.35-0.27-0.607-0.512-0.772	c-0.243-0.166-0.589-0.248-1.041-0.248c-0.655,0-1.118,0.201-1.388,0.606s-0.405,1.045-0.405,1.924v1.022	c0,0.853,0.13,1.484,0.391,1.89c0.262,0.406,0.717,0.61,1.366,0.61c0.541,0,0.958-0.134,1.255-0.401	c0.297-0.266,0.444-0.671,0.444-1.212c0-0.089-0.004-0.159-0.009-0.211l-1.137-0.067c-0.005,0.356-0.046,0.61-0.119,0.763	s-0.209,0.229-0.405,0.229c-0.146,0-0.254-0.042-0.324-0.128c-0.07-0.085-0.115-0.223-0.138-0.41	c-0.023-0.188-0.034-0.47-0.034-0.845v-0.297h2.2v0.001H31.815z M29.611,30.236v-0.42c0-0.382,0.011-0.667,0.034-0.855	c0.022-0.188,0.066-0.323,0.134-0.405c0.067-0.081,0.17-0.124,0.31-0.124s0.243,0.039,0.31,0.119s0.113,0.216,0.136,0.41	c0.026,0.194,0.038,0.479,0.038,0.855v0.42L29.611,30.236z"/><path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M40.5,30.277V36.5c0,2.209-1.791,4-4,4h-25c-2.209,0-4-1.791-4-4V21.106"/><path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M7.5,14.915V11.5c0-2.209,1.791-4,4-4h25c2.209,0,4,1.791,4,4v12.096" /></svg>
+            </a>
+            <a href="mailto:info@codeuse.ir" class="hover:scale-110 transition">
+              <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="60px" height="60px"><linearGradient id="SVGID_1_" x1="38.631" x2="9.369" y1="9.619" y2="38.881" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#60e8fe"/><stop offset=".033" stop-color="#6ae9fe"/><stop offset=".197" stop-color="#97f0fe"/><stop offset=".362" stop-color="#bdf5ff"/><stop offset=".525" stop-color="#dafaff"/><stop offset=".687" stop-color="#eefdff"/><stop offset=".846" stop-color="#fbfeff"/><stop offset="1" stop-color="#fff"/></linearGradient><path fill="url(#SVGID_1_)" d="M34.5,40.5h-21c-3.314,0-6-2.646-6-5.909V13.909C7.5,10.646,10.186,8,13.5,8h21c3.314,0,6,2.646,6,5.909v20.682	C40.5,37.854,37.814,40.5,34.5,40.5z"/><path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M27.532,40.5H13.5c-3.314,0-6-2.686-6-6V21.809"/><path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M7.5,16.064V13.5c0-3.314,2.686-6,6-6h21c3.314,0,6,2.686,6,6v21c0,3.314-2.686,6-6,6"/><path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M23.383,31.516H13.5c-0.552,0-1-0.448-1-1V17.484c0-0.552,0.448-1,1-1h21c0.552,0,1,0.448,1,1v13.032	c0,0.552-0.448,1-1,1h-4.862H23.383z"/><path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M34.856,17.319l-9.022,7.347c-1.073,0.874-2.613,0.873-3.685-0.001l-4.381-3.573"/><line x1="19.824" x2="13.144" y1="24" y2="30.681" fill="none" stroke="#10cfe3" stroke-miterlimit="10" stroke-width="3"/><line x1="34.856" x2="28.166" y1="30.681" y2="24" fill="none" stroke="#10cfe3" stroke-miterlimit="10" stroke-width="3"/></svg>    
+            </a>  
+            <a href="https://instagram.com/codeuse_ir" class="hover:scale-110 transition" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60px" height="60px" viewBox="0 0 48 48">
+                <linearGradient id="SVGID_1__NHuAZUgwkbJo_gr1" x1="38.571" x2="9.429" y1="9.429" y2="38.571" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fe60c1"></stop><stop offset=".033" stop-color="#fe6ac5"></stop><stop offset=".197" stop-color="#fe97d7"></stop><stop offset=".362" stop-color="#ffbde5"></stop><stop offset=".525" stop-color="#ffdaf0"></stop><stop offset=".687" stop-color="#ffeef9"></stop><stop offset=".846" stop-color="#fffbfd"></stop><stop offset="1" stop-color="#fff"></stop></linearGradient><path fill="url(#SVGID_1__NHuAZUgwkbJo_gr1)" d="M16.5,41.5h15c5.523,0,10-4.477,10-10v-15c0-5.523-4.477-10-10-10h-15c-5.523,0-10,4.477-10,10v15	C6.5,37.023,10.977,41.5,16.5,41.5z"></path><path fill="none" stroke="#fa2aab" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M41.5,21.085V16.5c0-5.523-4.478-10-10-10h-15c-5.523,0-10,4.477-10,10v2.989"></path><path fill="none" stroke="#fa2aab" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3" d="M6.5,25.617V31.5c0,5.522,4.477,10,10,10h15c5.522,0,10-4.478,10-10v-4.606"></path><path fill="none" stroke="#fa2aab" stroke-miterlimit="10" stroke-width="3" d="M24,15.5c-4.694,0-8.5,3.806-8.5,8.5s3.806,8.5,8.5,8.5s8.5-3.806,8.5-8.5S28.694,15.5,24,15.5z"></path><path fill="#fa2aab" d="M34,12c-1.105,0-2,0.895-2,2s0.895,2,2,2s2-0.895,2-2S35.105,12,34,12z"></path>
+                </svg>
+                        </a>  
+            </div>
+            </div>
+      
+            <div>
+              <h3 class="text-lg font-bold mb-4">درباره ما</h3>
+              <p class="text-sm leading-6 px-4 md:px-0">
+                کدیوز، پروژه‌ای عام‌المنفعه است که در راستای معرفی بهترین منابع یادگیری برنامه‌نویسی به زبان فارسی، طراحی شده است. ما در کدیوز در تلاشیم تا با ارائه برترین کیفیت دوره‌ها، قدمی در پیشرفت کشور سهیم باشیم... شما می‌توانید با حمایت مالی و معنوی، در این کار نیک مشارکت کنید...
+              </p>
+            </div>
+      
+            <div>
+              <h3 class="text-lg font-bold mb-4">لینک‌های مفید</h3>
+              <ul class="space-y-2 text-sm">
+                <li><a href="https://codeuse.ir" class="hover:underline">صفحه اصلی</a></li>
+                <li><a href="https://codeuse.ir/aboutus.html" class="hover:underline">درباره ما</a></li>
+                <li><a href="https://codeuse.ir/all-courses.html" class="hover:underline">همه دوره‌ها</a></li>
+                <li><a href="https://hamibash.com/codeuse" class="hover:underline" target="_blank">حمایت مالی</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="bg-black text-white text-center py-4 mt-10 text-sm">
+          تمامی حقوق مادی و معنوی برای کدیوز بوده و محفوظ است.<br />
+          Made with <span class="text-red-500">❤️</span> | 1404 - 2025 ®
+        </div>
+      </footer>  
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenu = document.getElementById('close-menu');
+            const filterToggle = document.getElementById('filter-toggle');
+            const filterMenu = document.getElementById('filter-menu');
+            const closeFilter = document.getElementById('close-filter');
+            menuToggle.addEventListener('click', function () {
+                this.classList.toggle('active');
+                mobileMenu.style.right = mobileMenu.style.right === '0px' ? '-100%' : '0px';
+                if (filterMenu.style.right === '0px') {
+                    filterMenu.style.right = '-100%';
+                }
+            });
+
+            closeMenu.addEventListener('click', function () {
+                menuToggle.classList.remove('active');
+                mobileMenu.style.right = '-100%';
+            });
+
+            filterToggle.addEventListener('click', function () {
+                filterMenu.style.right = filterMenu.style.right === '0px' ? '-100%' : '0px';
+                if (mobileMenu.style.right === '0px') {
+                    mobileMenu.style.right = '-100%';
+                    menuToggle.classList.remove('active');
+                }
+            });
+
+            closeFilter.addEventListener('click', function () {
+                filterMenu.style.right = '-100%';
+            });
+
+            const desktopFilterToggle = document.getElementById('desktop-filter-toggle');
+            const desktopFilterPanel = document.getElementById('desktop-filter-panel');
+            const closeDesktopFilter = document.getElementById('close-desktop-filter');
+
+            desktopFilterToggle.addEventListener('click', function () {
+                desktopFilterPanel.classList.toggle('show');
+            });
+
+            closeDesktopFilter.addEventListener('click', function () {
+                desktopFilterPanel.classList.remove('show');
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!desktopFilterPanel.contains(event.target) &&
+                    event.target !== desktopFilterToggle &&
+                    !desktopFilterToggle.contains(event.target)) {
+                    desktopFilterPanel.classList.remove('show');
+                }
+            });
+
+            const levelFilters = document.querySelectorAll('.level-filter');
+            const desktopLevelFilters = document.querySelectorAll('.desktop-level-filter');
+            const priceRange = document.getElementById('price-range');
+            const priceValue = document.getElementById('price-value');
+            const desktopPriceRange = document.getElementById('desktop-price-range');
+            const desktopPriceValue = document.getElementById('desktop-price-value');
+            const courseType = document.getElementById('course-type');
+            const desktopCourseType = document.getElementById('desktop-course-type');
+            const applyFilterBtn = document.getElementById('apply-filter');
+            const desktopApplyFilter = document.getElementById('desktop-apply-filter');
+            const courseCards = document.querySelectorAll('.course-card');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            function syncFilters() {
+                levelFilters.forEach((filter, index) => {
+                    filter.checked = desktopLevelFilters[index].checked;
+                });
+
+                priceRange.value = desktopPriceRange.value;
+                priceValue.textContent = desktopPriceValue.textContent;
+
+                courseType.value = desktopCourseType.value;
+            }
+
+            function updatePriceDisplay(rangeElement, valueElement) {
+                const value = parseInt(rangeElement.value).toLocaleString('fa-IR');
+                valueElement.textContent = `0 - ${value} تومان`;
+            }
+
+            priceRange.addEventListener('input', function () {
+                updatePriceDisplay(priceRange, priceValue);
+                desktopPriceRange.value = this.value;
+                updatePriceDisplay(desktopPriceRange, desktopPriceValue);
+            });
+
+            desktopPriceRange.addEventListener('input', function () {
+                updatePriceDisplay(desktopPriceRange, desktopPriceValue);
+                priceRange.value = this.value;
+                updatePriceDisplay(priceRange, priceValue);
+            });
+
+            function applyFilters() {
+                const selectedLevels = Array.from(levelFilters)
+                    .filter(filter => filter.checked)
+                    .map(filter => filter.value);
+
+                const maxPrice = parseInt(priceRange.value);
+                const selectedType = courseType.value;
+
+                courseCards.forEach(card => {
+                    const cardLevel = card.dataset.level;
+                    const cardPrice = parseInt(card.dataset.price);
+                    const cardType = card.dataset.type;
+
+                    const levelMatch = selectedLevels.includes(cardLevel);
+                    const priceMatch = cardPrice <= maxPrice;
+                    const typeMatch = selectedType === 'all' || cardType === selectedType;
+
+                    if (levelMatch && priceMatch && typeMatch) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                filterButtons.forEach(btn => {
+                    btn.classList.add('filter-animation');
+                    setTimeout(() => {
+                        btn.classList.remove('filter-animation');
+                    }, 500);
+                });
+            }
+            applyFilterBtn.addEventListener('click', function () {
+                syncFilters();
+                applyFilters();
+                if (window.innerWidth <= 768) {
+                    filterMenu.style.right = '-100%';
+                }
+            });
+
+            desktopApplyFilter.addEventListener('click', function () {
+                syncFilters();
+                applyFilters();
+                desktopFilterPanel.classList.remove('show');
+            });
+
+            levelFilters.forEach(filter => {
+                filter.addEventListener('change', function () {
+                    desktopLevelFilters[Array.from(levelFilters).indexOf(filter)].checked = this.checked;
+                    applyFilters();
+                });
+            });
+
+            desktopLevelFilters.forEach(filter => {
+                filter.addEventListener('change', function () {
+                    levelFilters[Array.from(desktopLevelFilters).indexOf(filter)].checked = this.checked;
+                    applyFilters();
+                });
+            });
+
+            priceRange.addEventListener('change', function () {
+                applyFilters();
+            });
+
+            desktopPriceRange.addEventListener('change', function () {
+                applyFilters();
+            });
+
+            courseType.addEventListener('change', function () {
+                applyFilters();
+            });
+
+            desktopCourseType.addEventListener('change', function () {
+                applyFilters();
+            });
+
+            updatePriceDisplay(priceRange, priceValue);
+            updatePriceDisplay(desktopPriceRange, desktopPriceValue);
+            applyFilters();
+        });
+    </script>
+</body>
+
 </html>
