@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const offsetX = event.clientX - startElement.offsetLeft;
     const offsetY = event.clientY - startElement.offsetTop;
 
-    let tiltX = (offsetX / startElement.offsetWidth - 0.5) * 30; 
-    let tiltY = (offsetY / startElement.offsetHeight - 0.5) * 30; 
+    let tiltX = (offsetX / startElement.offsetWidth - 0.5) * 30;
+    let tiltY = (offsetY / startElement.offsetHeight - 0.5) * 30;
 
     tiltX = Math.max(Math.min(tiltX, 10), -10);
     tiltY = Math.max(Math.min(tiltY, 0), 0);
@@ -55,32 +55,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const topCourse = [
     {
       title: "آموزش مقدماتی پایتون",
-      image: "/src/images/courseImg/jadi.png.webp",
-      link: "/src/pages/python-page.html",
+      image: "../src/images/courseImg/jadi.png.webp",
+      link: "../src/pages/python-page.html",
       author: "جادی میرمیرانی",
       presentor: "مکتب خونه",
       price: "پریمیوم",
     },
     {
       title: "آموزش مقدماتی جاوااسکریپت",
-      image: "/src/images/courseImg/js.png.jpg",
-      link: "/src/pages/js-rocet.html",
+      image: "../src/images/courseImg/js.png.jpg",
+      link: "../src/pages/js-rocet.html",
       author: "حسام موسوی",
       presentor: "راکت",
       price: "پریمیوم",
     },
     {
       title: "آموزش جامع html & css",
-      image: "/src/images/courseImg/CSS1.png",
-      link: "/src/pages/html&css-boto.html",
+      image: "../src/images/courseImg/CSS1.png",
+      link: "../src/pages/html&css-boto.html",
       author: "میلاد عظمی",
       presentor: "بوتواستارت",
       price: "اقتصادی",
     },
     {
       title: "آموزش هوش مصنوعی",
-      image: "/src/images/courseImg/ai.png",
-      link: "/src/pages/ai-fanit.html",
+      image: "../src/images/courseImg/ai.png",
+      link: "../src/pages/ai-fanit.html",
       author: "محمدرضا شاقوزی",
       presentor: "مجتمع فنی تهران",
       price: "پریمیوم",
