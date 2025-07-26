@@ -1,0 +1,56 @@
+html:
+<button
+    class="add-to-cart flex mt-2 ml-9  px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-dirooz"
+    data-course-id="arduino-2">
+    <i class="fas fa-shopping-cart ml-2 bg-blue-600"></i>
+    افزودن به علاقه مندی ها
+</button>
+javascript:
+// فراخوانی اولیه
+updateCartCount();
+
+// مدیریت دکمه‌های افزودن به سبد خرید
+document.querySelectorAll('.add-to-cart').forEach(button => {
+button.addEventListener('click', function () {
+const courseCard = this.closest('.course-card');
+if (!courseCard) {
+alert('خطا: این دکمه به یک دوره متصل نیست.');
+return;
+}
+const course = {
+id: courseCard.dataset.courseId,
+title: courseCard.querySelector('h3')?.textContent || 'دوره بدون عنوان',
+price: parseInt(courseCard.dataset.price) || 0,
+level: courseCard.dataset.level || 'نامشخص',
+type: courseCard.dataset.type || 'نامشخص'
+};
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+if (!cart.some(item => item.id === course.id)) {
+cart.push(course);
+localStorage.setItem('cart', JSON.stringify(cart));
+alert('دوره به سبد خرید اضافه شد!');
+updateCartCount();
+} else {
+alert('این دوره قبلاً در سبد خرید است.');
+}
+});
+});
+
+<div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+        <div class="flex items-center justify-between p-6 cursor-pointer bg-sky-50 hover:bg-sky-200 transition-colors duration-200" onclick="toggleAccordion(this)">
+          <h2 class="text-xl font-bold text-sky-800">دوره آموزش جاوااسکریپت</h2>
+          <div class="flex items-center space-x-4">
+            <svg onclick="event.stopPropagation(); toggleFavorite('دوره آموزش جاوااسکریپت', this)" class="w-7 h-7 text-sky-600 favorite-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+            <svg class="w-7 h-7 text-sky-600 arrow transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <div class="p-6 bg-sky-50 text-sky-900">
+            این دوره آموزش جاوااسکریپت است. در این دوره به ساخت وبسایت‌های تعاملی پرداخته می‌شود.
+          </div>
+        </div>
+      </div>

@@ -2,477 +2,583 @@
 <html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>آموزش هوش مصنوعی مجتمع فنی | کدیوز</title>
-    <link href="../../dist/output.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="../images/baseImg/withoutTextLogo.png" type="image/icon" />
-    <link rel="stylesheet" href="../src/cssFontAw/all.css" />
+<meta charset=UTF-8 />
+<meta name=description content="کدیوز، بهترین منابع یادگیری در سراسر وب را معرفی می‌کند...">
+<meta name=keywords content="آموزش برنامه نویسی, منابع رایگان, یادگیری کدنویسی, کدیوز, codeuse, برنامه نویسی برای مبتدیان, programming, CodeUse, CODEUSE, منابع یادگیری، منابع آموزش، آموزش">
+<meta name=author content="سجاد فرهنگی, علی شکری, محمدراشد براتی">
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<meta name=robots content="index, follow">
+<meta property=og:title content="کدیوز | بهترین آموزشو ببین!">
+<meta property=og:description content="کدیوز مجموعه‌ای از منابع باکیفیت برای یادگیری برنامه‌نویسی به زبان ساده‌ست.">
+<meta property=og:url content=https://codeuse.ir>
+<meta property=og:type content=website>
+  <title>آموزش هوش مصنوعی مجتمع فنی | کدیوز</title>
+  <link href="../../dist/output.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="../images/baseImg/withoutTextLogo.png" type="image/icon" />
+  <link rel="stylesheet" href="../src/cssFontAw/all.css" />
 
-    <style>
-        .emoji-rating label {
-            transition: all 0.3s ease;
-            filter: grayscale(100%);
-            opacity: 0.7;
-        }
+  <style>
+    .emoji-rating label {
+      transition: all 0.3s ease;
+      filter: grayscale(100%);
+      opacity: 0.7;
+    }
 
-        .emoji-rating input:checked+label {
-            transform: scale(1.2);
-            filter: grayscale(0);
-            opacity: 1;
-        }
+    .emoji-rating input:checked+label {
+      transform: scale(1.2);
+      filter: grayscale(0);
+      opacity: 1;
+    }
 
-        body {
-            background-color: #f0f4f8;
-        }
+    body {
+      background-color: #f0f4f8;
+    }
 
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        /* استایل برای مودال انتقال */
-        #transfer-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 99999;
-            justify-content: center;
-            align-items: center;
-        }
+    /* استایل برای مودال انتقال */
+    #transfer-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 99999;
+      justify-content: center;
+      align-items: center;
+    }
 
-        #transfer-modal-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-        }
+    #transfer-modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+    }
 
-        #transfer-modal h3 {
-            color: #315098;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
+    #transfer-modal h3 {
+      color: #315098;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
 
-        .loader {
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #315098;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #315098;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
 
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body class="min-h-screen flex flex-col font-dirooz">
-    <header class="relative">
-        <div
-            class="navbar z-[9999] mx-auto flex justify-between items-center w-full max-w-[1200px] px-4 my-4 bg-white/80 backdrop-blur-sm rounded-full shadow-sm">
-            <strong>
-                <a href="../index.html" target="_blank" rel="noopener">
-                    <img class="w-32 md:w-40 lg:w-48" oncontextmenu="return false;" src="../images/baseImg/logo.png"
-                        alt="لوگو کدیوز" />
-                </a>
-            </strong>
+  <header class="relative">
+    <div
+      class="navbar z-[9999] mx-auto flex justify-between items-center w-full max-w-[1200px] px-4 my-4 bg-white/80 backdrop-blur-sm rounded-full shadow-sm">
+      <strong>
+        <a href="/index.html" target="_blank" rel="noopener">
+          <img class="w-32 md:w-40 lg:w-48" oncontextmenu="return false;" src="../images/baseImg/logo.png"
+            alt="لوگو کدیوز" />
+        </a>
+      </strong>
 
-            <nav class="hidden md:block">
-                <ul class="flex items-center space-x-2 md:space-x-4 lg:space-x-6 text-base md:text-lg">
-                    <li>
-                        <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]"
-                            href="../index.html">خانه</a>
-                    </li>
-                    <li>
-                        <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]"
-                            href="../pages/comment.html">ارتباط با ما</a>
-                    </li>
-                    <li>
-                        <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]"
-                            href="#categories">دسته‌بندی‌ها</a>
-                    </li>
-                    <li>
-                        <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">زبان‌های
-                            پرطرفدار</a>
-                    </li>
-                    <li>
-                        <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="#">رده‌های قیمتی</a>
-                    </li>
-                </ul>
-            </nav>
-            <button id="menu-toggle" class="md:hidden flex flex-col space-y-1.5 p-3 focus:outline-none group">
-                <span
-                    class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:rotate-45 group-[.active]:translate-y-1.5"></span>
-                <span class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:opacity-0"></span>
-                <span
-                    class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:-rotate-45 group-[.active]:-translate-y-1.5"></span>
-            </button>
+      <div class="relative flex-1 mx-4 max-w-md hidden md:block">
+        <div class="relative">
+
+          <button id="searchActionBtn"
+            class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-[#315098] transition-colors">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
-    </header>
 
-    <div id="mobile-menu"
-        class="fixed top-0 left-0 h-full w-1/2 max-w-xs bg-white shadow-2xl z-[9998] transform -translate-x-full transition-transform duration-300 ease-in-out">
-        <div class="relative h-full p-6 pt-16">
-            <button id="close-menu" class="absolute top-4 left-4 p-2 focus:outline-none">
-                <div class="flex flex-col space-y-1.5">
-                    <span class="w-6 h-0.5 bg-gray-800 rotate-45 translate-y-1.5"></span>
-                    <span class="w-6 h-0.5 bg-gray-800 -rotate-45 -translate-y-1.5"></span>
-                </div>
-            </button>
-
-            <nav class="flex flex-col space-y-6">
-                <a class="font-medium hover:text-[#315098] py-2" href="../index.html" onclick="closeMenu()">خانه</a>
-                <a class="font-medium hover:text-[#315098] py-2" href="#" onclick="closeMenu()">درباره کدیوز</a>
-                <a class="font-medium hover:text-[#315098] py-2" href="#categories"
-                    onclick="closeMenu()">دسته‌بندی‌ها</a>
-                <a class="font-medium hover:text-[#315098] py-2" href="#" onclick="closeMenu()">زبان‌های پرطرفدار</a>
-                <a class="font-medium hover:text-[#315098] py-2" href="#" onclick="closeMenu()">رده‌های قیمتی</a>
-            </nav>
+        <div id="searchResultsContainer"
+          class="absolute z-[9999] w-full mt-2 bg-white rounded-lg shadow-lg hidden overflow-hidden">
+          <div id="searchResultsContent" class="py-2 max-h-60 overflow-y-auto"></div>
         </div>
+      </div>
+      <nav class="hidden md:block">
+        <ul class="flex items-center space-x-2 md:space-x-4 lg:space-x-6 text-base md:text-lg">
+          <li>
+            <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="/index.html">خانه</a>
+          </li>
+          <li>
+            <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="/src/pages/aboutus.html">درباره
+              ما</a>
+          </li>
+          <li>
+            <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="/src/pages/contactus.html">ارتباط
+              با ما</a>
+          </li>
+          <li>
+            <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]" href="./all-courses.html"><b>دوره
+                ها</b></a>
+          </li>
+        </ul>
+      </nav>
+      <button id="menu-toggle" class="md:hidden flex flex-col space-y-1.5 p-3 focus:outline-none group">
+        <span
+          class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:rotate-45 group-[.active]:translate-y-1.5"></span>
+        <span class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:opacity-0"></span>
+        <span
+          class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:-rotate-45 group-[.active]:-translate-y-1.5"></span>
+      </button>
     </div>
-    <!-- محتوای اصلی -->
-    <main class="flex-grow container mx-auto px-4 py-8">
-        <div class="flex flex-col lg:flex-row gap-8">
-            <!-- باکس تصویر دوره (حالا اول شده) -->
-            <div class="bg-white rounded-xl shadow-md overflow-hidden flex-1">
-                <img src="../images/courseImg/ai.png" alt="دوره هوش مصنوعی" class="w-full h-64 object-cover" />
-                <div class="p-6">
-                    <h2 class="text-xl font-bold text-gray-800 mb-4">
-                        معرفی دوره هوش مصنوعی
-                    </h2>
-                    <p class="text-gray-600 leading-relaxed">
-                        اگر شما هم به دنیای تکنولوژی و کامپیوتر علاقمندید، دوره آموزش هوش مصنوعی فرصت مناسبی است تا از
-                        طریق آن، با مفاهیم جذاب و شگفت انگیز این حوزه آشنا شوید و مهارت ها و دانش های مربوط به آن را در
-                        حوزه های کاربردی مختلف فرا گیرید. امروزه از هوش مصنوعی در زمینه های متعددی چون پزشکی، زیست
-                        شناسی، تجارت، رسانه های ارتباط جمعی و… استفاده می شود و بسیاری از کمپانی های بزرگ و معتبر در
-                        سراسر جهان، در راستای توسعه این فناوری، همواره در کوشش اند...
-                    </p>
-                    <div class="mt-6">
-                        <a href="https://mftniavaran.com/class/ai/"
-                            target="_blank"
-                            class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
-                            مشاهده دوره در مجتمع فنی تهران
-                        </a>
-                    </div>
-                </div>
-            </div>
+  </header>
 
-            <!-- باکس معرفی دور -->
-            <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200 flex-1">
-                <h1 class="text-2xl font-bold text-gray-800 mb-4">
-                    دوره آموزش هوش مصنوعی
-                </h1>
-
-                <div class="space-y-4">
-                    <div class="flex items-start">
-                        <span class="font-bold ml-2 min-w-[100px]">لینک سایت:</span>
-                        <span class="text-blue-700"><a href="https://mftniavaran.com/">مجتمع فنی تهران</a></span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="font-bold ml-2 min-w-[100px]">مدرس:</span>
-                        <span class="text-gray-700">محمدرضا شاقوزی</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="font-bold ml-2 min-w-[100px]">سطح:</span>
-                        <span class="text-amber-600">پرمیوم</span>
-                    </div>
-                    <div class="flex items-start">
-                        <span class="font-bold ml-2 min-w-[100px]">قیمت:</span>
-                        <span class="text-green-600">3,300,000 تومان </span>
-                    </div>
-
-                    <p class="text-gray-600 mt-4 leading-relaxed">
-                        به دست آوردن مهارت و اطلاعات تازه در خصوص هوش مصنوعی، فرصت های شغلی و اقتصادی فراوانی را پیش روی
-                        افراد قرار می دهد و امکان کسب درآمدهای استثنایی و موقعیت های کاری بسیار مناسبی را برایشان فراهم
-                        می سازد
-                        سرفصل های آموزشی ارائه شده در دوره هوش مصنوعی مجتمع فنی تهران نمایندگی نیاوران، کاملا کاربردی
-                        بوده و مبانی مورد نیاز برای فعالیت در شاخه مذکور را در اختیارتان قرار می دهد. همچنین دوره فوق،
-                        کاملا متناسب با نیازهای روز دنیا و بازار کار طراحی شده است. به نحوی که شما را برای حضور در فضای
-                        شغلی و حرفه ای AI مهیا می سازد.
-                    </p>
-
-                    <div class="mt-6 bg-blue-50 p-4 rounded-lg">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">امتیاز دوره</h3>
-                        <div class="flex items-center">
-                            <div class="flex mr-2">
-                                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <svg class="w-6 h-6 text-yellow-400 border-black" viewBox="0 0 20 20">
-                                    <defs>
-                                        <linearGradient id="half-star" x1="0" x2="100%" y1="0" y2="0">
-                                            <stop offset="50%" stop-color="currentColor" />
-                                            <stop offset="50%" stop-color="transparent" stop-opacity="1" />
-                                        </linearGradient>
-                                    </defs>
-                                    <path fill="url(#half-star)"
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                            </div>
-                            <span class="text-gray-700 font-medium">4.5 از 5 (حدود 130 رأی)</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div id="mobile-menu"
+    class="fixed top-0 left-0 h-full w-1/2 max-w-xs bg-white shadow-2xl z-[9998] transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="relative h-full p-6 pt-16">
+      <button id="close-menu" class="absolute top-4 left-4 p-2 focus:outline-none">
+        <div class="flex flex-col space-y-1.5">
+          <span class="w-6 h-0.5 bg-gray-800 rotate-45 translate-y-1.5"></span>
+          <span class="w-6 h-0.5 bg-gray-800 -rotate-45 -translate-y-1.5"></span>
         </div>
-    </main>
+      </button>
 
-    <footer class="bg-gray-300 text-black pt-10">
-        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
-            <div class="grid md:grid-cols-3 gap-8 text-center md:text-right items-start">
-                <div>
-                    <h3 class="text-lg font-bold mb-4">تماس با ما</h3>
-                    <div class="flex justify-center md:justify-start gap-4">
-                        <a href="https://youtube.com/@CODEUSE04" class="transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60px" height="60px">
-                                <linearGradient id="SVGID_1_" x1="39.108" x2="8.892" y1="8.892" y2="39.108"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop offset=".014" stop-color="#fe6d60" />
-                                    <stop offset=".046" stop-color="#fe766a" />
-                                    <stop offset=".208" stop-color="#fea097" />
-                                    <stop offset=".37" stop-color="#ffc2bd" />
-                                    <stop offset=".532" stop-color="#ffddda" />
-                                    <stop offset=".692" stop-color="#fff0ee" />
-                                    <stop offset=".849" stop-color="#fffbfb" />
-                                    <stop offset="1" stop-color="#fff" />
-                                </linearGradient>
-                                <path fill="url(#SVGID_1_)"
-                                    d="M36.542,40H11.458C9.272,40,7.5,38.281,7.5,36.162V11.838C7.5,9.719,9.272,8,11.458,8h25.083	c2.186,0,3.958,1.719,3.958,3.838v24.323C40.5,38.281,38.728,40,36.542,40z" />
-                                <path fill="#e02f24"
-                                    d="M26.253,14.557h1.561v5.088c0,0.309,0.034,0.529,0.103,0.661s0.181,0.198,0.34,0.198	c0.135,0,0.265-0.04,0.39-0.124c0.124-0.082,0.217-0.189,0.277-0.317v-5.507h1.559v6.931h-1.222l-0.135-0.848h-0.034	C28.761,21.28,28.263,21.6,27.6,21.6c-0.459,0-0.799-0.151-1.018-0.452s-0.328-0.772-0.328-1.413v-5.179L26.253,14.557	L26.253,14.557z" />
-                                <path fill="#e02f24"
-                                    d="M23.285,20.539c0.217-0.001,0.371-0.113,0.458-0.34c0.086-0.225,0.13-0.595,0.13-1.107v-2.16	c0-0.498-0.043-0.861-0.13-1.091c-0.086-0.231-0.24-0.344-0.459-0.344c-0.211,0-0.36,0.115-0.447,0.344	c-0.086,0.231-0.13,0.594-0.13,1.091v2.16c0,0.513,0.04,0.882,0.124,1.107S23.066,20.539,23.285,20.539z M22.056,14.731	c0.32-0.208,0.74-0.31,1.261-0.31c0.513,0,0.923,0.105,1.233,0.317c0.309,0.211,0.535,0.541,0.678,0.988	c0.143,0.448,0.215,1.046,0.215,1.791v1.007c0,0.74-0.07,1.332-0.209,1.781s-0.366,0.776-0.678,0.984	c-0.312,0.208-0.737,0.31-1.272,0.31c-0.549,0-0.981-0.105-1.295-0.317c-0.313-0.211-0.535-0.539-0.667-0.984	s-0.198-1.037-0.198-1.775v-1.007c0-0.747,0.076-1.345,0.225-1.798C21.5,15.268,21.736,14.938,22.056,14.731z" />
-                                <path fill="#e02f24"
-                                    d="M17.964,12l0.621,2.907c0.158,0.715,0.275,1.326,0.351,1.831h0.046c0.053-0.362,0.169-0.968,0.351-1.82	L19.977,12h1.55l-1.798,6.411v3.075H18.19v-3.075L16.414,12H17.964z" />
-                                <path fill="#e02f24"
-                                    d="M27.742,30.126c0-0.655-0.039-1.168-0.119-1.538c-0.08-0.369-0.209-0.636-0.386-0.802	s-0.423-0.248-0.734-0.248c-0.243,0-0.468,0.069-0.678,0.205c-0.211,0.136-0.373,0.316-0.487,0.539h-0.009V25.2H24.06v8.304h1.088	l0.134-0.553h0.028c0.103,0.198,0.254,0.354,0.459,0.468c0.204,0.113,0.429,0.171,0.678,0.171c0.445,0,0.772-0.205,0.983-0.616	c0.211-0.41,0.316-1.052,0.316-1.924h-0.001v-0.925L27.742,30.126L27.742,30.126z M26.416,30.975c0,0.427-0.018,0.761-0.053,1.002	c-0.035,0.243-0.093,0.414-0.177,0.516c-0.084,0.101-0.193,0.153-0.333,0.153c-0.109,0-0.209-0.027-0.301-0.077	c-0.092-0.051-0.167-0.127-0.224-0.229v-3.321c0.045-0.158,0.122-0.289,0.229-0.391c0.108-0.103,0.225-0.153,0.352-0.153	c0.135,0,0.238,0.053,0.31,0.157c0.072,0.104,0.124,0.282,0.153,0.531c0.028,0.248,0.043,0.601,0.043,1.06v0.752H26.416z M21.948,32.301c-0.051,0.108-0.128,0.198-0.234,0.267c-0.104,0.07-0.215,0.105-0.329,0.105c-0.135,0-0.229-0.055-0.286-0.167	c-0.058-0.111-0.086-0.297-0.086-0.558v-4.296h-1.319v4.371c0,0.54,0.092,0.938,0.277,1.193c0.185,0.254,0.47,0.382,0.859,0.382	c0.56,0,0.98-0.27,1.261-0.813h0.028l0.113,0.717h1.031h0.001v-5.851h-1.316V32.301z M20.086,25.497h-3.903v1.058h1.308v6.948h1.287	v-6.948h1.308L20.086,25.497z M35,33.6c0,1.32-1.08,2.4-2.4,2.4H15.4c-1.32,0-2.4-1.08-2.4-2.4v-8.2c0-1.32,1.08-2.4,2.4-2.4h17.2	c1.32,0,2.4,1.08,2.4,2.4V33.6z M31.815,31.017v-1.003c0-0.617-0.049-1.1-0.147-1.451c-0.1-0.35-0.27-0.607-0.512-0.772	c-0.243-0.166-0.589-0.248-1.041-0.248c-0.655,0-1.118,0.201-1.388,0.606s-0.405,1.045-0.405,1.924v1.022	c0,0.853,0.13,1.484,0.391,1.89c0.262,0.406,0.717,0.61,1.366,0.61c0.541,0,0.958-0.134,1.255-0.401	c0.297-0.266,0.444-0.671,0.444-1.212c0-0.089-0.004-0.159-0.009-0.211l-1.137-0.067c-0.005,0.356-0.046,0.61-0.119,0.763	s-0.209,0.229-0.405,0.229c-0.146,0-0.254-0.042-0.324-0.128c-0.07-0.085-0.115-0.223-0.138-0.41	c-0.023-0.188-0.034-0.47-0.034-0.845v-0.297h2.2v0.001H31.815z M29.611,30.236v-0.42c0-0.382,0.011-0.667,0.034-0.855	c0.022-0.188,0.066-0.323,0.134-0.405c0.067-0.081,0.17-0.124,0.31-0.124s0.243,0.039,0.31,0.119s0.113,0.216,0.136,0.41	c0.026,0.194,0.038,0.479,0.038,0.855v0.42L29.611,30.236z" />
-                                <path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="3"
-                                    d="M40.5,30.277V36.5c0,2.209-1.791,4-4,4h-25c-2.209,0-4-1.791-4-4V21.106" />
-                                <path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="3"
-                                    d="M7.5,14.915V11.5c0-2.209,1.791-4,4-4h25c2.209,0,4,1.791,4,4v12.096" />
-                            </svg>
-                        </a>
-                        <a href="mailto:info@codeuse.ir" class="hover:scale-110 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60px" height="60px">
-                                <linearGradient id="SVGID_1_" x1="38.631" x2="9.369" y1="9.619" y2="38.881"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" stop-color="#60e8fe" />
-                                    <stop offset=".033" stop-color="#6ae9fe" />
-                                    <stop offset=".197" stop-color="#97f0fe" />
-                                    <stop offset=".362" stop-color="#bdf5ff" />
-                                    <stop offset=".525" stop-color="#dafaff" />
-                                    <stop offset=".687" stop-color="#eefdff" />
-                                    <stop offset=".846" stop-color="#fbfeff" />
-                                    <stop offset="1" stop-color="#fff" />
-                                </linearGradient>
-                                <path fill="url(#SVGID_1_)"
-                                    d="M34.5,40.5h-21c-3.314,0-6-2.646-6-5.909V13.909C7.5,10.646,10.186,8,13.5,8h21c3.314,0,6,2.646,6,5.909v20.682	C40.5,37.854,37.814,40.5,34.5,40.5z" />
-                                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-miterlimit="10" stroke-width="3"
-                                    d="M27.532,40.5H13.5c-3.314,0-6-2.686-6-6V21.809" />
-                                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-miterlimit="10" stroke-width="3"
-                                    d="M7.5,16.064V13.5c0-3.314,2.686-6,6-6h21c3.314,0,6,2.686,6,6v21c0,3.314-2.686,6-6,6" />
-                                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-miterlimit="10" stroke-width="3"
-                                    d="M23.383,31.516H13.5c-0.552,0-1-0.448-1-1V17.484c0-0.552,0.448-1,1-1h21c0.552,0,1,0.448,1,1v13.032	c0,0.552-0.448,1-1,1h-4.862H23.383z" />
-                                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-miterlimit="10" stroke-width="3"
-                                    d="M34.856,17.319l-9.022,7.347c-1.073,0.874-2.613,0.873-3.685-0.001l-4.381-3.573" />
-                                <line x1="19.824" x2="13.144" y1="24" y2="30.681" fill="none" stroke="#10cfe3"
-                                    stroke-miterlimit="10" stroke-width="3" />
-                                <line x1="34.856" x2="28.166" y1="30.681" y2="24" fill="none" stroke="#10cfe3"
-                                    stroke-miterlimit="10" stroke-width="3" />
-                            </svg>
-                        </a>
-                        <a href="https://instagram.com/codeuse.ir" class="hover:scale-110 transition" target="_blank"
-                            rel="noopener">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60px" height="60px"
-                                viewBox="0 0 48 48">
-                                <linearGradient id="SVGID_1__NHuAZUgwkbJo_gr1" x1="38.571" x2="9.429" y1="9.429"
-                                    y2="38.571" gradientUnits="userSpaceOnUse">
-                                    <stop offset="0" stop-color="#fe60c1"></stop>
-                                    <stop offset=".033" stop-color="#fe6ac5"></stop>
-                                    <stop offset=".197" stop-color="#fe97d7"></stop>
-                                    <stop offset=".362" stop-color="#ffbde5"></stop>
-                                    <stop offset=".525" stop-color="#ffdaf0"></stop>
-                                    <stop offset=".687" stop-color="#ffeef9"></stop>
-                                    <stop offset=".846" stop-color="#fffbfd"></stop>
-                                    <stop offset="1" stop-color="#fff"></stop>
-                                </linearGradient>
-                                <path fill="url(#SVGID_1__NHuAZUgwkbJo_gr1)"
-                                    d="M16.5,41.5h15c5.523,0,10-4.477,10-10v-15c0-5.523-4.477-10-10-10h-15c-5.523,0-10,4.477-10,10v15	C6.5,37.023,10.977,41.5,16.5,41.5z">
-                                </path>
-                                <path fill="none" stroke="#fa2aab" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-miterlimit="10" stroke-width="3"
-                                    d="M41.5,21.085V16.5c0-5.523-4.478-10-10-10h-15c-5.523,0-10,4.477-10,10v2.989">
-                                </path>
-                                <path fill="none" stroke="#fa2aab" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-miterlimit="10" stroke-width="3"
-                                    d="M6.5,25.617V31.5c0,5.522,4.477,10,10,10h15c5.522,0,10-4.478,10-10v-4.606"></path>
-                                <path fill="none" stroke="#fa2aab" stroke-miterlimit="10" stroke-width="3"
-                                    d="M24,15.5c-4.694,0-8.5,3.806-8.5,8.5s3.806,8.5,8.5,8.5s8.5-3.806,8.5-8.5S28.694,15.5,24,15.5z">
-                                </path>
-                                <path fill="#fa2aab"
-                                    d="M34,12c-1.105,0-2,0.895-2,2s0.895,2,2,2s2-0.895,2-2S35.105,12,34,12z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-bold mb-4">درباره ما</h3>
-                    <p class="text-sm leading-6 px-4 md:px-0">
-                        کدیوز، پروژه‌ای عام‌المنفعه است که در راستای معرفی بهترین منابع
-                        یادگیری برنامه‌نویسی به زبان فارسی، طراحی شده است. ما در کدیوز در
-                        تلاشیم تا با ارائه برترین کیفیت دوره‌ها، قدمی در پیشرفت کشور سهیم
-                        باشیم... شما می‌توانید با حمایت مالی و معنوی، در این کار نیک
-                        مشارکت کنید...
-                    </p>
-                </div>
-
-                <div>
-                    <h3 class="text-lg font-bold mb-4">لینک‌های مفید</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li>
-                            <a href="https://codeuse.ir" class="hover:underline">صفحه اصلی</a>
-                        </li>
-                        <li>
-                            <a href="https://codeuse.ir/aboutus.html" class="hover:underline">درباره ما</a>
-                        </li>
-                        <li>
-                            <a href="https://codeuse.ir/all-courses.html" class="hover:underline">همه دوره‌ها</a>
-                        </li>
-                        <li>
-                            <a href="https://hamibash.com/codeuse" class="hover:underline" target="_blank">حمایت
-                                مالی</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="bg-black text-white text-center py-4 mt-10 text-sm">
-            تمامی حقوق مادی و معنوی برای کدیوز بوده و محفوظ است.<br />
-            Made with <span class="text-red-500">❤️</span> | 1404 - 2025 ®
-        </div>
-    </footer>
-    <div id="transfer-modal">
-        <div id="transfer-modal-content">
-            <h3>درحال انتقال به سایت مورد نظر از طریق کدیوز</h3>
-            <p>لطفا صبر کنید...</p>
-            <div class="loader mt-4"></div>
-        </div>
+      <nav class="flex flex-col space-y-6">
+        <a class="font-medium hover:text-[#315098] py-2" href="/index.html" onclick="closeMenu()">خانه</a>
+        <a class="font-medium hover:text-[#315098] py-2" href="/src/pages/contactus.html" onclick="closeMenu()">ارتباط
+          ما</a>
+        <a class="font-medium hover:text-[#315098] py-2" href="/src/pages/aboutus.html" onclick="closeMenu()">درباره با
+          ما</a>
+        <a class="font-medium hover:text-[#315098] py-2" href="./all-courses.html" onclick="closeMenu()">دوره ها</a>
+      </nav>
     </div>
+  </div>
 
-    <script>
-        // مدیریت کلیک روی لینک‌های خارجی
-        document.addEventListener("DOMContentLoaded", function () {
-            const externalLinks = document.querySelectorAll(
-                'a[href^="http"]:not([href*="' + window.location.hostname + '"])'
-            );
-            const transferModal = document.getElementById("transfer-modal");
 
-            externalLinks.forEach((link) => {
-                link.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    const targetUrl = this.href;
+  </div>
+  </header>
 
-                    // نمایش مودال انتقال
-                    transferModal.style.display = "flex";
+  <div id="mobile-menu"
+    class="fixed top-0 left-0 h-full w-1/2 max-w-xs bg-white shadow-2xl z-[9998] transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="relative h-full p-6 pt-16">
+      <button id="close-menu" class="absolute top-4 left-4 p-2 focus:outline-none">
+        <div class="flex flex-col space-y-1.5">
+          <span class="w-6 h-0.5 bg-gray-800 rotate-45 translate-y-1.5"></span>
+          <span class="w-6 h-0.5 bg-gray-800 -rotate-45 -translate-y-1.5"></span>
+        </div>
+      </button>
 
-                    // انتقال پس از 2 ثانیه
-                    setTimeout(() => {
-                        transferModal.style.display = "none"; // مخفی کردن مودال قبل از انتقال
-                        window.open(targetUrl, "_blank"); // باز کردن در تب جدید
-                    }, 1200);
-                });
-            });
+
+    </div>
+  </div>
+  <!-- محتوای اصلی -->
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- باکس تصویر دوره (حالا اول شده) -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden flex-1">
+        <img src="../images/courseImg/ai.png" alt="دوره هوش مصنوعی" class="w-full h-64 object-cover" />
+        <div class="p-6">
+          <h2 class="text-xl font-bold text-gray-800 mb-4">
+            معرفی دوره هوش مصنوعی
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            اگر شما هم به دنیای تکنولوژی و کامپیوتر علاقمندید، دوره آموزش هوش مصنوعی فرصت مناسبی است تا از
+            طریق آن، با مفاهیم جذاب و شگفت انگیز این حوزه آشنا شوید و مهارت ها و دانش های مربوط به آن را در
+            حوزه های کاربردی مختلف فرا گیرید. امروزه از هوش مصنوعی در زمینه های متعددی چون پزشکی، زیست
+            شناسی، تجارت، رسانه های ارتباط جمعی و… استفاده می شود و بسیاری از کمپانی های بزرگ و معتبر در
+            سراسر جهان، در راستای توسعه این فناوری، همواره در کوشش اند...
+          </p>
+          <div class="mt-6">
+            <a href="https://mftniavaran.com/class/ai/" target="_blank"
+              class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
+              مشاهده دوره در مجتمع فنی تهران
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- باکس معرفی دور -->
+      <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200 flex-1">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">
+          دوره آموزش هوش مصنوعی
+        </h1>
+
+        <div class="space-y-4">
+          <div class="flex items-start">
+            <span class="font-bold ml-2 min-w-[100px]">لینک سایت:</span>
+            <span class="text-blue-700"><a href="https://mftniavaran.com/">مجتمع فنی تهران</a></span>
+          </div>
+          <div class="flex items-start">
+            <span class="font-bold ml-2 min-w-[100px]">مدرس:</span>
+            <span class="text-gray-700">محمدرضا شاقوزی</span>
+          </div>
+          <div class="flex items-start">
+            <span class="font-bold ml-2 min-w-[100px]">سطح:</span>
+            <span class="text-amber-600">پرمیوم</span>
+          </div>
+          <div class="flex items-start">
+            <span class="font-bold ml-2 min-w-[100px]">قیمت:</span>
+            <span class="text-green-600">3,300,000 تومان </span>
+          </div>
+
+          <p class="text-gray-600 mt-4 leading-relaxed">
+            به دست آوردن مهارت و اطلاعات تازه در خصوص هوش مصنوعی، فرصت های شغلی و اقتصادی فراوانی را پیش روی
+            افراد قرار می دهد و امکان کسب درآمدهای استثنایی و موقعیت های کاری بسیار مناسبی را برایشان فراهم
+            می سازد
+            سرفصل های آموزشی ارائه شده در دوره هوش مصنوعی مجتمع فنی تهران نمایندگی نیاوران، کاملا کاربردی
+            بوده و مبانی مورد نیاز برای فعالیت در شاخه مذکور را در اختیارتان قرار می دهد. همچنین دوره فوق،
+            کاملا متناسب با نیازهای روز دنیا و بازار کار طراحی شده است. به نحوی که شما را برای حضور در فضای
+            شغلی و حرفه ای AI مهیا می سازد.
+          </p>
+
+          <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">امتیاز دوره</h3>
+            <div class="flex items-center">
+              <div class="flex mr-2">
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <svg class="w-6 h-6 text-yellow-400 border-black" viewBox="0 0 20 20">
+                  <defs>
+                    <linearGradient id="half-star" x1="0" x2="100%" y1="0" y2="0">
+                      <stop offset="50%" stop-color="currentColor" />
+                      <stop offset="50%" stop-color="transparent" stop-opacity="1" />
+                    </linearGradient>
+                  </defs>
+                  <path fill="url(#half-star)"
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              </div>
+              <span class="text-gray-700 font-medium">4.5 از 5 (حدود 130 رأی)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-blue-200 text-black pt-10 border-slate-800">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+      <div class="grid md:grid-cols-3 gap-8 text-center md:text-right items-start">
+        <div>
+          <h3 class="text-lg font-bold mb-4">تماس با ما</h3>
+          <div class="flex justify-center md:justify-start gap-4">
+            <a href="https://youtube.com/@codeuse04" class="transition">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60px" height="60px">
+                <linearGradient id="SVGID_1_" x1="39.108" x2="8.892" y1="8.892" y2="39.108"
+                  gradientUnits="userSpaceOnUse">
+                  <stop offset=".014" stop-color="#fe6d60" />
+                  <stop offset=".046" stop-color="#fe766a" />
+                  <stop offset=".208" stop-color="#fea097" />
+                  <stop offset=".37" stop-color="#ffc2bd" />
+                  <stop offset=".532" stop-color="#ffddda" />
+                  <stop offset=".692" stop-color="#fff0ee" />
+                  <stop offset=".849" stop-color="#fffbfb" />
+                  <stop offset="1" stop-color="#fff" />
+                </linearGradient>
+                <path fill="url(#SVGID_1_)"
+                  d="M36.542,40H11.458C9.272,40,7.5,38.281,7.5,36.162V11.838C7.5,9.719,9.272,8,11.458,8h25.083	c2.186,0,3.958,1.719,3.958,3.838v24.323C40.5,38.281,38.728,40,36.542,40z" />
+                <path fill="#e02f24"
+                  d="M26.253,14.557h1.561v5.088c0,0.309,0.034,0.529,0.103,0.661s0.181,0.198,0.34,0.198	c0.135,0,0.265-0.04,0.39-0.124c0.124-0.082,0.217-0.189,0.277-0.317v-5.507h1.559v6.931h-1.222l-0.135-0.848h-0.034	C28.761,21.28,28.263,21.6,27.6,21.6c-0.459,0-0.799-0.151-1.018-0.452s-0.328-0.772-0.328-1.413v-5.179L26.253,14.557	L26.253,14.557z" />
+                <path fill="#e02f24"
+                  d="M23.285,20.539c0.217-0.001,0.371-0.113,0.458-0.34c0.086-0.225,0.13-0.595,0.13-1.107v-2.16	c0-0.498-0.043-0.861-0.13-1.091c-0.086-0.231-0.24-0.344-0.459-0.344c-0.211,0-0.36,0.115-0.447,0.344	c-0.086,0.231-0.13,0.594-0.13,1.091v2.16c0,0.513,0.04,0.882,0.124,1.107S23.066,20.539,23.285,20.539z M22.056,14.731	c0.32-0.208,0.74-0.31,1.261-0.31c0.513,0,0.923,0.105,1.233,0.317c0.309,0.211,0.535,0.541,0.678,0.988	c0.143,0.448,0.215,1.046,0.215,1.791v1.007c0,0.74-0.07,1.332-0.209,1.781s-0.366,0.776-0.678,0.984	c-0.312,0.208-0.737,0.31-1.272,0.31c-0.549,0-0.981-0.105-1.295-0.317c-0.313-0.211-0.535-0.539-0.667-0.984	s-0.198-1.037-0.198-1.775v-1.007c0-0.747,0.076-1.345,0.225-1.798C21.5,15.268,21.736,14.938,22.056,14.731z" />
+                <path fill="#e02f24"
+                  d="M17.964,12l0.621,2.907c0.158,0.715,0.275,1.326,0.351,1.831h0.046c0.053-0.362,0.169-0.968,0.351-1.82	L19.977,12h1.55l-1.798,6.411v3.075H18.19v-3.075L16.414,12H17.964z" />
+                <path fill="#e02f24"
+                  d="M27.742,30.126c0-0.655-0.039-1.168-0.119-1.538c-0.08-0.369-0.209-0.636-0.386-0.802	s-0.423-0.248-0.734-0.248c-0.243,0-0.468,0.069-0.678,0.205c-0.211,0.136-0.373,0.316-0.487,0.539h-0.009V25.2H24.06v8.304h1.088	l0.134-0.553h0.028c0.103,0.198,0.254,0.354,0.459,0.468c0.204,0.113,0.429,0.171,0.678,0.171c0.445,0,0.772-0.205,0.983-0.616	c0.211-0.41,0.316-1.052,0.316-1.924h-0.001v-0.925L27.742,30.126L27.742,30.126z M26.416,30.975c0,0.427-0.018,0.761-0.053,1.002	c-0.035,0.243-0.093,0.414-0.177,0.516c-0.084,0.101-0.193,0.153-0.333,0.153c-0.109,0-0.209-0.027-0.301-0.077	c-0.092-0.051-0.167-0.127-0.224-0.229v-3.321c0.045-0.158,0.122-0.289,0.229-0.391c0.108-0.103,0.225-0.153,0.352-0.153	c0.135,0,0.238,0.053,0.31,0.157c0.072,0.104,0.124,0.282,0.153,0.531c0.028,0.248,0.043,0.601,0.043,1.06v0.752H26.416z M21.948,32.301c-0.051,0.108-0.128,0.198-0.234,0.267c-0.104,0.07-0.215,0.105-0.329,0.105c-0.135,0-0.229-0.055-0.286-0.167	c-0.058-0.111-0.086-0.297-0.086-0.558v-4.296h-1.319v4.371c0,0.54,0.092,0.938,0.277,1.193c0.185,0.254,0.47,0.382,0.859,0.382	c0.56,0,0.98-0.27,1.261-0.813h0.028l0.113,0.717h1.031h0.001v-5.851h-1.316V32.301z M20.086,25.497h-3.903v1.058h1.308v6.948h1.287	v-6.948h1.308L20.086,25.497z M35,33.6c0,1.32-1.08,2.4-2.4,2.4H15.4c-1.32,0-2.4-1.08-2.4-2.4v-8.2c0-1.32,1.08-2.4,2.4-2.4h17.2	c1.32,0,2.4,1.08,2.4,2.4V33.6z M31.815,31.017v-1.003c0-0.617-0.049-1.1-0.147-1.451c-0.1-0.35-0.27-0.607-0.512-0.772	c-0.243-0.166-0.589-0.248-1.041-0.248c-0.655,0-1.118,0.201-1.388,0.606s-0.405,1.045-0.405,1.924v1.022	c0,0.853,0.13,1.484,0.391,1.89c0.262,0.406,0.717,0.61,1.366,0.61c0.541,0,0.958-0.134,1.255-0.401	c0.297-0.266,0.444-0.671,0.444-1.212c0-0.089-0.004-0.159-0.009-0.211l-1.137-0.067c-0.005,0.356-0.046,0.61-0.119,0.763	s-0.209,0.229-0.405,0.229c-0.146,0-0.254-0.042-0.324-0.128c-0.07-0.085-0.115-0.223-0.138-0.41	c-0.023-0.188-0.034-0.47-0.034-0.845v-0.297h2.2v0.001H31.815z M29.611,30.236v-0.42c0-0.382,0.011-0.667,0.034-0.855	c0.022-0.188,0.066-0.323,0.134-0.405c0.067-0.081,0.17-0.124,0.31-0.124s0.243,0.039,0.31,0.119s0.113,0.216,0.136,0.41	c0.026,0.194,0.038,0.479,0.038,0.855v0.42L29.611,30.236z" />
+                <path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                  d="M40.5,30.277V36.5c0,2.209-1.791,4-4,4h-25c-2.209,0-4-1.791-4-4V21.106" />
+                <path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                  d="M7.5,14.915V11.5c0-2.209,1.791-4,4-4h25c2.209,0,4,1.791,4,4v12.096" />
+              </svg>
+            </a>
+            <a href="mailto:codeuse04@codeuse.ir" class="hover:scale-110 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60px" height="60px">
+                <linearGradient id="SVGID_1_" x1="38.631" x2="9.369" y1="9.619" y2="38.881"
+                  gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#60e8fe" />
+                  <stop offset=".033" stop-color="#6ae9fe" />
+                  <stop offset=".197" stop-color="#97f0fe" />
+                  <stop offset=".362" stop-color="#bdf5ff" />
+                  <stop offset=".525" stop-color="#dafaff" />
+                  <stop offset=".687" stop-color="#eefdff" />
+                  <stop offset=".846" stop-color="#fbfeff" />
+                  <stop offset="1" stop-color="#fff" />
+                </linearGradient>
+                <path fill="url(#SVGID_1_)"
+                  d="M34.5,40.5h-21c-3.314,0-6-2.646-6-5.909V13.909C7.5,10.646,10.186,8,13.5,8h21c3.314,0,6,2.646,6,5.909v20.682	C40.5,37.854,37.814,40.5,34.5,40.5z" />
+                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                  stroke-width="3" d="M27.532,40.5H13.5c-3.314,0-6-2.686-6-6V21.809" />
+                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                  stroke-width="3"
+                  d="M7.5,16.064V13.5c0-3.314,2.686-6,6-6h21c3.314,0,6,2.686,6,6v21c0,3.314-2.686,6-6,6" />
+                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                  stroke-width="3"
+                  d="M23.383,31.516H13.5c-0.552,0-1-0.448-1-1V17.484c0-0.552,0.448-1,1-1h21c0.552,0,1,0.448,1,1v13.032	c0,0.552-0.448,1-1,1h-4.862H23.383z" />
+                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                  stroke-width="3" d="M34.856,17.319l-9.022,7.347c-1.073,0.874-2.613,0.873-3.685-0.001l-4.381-3.573" />
+                <line x1="19.824" x2="13.144" y1="24" y2="30.681" fill="none" stroke="#10cfe3" stroke-miterlimit="10"
+                  stroke-width="3" />
+                <line x1="34.856" x2="28.166" y1="30.681" y2="24" fill="none" stroke="#10cfe3" stroke-miterlimit="10"
+                  stroke-width="3" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/codeuse.ir?igsh=M3RrZ2NnYmptOW04" class="hover:scale-110 transition"
+              target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60px" height="60px" viewBox="0 0 48 48">
+                <linearGradient id="SVGID_1__NHuAZUgwkbJo_gr1" x1="38.571" x2="9.429" y1="9.429" y2="38.571"
+                  gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stop-color="#fe60c1"></stop>
+                  <stop offset=".033" stop-color="#fe6ac5"></stop>
+                  <stop offset=".197" stop-color="#fe97d7"></stop>
+                  <stop offset=".362" stop-color="#ffbde5"></stop>
+                  <stop offset=".525" stop-color="#ffdaf0"></stop>
+                  <stop offset=".687" stop-color="#ffeef9"></stop>
+                  <stop offset=".846" stop-color="#fffbfd"></stop>
+                  <stop offset="1" stop-color="#fff"></stop>
+                </linearGradient>
+                <path fill="url(#SVGID_1__NHuAZUgwkbJo_gr1)"
+                  d="M16.5,41.5h15c5.523,0,10-4.477,10-10v-15c0-5.523-4.477-10-10-10h-15c-5.523,0-10,4.477-10,10v15	C6.5,37.023,10.977,41.5,16.5,41.5z">
+                </path>
+                <path fill="none" stroke="#fa2aab" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                  stroke-width="3" d="M41.5,21.085V16.5c0-5.523-4.478-10-10-10h-15c-5.523,0-10,4.477-10,10v2.989">
+                </path>
+                <path fill="none" stroke="#fa2aab" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                  stroke-width="3" d="M6.5,25.617V31.5c0,5.522,4.477,10,10,10h15c5.522,0,10-4.478,10-10v-4.606"></path>
+                <path fill="none" stroke="#fa2aab" stroke-miterlimit="10" stroke-width="3"
+                  d="M24,15.5c-4.694,0-8.5,3.806-8.5,8.5s3.806,8.5,8.5,8.5s8.5-3.806,8.5-8.5S28.694,15.5,24,15.5z">
+                </path>
+                <path fill="#fa2aab" d="M34,12c-1.105,0-2,0.895-2,2s0.895,2,2,2s2-0.895,2-2S35.105,12,34,12z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold mb-4">درباره ما</h3>
+          <p class="text-sm leading-6 px-4 md:px-0">
+            کدیوز، پروژه‌ای عام‌المنفعه است که در راستای معرفی بهترین
+            منابع یادگیری برنامه‌نویسی به زبان فارسی، طراحی شده است. ما در
+            کدیوز در تلاشیم تا با ارائه برترین کیفیت دوره‌ها، قدمی در
+            پیشرفت کشور سهیم باشیم... شما می‌توانید با حمایت مالی و معنوی،
+            در این کار نیک مشارکت کنید...
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-bold mb-4">لینک‌های مفید</h3>
+          <ul class="space-y-2 text-sm">
+            <li>
+              <a href="/index.html" class="hover:underline">صفحه اصلی</a>
+            </li>
+            <li>
+              <a href="./src/pages/aboutus.html" class="hover:underline">درباره ما</a>
+            </li>
+            <li>
+              <a href="/src/pages/all-courses.html" class="hover:underline">همه دوره‌ها</a>
+            </li>
+            <li>
+              <a href="https://hamibash.com/codeuse" class="hover:underline" target="_blank">حمایت مالی</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="bg-black text-white text-center py-4 mt-10 text-sm">
+      تمامی حقوق مادی و معنوی برای کدیوز بوده و محفوظ است.<br />
+      Made with <span class="text-red-500">❤️</span> | 1404 - 2025 ®
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // انتخاب عناصر مرتبط با نوار ناوبری
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const closeMenu = document.getElementById('close-menu');
+      const filterToggle = document.getElementById('filter-toggle');
+      const filterMenu = document.getElementById('filter-menu');
+      const closeFilter = document.getElementById('close-filter');
+      const desktopFilterToggle = document.getElementById('desktop-filter-toggle');
+      const desktopFilterPanel = document.getElementById('desktop-filter-panel');
+      const closeDesktopFilter = document.getElementById('close-desktop-filter');
+
+      // مدیریت منوی همبرگری موبایل
+      menuToggle.addEventListener('click', function () {
+        this.classList.toggle('active');
+        mobileMenu.style.right = mobileMenu.style.right === '0px' ? '-100%' : '0px';
+        if (filterMenu.style.right === '0px') {
+          filterMenu.style.right = '-100%';
+        }
+      });
+
+      closeMenu.addEventListener('click', function () {
+        menuToggle.classList.remove('active');
+        mobileMenu.style.right = '-100%';
+      });
+
+      // مدیریت منوی فیلتر موبایل
+      filterToggle.addEventListener('click', function () {
+        filterMenu.style.right = filterMenu.style.right === '0px' ? '-100%' : '0px';
+        if (mobileMenu.style.right === '0px') {
+          mobileMenu.style.right = '-100%';
+          menuToggle.classList.remove('active');
+        }
+      });
+
+      closeFilter.addEventListener('click', function () {
+        filterMenu.style.right = '-100%';
+      });
+
+      // مدیریت پنل فیلتر دسکتاپ
+      desktopFilterToggle.addEventListener('click', function () {
+        desktopFilterPanel.classList.toggle('show');
+      });
+
+      closeDesktopFilter.addEventListener('click', function () {
+        desktopFilterPanel.classList.remove('show');
+      });
+
+      // بستن پنل فیلتر دسکتاپ با کلیک خارج از آن
+      document.addEventListener('click', function (event) {
+        if (!desktopFilterPanel.contains(event.target) &&
+          event.target !== desktopFilterToggle &&
+          !desktopFilterToggle.contains(event.target)) {
+          desktopFilterPanel.classList.remove('show');
+        }
+      });
+    });
+    // مدیریت کلیک روی لینک‌های خارجی
+    document.addEventListener("DOMContentLoaded", function () {
+      const externalLinks = document.querySelectorAll(
+        'a[href^="http"]:not([href*="' + window.location.hostname + '"])'
+      );
+      const transferModal = document.getElementById("transfer-modal");
+
+      externalLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetUrl = this.href;
+
+          // نمایش مودال انتقال
+          transferModal.style.display = "flex";
+
+          // انتقال پس از 2 ثانیه
+          setTimeout(() => {
+            transferModal.style.display = "none"; // مخفی کردن مودال قبل از انتقال
+            window.open(targetUrl, "_blank"); // باز کردن در تب جدید
+          }, 1200);
         });
+      });
+    });
 
-        // تابع اصلی پس از بارگذاری صفحه
-        function initSurvey() {
-            const submitBtn = document.getElementById("submit-btn");
-            const thankYouMessage = document.getElementById("thank-you-message");
+    // تابع اصلی پس از بارگذاری صفحه
+    function initSurvey() {
+      const submitBtn = document.getElementById("submit-btn");
+      const thankYouMessage = document.getElementById("thank-you-message");
 
-            // رویداد کلیک برای دکمه ثبت نظر
-            submitBtn.onclick = function (e) {
-                e.preventDefault();
+      // رویداد کلیک برای دکمه ثبت نظر
+      submitBtn.onclick = function (e) {
+        e.preventDefault();
 
-                // بررسی انتخاب امتیاز
-                const ratingSelected = document.querySelector(
-                    'input[name="rating"]:checked'
-                );
-                if (!ratingSelected) {
-                    alert("لطفاً ابتدا امتیاز خود را انتخاب کنید");
-                    return;
-                }
-
-                // نمایش حالت در حال بارگذاری
-                const spinner = document.getElementById("submit-spinner");
-                const btnText = document.getElementById("submit-text");
-                btnText.textContent = "در حال ثبت...";
-                spinner.classList.remove("hidden");
-                this.disabled = true;
-
-                // شبیه‌سازی ارسال داده (1 ثانیه تاخیر)
-                setTimeout(() => {
-                    // نمایش پیام موفقیت
-                    thankYouMessage.classList.remove("hidden");
-
-                    // بازگرداندن دکمه به حالت اولیه
-                    btnText.textContent = "ثبت نظر";
-                    spinner.classList.add("hidden");
-                    this.disabled = false;
-                }, 1000);
-            };
-
-            // رویداد دکمه بستن پیام
-            document.getElementById("new-survey-btn").onclick = function () {
-                thankYouMessage.classList.add("hidden");
-                document.getElementById("comment").value = "";
-                document
-                    .querySelectorAll('input[name="rating"]')
-                    .forEach((el) => (el.checked = false));
-            };
+        // بررسی انتخاب امتیاز
+        const ratingSelected = document.querySelector(
+          'input[name="rating"]:checked'
+        );
+        if (!ratingSelected) {
+          alert("لطفاً ابتدا امتیاز خود را انتخاب کنید");
+          return;
         }
 
-        // اجرای تابع پس از بارگذاری کامل صفحه
-        if (document.readyState === "complete") {
-            initSurvey();
+        // نمایش حالت در حال بارگذاری
+        const spinner = document.getElementById("submit-spinner");
+        const btnText = document.getElementById("submit-text");
+        btnText.textContent = "در حال ثبت...";
+        spinner.classList.remove("hidden");
+        this.disabled = true;
+
+        // شبیه‌سازی ارسال داده (1 ثانیه تاخیر)
+        setTimeout(() => {
+          // نمایش پیام موفقیت
+          thankYouMessage.classList.remove("hidden");
+
+          // بازگرداندن دکمه به حالت اولیه
+          btnText.textContent = "ثبت نظر";
+          spinner.classList.add("hidden");
+          this.disabled = false;
+        }, 1000);
+      };
+
+      // رویداد دکمه بستن پیام
+      document.getElementById("new-survey-btn").onclick = function () {
+        thankYouMessage.classList.add("hidden");
+        document.getElementById("comment").value = "";
+        document
+          .querySelectorAll('input[name="rating"]')
+          .forEach((el) => (el.checked = false));
+      };
+    }
+
+    // اجرای تابع پس از بارگذاری کامل صفحه
+    if (document.readyState === "complete") {
+      initSurvey();
+    } else {
+      window.addEventListener("load", initSurvey);
+    }
+
+    // فراخوانی اولیه
+    updateCartCount();
+
+    // مدیریت دکمه‌های افزودن به سبد خرید
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function () {
+        const courseCard = this.closest('.course-card');
+        if (!courseCard) {
+          alert('خطا: این دکمه به یک دوره متصل نیست.');
+          return;
+        }
+        const course = {
+          id: courseCard.dataset.courseId,
+          title: courseCard.querySelector('h3')?.textContent || 'دوره بدون عنوان',
+          price: parseInt(courseCard.dataset.price) || 0,
+          level: courseCard.dataset.level || 'نامشخص',
+          type: courseCard.dataset.type || 'نامشخص'
+        };
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        if (!cart.some(item => item.id === course.id)) {
+          cart.push(course);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert('دوره به سبد خرید اضافه شد!');
+          updateCartCount();
         } else {
-            window.addEventListener("load", initSurvey);
+          alert('این دوره قبلاً در سبد خرید است.');
         }
-    </script>
+      });
+    });
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset=UTF-8 />
+<meta name=description content="کدیوز، بهترین منابع یادگیری در سراسر وب را معرفی می‌کند...">
+<meta name=keywords content="آموزش برنامه نویسی, منابع رایگان, یادگیری کدنویسی, کدیوز, codeuse, برنامه نویسی برای مبتدیان, programming, CodeUse, CODEUSE, منابع یادگیری، منابع آموزش، آموزش">
+<meta name=author content="سجاد فرهنگی, علی شکری, محمدراشد براتی">
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<meta name=robots content="index, follow">
+<meta property=og:title content="کدیوز | بهترین آموزشو ببین!">
+<meta property=og:description content="کدیوز مجموعه‌ای از منابع باکیفیت برای یادگیری برنامه‌نویسی به زبان ساده‌ست.">
+<meta property=og:url content=https://codeuse.ir>
+<meta property=og:type content=website>
+    <title>سبد خرید | کدیوز</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#315098',
+                        secondary: '#f0f4f8',
+                        filter: '#f8fafc',
+                    },
+                    fontFamily: {
+                        'dirooz': ['"IRANSans"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.fontcdn.ir/Font/Persian/IRANSans/IRANSansWeb(FaNum).woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        .navbar {
+            position: relative;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50 font-dirooz">
+    <header class="navbar mx-auto flex justify-between items-center w-full max-w-[1200px] px-4 bg-white/80 backdrop-blur-sm rounded-full shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-5 max-w-[1200px] mx-auto">
+                <a href="/index.html" class="flex items-center">
+                    <img src="../images/baseImg/logo.png" alt="کدیوز" class="h-10">
+                </a>
+                <nav class="hidden md:flex items-center space-x-2 space-x-reverse">
+                    <a href="/index.html" class="px-3 py-2 text-gray-700 hover:text-primary transition">خانه</a>
+                    <a href="../pages/contactus.html" class="px-3 py-2 text-gray-700 hover:text-primary transition">ارتباط با ما</a>
+                    <a href="../pages/aboutus.html" class="px-3 py-2 text-gray-700 hover:text-primary transition">درباره ما</a>
+                </nav>
+                <div class="flex items-center space-x-4 space-x-reverse md:hidden">
+                    <button id="menu-toggle" class="flex flex-col justify-center items-center w-8 h-8 hamburger">
+                        <span class="block w-6 h-0.5 bg-gray-800 mb-1.5"></span>
+                        <span class="block w-6 h-0.5 bg-gray-800 mb-1.5"></span>
+                        <span class="block w-6 h-0.5 bg-gray-800"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-20 left-[-100%] w-4/5 max-w-xs h-[calc(100vh-80px)] bg-white shadow-2xl z-40 p-6">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu" class="text-2xl text-gray-600">×</button>
+        </div>
+        <nav class="flex flex-col space-y-4">
+            <a href="https://codeuse.ir" class="py-2 text-gray-700 hover:text-primary transition">خانه</a>
+            <a href="../pages/aboutus.html" class="py-2 text-gray-700 hover:text-primary transition">درباره ما</a>
+            <a href="../pages/contactus.html" class="py-2 text-gray-700 hover:text-primary transition">ارتباط با ما</a>
+        </nav>
+    </div>
+
+    <main class="flex-grow container mx-auto px-4 py-24">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">دوره های شما</h1>
+        <div id="cart-items" class="space-y-4">
+            <!-- اقلام سبد خرید اینجا نمایش داده می‌شوند -->
+        </div>
+        <div class="mt-6 flex justify-between items-center">
+        
+            <div class="text-lg font-bold text-gray-800">
+                مجموع: <span id="cart-total">0 تومان</span>
+            </div>
+        </div>
+    </main>
+
+   <footer class="bg-blue-200 text-black pt-10 border-slate-800">
+        <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-right items-start">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">تماس با ما</h3>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="https://youtube.com/@codeuse04" class="transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60px" height="60px">
+                                <linearGradient id="SVGID_1_" x1="39.108" x2="8.892" y1="8.892" y2="39.108"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop offset=".014" stop-color="#fe6d60" />
+                                    <stop offset=".046" stop-color="#fe766a" />
+                                    <stop offset=".208" stop-color="#fea097" />
+                                    <stop offset=".37" stop-color="#ffc2bd" />
+                                    <stop offset=".532" stop-color="#ffddda" />
+                                    <stop offset=".692" stop-color="#fff0ee" />
+                                    <stop offset=".849" stop-color="#fffbfb" />
+                                    <stop offset="1" stop-color="#fff" />
+                                </linearGradient>
+                                <path fill="url(#SVGID_1_)"
+                                    d="M36.542,40H11.458C9.272,40,7.5,38.281,7.5,36.162V11.838C7.5,9.719,9.272,8,11.458,8h25.083 c2.186,0,3.958,1.719,3.958,3.838v24.323C40.5,38.281,38.728,40,36.542,40z" />
+                                <path fill="#e02f24"
+                                    d="M26.253,14.557h1.561v5.088c0,0.309,0.034,0.529,0.103,0.661s0.181,0.198,0.34,0.198 c0.135,0,0.265-0.04,0.39-0.124c0.124-0.082,0.217-0.189,0.277-0.317v-5.507h1.559v6.931h-1.222l-0.135-0.848h-0.034 C28.761,21.28,28.263,21.6,27.6,21.6c-0.459,0-0.799-0.151-1.018-0.452s-0.328-0.772-0.328-1.413v-5.179L26.253,14.557 L26.253,14.557z" />
+                                <path fill="#e02f24"
+                                    d="M23.285,20.539c0.217-0.001,0.371-0.113,0.458-0.34c0.086-0.225,0.13-0.595,0.13-1.107v-2.16 c0-0.498-0.043-0.861-0.13-1.091c-0.086-0.231-0.24-0.344-0.459-0.344c-0.211,0-0.36,0.115-0.447,0.344 c-0.086,0.231-0.13,0.594-0.130,1.091v2.16c0,0.513,0.04,0.882,0.124,1.107S23.066,20.539,23.285,20.539z M22.056,14.731 c0.32-0.208,0.74-0.31,1.261-0.31c0.513,0,0.923,0.105,1.233,0.317c0.309,0.211,0.535,0.541,0.678,0.988 c0.143,0.448,0.215,1.046,0.215,1.791v1.007c0,0.74-0.07,1.332-0.209,1.781s-0.366,0.776-0.678,0.984 c-0.312,0.208-0.737,0.31-1.272,0.31c-0.549,0-0.981-0.105-1.295-0.317c-0.313-0.211-0.535-0.539-0.667-0.984 s-0.198-1.037-0.198-1.775v-1.007c0-0.747,0.076-1.345,0.225-1.798C21.5,15.268,21.736,14.938,22.056,14.731z" />
+                                <path fill="#e02f24"
+                                    d="M17.964,12l0.621,2.907c0.158,0.715,0.275,1.326,0.351,1.831h0.046c0.053-0.362,0.169-0.968,0.351-1.82 L19.977,12h1.55l-1.798,6.411v3.075H18.19v-3.075L16.414,12H17.964z" />
+                                <path fill="#e02f24"
+                                    d="M27.742,30.126c0-0.655-0.039-1.168-0.119-1.538c-0.08-0.369-0.209-0.636-0.386-0.802 s-0.423-0.248-0.734-0.248c-0.243,0-0.468,0.069-0.678,0.205c-0.211,0.136-0.373,0.316-0.487,0.539h-0.009V25.2H24.06v8.304h1.088 l0.134-0.553h0.028c0.103,0.198,0.254,0.354,0.459,0.468c0.204,0.113,0.429,0.171,0.678,0.171c0.445,0,0.772-0.205,0.983-0.616 c0.211-0.41,0.316-1.052,0.316-1.924h-0.001v-0.925L27.742,30.126L27.742,30.126z M26.416,30.975c0,0.427-0.018,0.761-0.053,1.002 c-0.035,0.243-0.093,0.414-0.177,0.516c-0.084,0.101-0.193,0.153-0.333,0.153c-0.109,0-0.209-0.027-0.301-0.077 c-0.092-0.051-0.167-0.127-0.224-0.229v-3.321c0.045-0.158,0.122-0.289,0.229-0.391c0.108-0.103,0.225-0.153,0.352-0.153 c0.135,0,0.238,0.053,0.31,0.157c0.072,0.104,0.124,0.282,0.153,0.531c0.028,0.248,0.043,0.601,0.043,1.06v0.752H26.416z M21.948,32.301c-0.051,0.108-0.128,0.198-0.234,0.267c-0.104,0.07-0.215,0.105-0.329,0.105c-0.135,0-0.229-0.055-0.286-0.167 c-0.058-0.111-0.086-0.297-0.086-0.558v-4.296h-1.319v4.371c0,0.54,0.092,0.938,0.277,1.193c0.185,0.254,0.47,0.382,0.859,0.382 c0.56,0,0.98-0.27,1.261-0.813h0.028l0.113,0.717h1.031h0.001v-5.851h-1.316V32.301z M20.086,25.497h-3.903v1.058h1.308v6.948h1.287 v-6.948h1.308L20.086,25.497z M35,33.6c0,1.32-1.08,2.4-2.4,2.4H15.4c-1.32,0-2.4-1.08-2.4-2.4v-8.2c0-1.32,1.08-2.4,2.4-2.4h17.2 c1.32,0,2.4,1.08,2.4,2.4V33.6z M31.815,31.017v-1.003c0-0.617-0.049-1.1-0.147-1.451c-0.1-0.35-0.27-0.607-0.512-0.772 c-0.243-0.166-0.589-0.248-1.041-0.248c-0.655,0-1.118,0.201-1.388,0.606s-0.405,1.045-0.405,1.924v1.022 c0,0.853,0.13,1.484,0.391,1.89c0.262,0.406,0.717,0.61,1.366,0.61c0.541,0,0.958-0.134,1.255-0.401 c0.297-0.266,0.444-0.671,0.444-1.212c0-0.089-0.004-0.159-0.009-0.211l-1.137-0.067c-0.005,0.356-0.046,0.61-0.119,0.763 s-0.209,0.229-0.405,0.229c-0.146,0-0.254-0.042-0.324-0.128c-0.07-0.085-0.115-0.223-0.138-0.41 c-0.023-0.188-0.034-0.47-0.034-0.845v-0.297h2.2v0.001H31.815z M29.611,30.236v-0.42c0-0.382,0.011-0.667,0.034-0.855 c0.022-0.188,0.066-0.323,0.134-0.405c0.067-0.081,0.17-0.124,0.31-0.124s0.243,0.039,0.31,0.119s0.113,0.216,0.136,0.41 c0.026,0.194,0.038,0.479,0.038,0.855v0.42L29.611,30.236z" />
+                                <path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="3"
+                                    d="M40.5,30.277V36.5c0,2.209-1.791,4-4,4h-25c-2.209,0-4-1.791-4-4V21.106" />
+                                <path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="3"
+                                    d="M7.5,14.915V11.5c0-2.209,1.791-4,4-4h25c2.209,0,4,1.791,4,4v12.096" />
+                            </svg>
+                        </a>
+                        <a href="mailto:codeuse04@codeuse.ir" class="hover:scale-110 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60px" height="60px">
+                                <linearGradient id="SVGID_1_" x1="38.631" x2="9.369" y1="9.619" y2="38.881"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop offset="0" stop-color="#60e8fe" />
+                                    <stop offset=".033" stop-color="#6ae9fe" />
+                                    <stop offset=".197" stop-color="#97f0fe" />
+                                    <stop offset=".362" stop-color="#bdf5ff" />
+                                    <stop offset=".525" stop-color="#dafaff" />
+                                    <stop offset=".687" stop-color="#eefdff" />
+                                    <stop offset=".846" stop-color="#fbfeff" />
+                                    <stop offset="1" stop-color="#fff" />
+                                </linearGradient>
+                                <path fill="url(#SVGID_1_)"
+                                    d="M34.5,40.5h-21c-3.314,0-6-2.646-6-5.909V13.909C7.5,10.646,10.186,8,13.5,8h21c3.314,0,6,2.646,6,5.909v20.682 C40.5,37.854,37.814,40.5,34.5,40.5z" />
+                                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="3"
+                                    d="M27.532,40.5H13.5c-3.314,0-6-2.686-6-6V21.809" />
+                                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="3"
+                                    d="M7.5,16.064V13.5c0-3.314,2.686-6,6-6h21c3.314,0,6,2.686,6,6v21c0,3.314-2.686,6-6,6" />
+                                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="3"
+                                    d="M23.383,31.516H13.5c-0.552,0-1-0.448-1-1V17.484c0-0.552,0.448-1,1-1h21c0.552,0,1,0.448,1,1v13.032 c0,0.552-0.448,1-1-1h-4.862H23.383z" />
+                                <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="3"
+                                    d="M34.856,17.319l-9.022,7.347c-1.073,0.874-2.613,0.873-3.685-0.001l-4.381-3.573" />
+                                <line x1="19.824" x2="13.144" y1="24" y2="30.681" fill="none" stroke="#10cfe3"
+                                    stroke-miterlimit="10" stroke-width="3" />
+                                <line x1="34.856" x2="28.166" y1="30.681" y2="24" fill="none" stroke="#10cfe3"
+                                    stroke-miterlimit="10" stroke-width="3" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/codeuse.ir?igsh=M3RrZ2NnYmptOW04"
+                            class="hover:scale-110 transition" target="_blank" rel="noopener">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60px" height="60px"
+                                viewBox="0 0 48 48">
+                                <linearGradient id="SVGID_1__NHuAZUgwkbJo_gr1" x1="38.571" x2="9.429" y1="9.429"
+                                    y2="38.571" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0" stop-color="#fe60c1"></stop>
+                                    <stop offset=".033" stop-color="#fe6ac5"></stop>
+                                    <stop offset=".197" stop-color="#fe97d7"></stop>
+                                    <stop offset=".362" stop-color="#ffbde5"></stop>
+                                    <stop offset=".525" stop-color="#ffdaf0"></stop>
+                                    <stop offset=".687" stop-color="#ffeef9"></stop>
+                                    <stop offset=".846" stop-color="#fffbfd"></stop>
+                                    <stop offset="1" stop-color="#fff"></stop>
+                                </linearGradient>
+                                <path fill="url(#SVGID_1__NHuAZUgwkbJo_gr1)"
+                                    d="M16.5,41.5h15c5.523,0,10-4.477,10-10v-15c0-5.523-4.477-10-10-10h-15c-5.523,0-10,4.477-10,10v15 C6.5,37.023,10.977,41.5,16.5,41.5z">
+                                </path>
+                                <path fill="none" stroke="#fa2aab" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="3"
+                                    d="M41.5,21.085V16.5c0-5.523-4.478-10-10-10h-15c-5.523,0-10,4.477-10,10v2.989">
+                                </path>
+                                <path fill="none" stroke="#fa2aab" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-miterlimit="10" stroke-width="3"
+                                    d="M6.5,25.617V31.5c0,5.522,4.477,10,10,10h15c5.522,0,10-4.478,10-10v-4.606"></path>
+                                <path fill="none" stroke="#fa2aab" stroke-miterlimit="10" stroke-width="3"
+                                    d="M24,15.5c-4.694,0-8.5,3.806-8.5,8.5s3.806,8.5,8.5,8.5s8.5-3.806,8.5-8.5S28.694,15.5,24,15.5z">
+                                </path>
+                                <path fill="#fa2aab"
+                                    d="M34,12c-1.105,0-2,0.895-2,2s0.895,2,2,2s2-0.895,2-2S35.105,12,34,12z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">درباره ما</h3>
+                    <p class="text-sm leading-6 px-4 md:px-0">
+                        کدیوز، پروژه‌ای عام‌المنفعه است که در راستای معرفی بهترین منابع یادگیری برنامه‌نویسی به زبان
+                        فارسی، طراحی شده است. ما در کدیوز در تلاشیم تا با ارائه برترین کیفیت دوره‌ها، قدمی در پیشرفت
+                        کشور سهیم باشیم... شما می‌توانید با حمایت مالی و معنوی، در این کار نیک مشارکت کنید...
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">لینک‌های مفید</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/index.html" class="hover:underline">صفحه اصلی</a></li>
+                        <li><a href="./src/pages/aboutus.html" class="hover:underline">درباره ما</a></li>
+                        <li><a href="/src/pages/all-courses.html" class="hover:underline">همه دوره‌ها</a></li>
+                        <li><a href="/cart.html" class="hover:underline">دوره های شما</a></li>
+                        <li><a href="https://hamibash.com/codeuse" class="hover:underline" target="_blank">حمایت
+                                مالی</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-black text-white text-center py-4 mt-10 text-sm">
+            تمامی حقوق مادی و معنوی برای کدیوز بوده و محفوظ است.<br />
+            Made with <span class="text-red-500">❤️</span> | 1404 - 2025 ®
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenu = document.getElementById('close-menu');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+
+            // منوی موبایل
+            menuToggle.addEventListener('click', function () {
+                this.classList.toggle('active');
+                mobileMenu.style.right = mobileMenu.style.right === '0px' ? '-100%' : '0px';
+            });
+
+            closeMenu.addEventListener('click', function () {
+                menuToggle.classList.remove('active');
+                mobileMenu.style.right = '-100%';
+            });
+
+            // نمایش اقلام سبد خرید
+            function displayCart() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cartItemsContainer.innerHTML = '';
+
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p class="text-gray-600">دوره ای اضافه نکردی😢</p>';
+                    cartTotalElement.textContent = '0 تومان';
+                    return;
+                }
+
+                let total = 0;
+                cart.forEach(item => {
+                    total += item.price;
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex justify-between items-center bg-white p-4 rounded-lg shadow-md';
+                    itemElement.innerHTML = `
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-800">${item.title}</h3>
+                            <p class="text-gray-600">سطح: ${item.level}</p>
+                            <p class="text-green-600 font-medium">${item.price.toLocaleString('fa-IR')} تومان</p>
+                        </div>
+                        <button class="remove-from-cart bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 transition" data-course-id="${item.id}">حذف</button>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+
+                cartTotalElement.textContent = `${total.toLocaleString('fa-IR')} تومان`;
+
+                // اضافه کردن رویداد حذف
+                document.querySelectorAll('.remove-from-cart').forEach(button => {
+                    button.addEventListener('click', function () {
+                        const courseId = this.dataset.courseId;
+                        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                        cart = cart.filter(item => item.id !== courseId);
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        displayCart();
+                    });
+                });
+            }
+
+            displayCart();
+        });
+    </script>
+</body>
+</html>

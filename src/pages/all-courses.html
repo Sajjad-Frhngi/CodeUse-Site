@@ -2,8 +2,17 @@
 <html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset=UTF-8 />
+    <meta name=description content="کدیوز، بهترین منابع یادگیری در سراسر وب را معرفی می‌کند...">
+    <meta name=keywords
+        content="آموزش برنامه نویسی, منابع رایگان, یادگیری کدنویسی, کدیوز, codeuse, برنامه نویسی برای مبتدیان, programming, CodeUse, CODEUSE, منابع یادگیری، منابع آموزش، آموزش">
+    <meta name=author content="سجاد فرهنگی, علی شکری, محمدراشد براتی">
+    <meta name=viewport content="width=device-width, initial-scale=1.0">
+    <meta name=robots content="index, follow">
+    <meta property=og:title content="کدیوز | بهترین آموزشو ببین!">
+    <meta property=og:description content="کدیوز مجموعه‌ای از منابع باکیفیت برای یادگیری برنامه‌نویسی به زبان ساده‌ست.">
+    <meta property=og:url content=https://codeuse.ir>
+    <meta property=og:type content=website>
     <title>همه دوره‌ها | کدیوز</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,13 +26,20 @@
                         filter: '#f8fafc',
                     },
                     fontFamily: {
-                        'dirooz': ['dirooz', 'sans-serif'],
+                        'dirooz': ['"IRANSans"', 'sans-serif'],
                     },
                 }
             }
         }
     </script>
     <style>
+        @font-face {
+            font-family: 'IRANSans';
+            src: url('https://cdn.fontcdn.ir/Font/Persian/IRANSans/IRANSansWeb(FaNum).woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         .course-card {
             transition: all 0.3s ease;
         }
@@ -73,6 +89,21 @@
             animation: filterPulse 0.5s ease;
         }
 
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            left: -10px;
+            background-color: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
         @keyframes filterPulse {
             0% {
                 transform: scale(1);
@@ -87,7 +118,6 @@
             }
         }
 
-        /* اصلاحات جدید */
         .navbar {
             position: relative;
             z-index: 1000;
@@ -107,50 +137,78 @@
 </head>
 
 <body class="min-h-screen flex flex-col bg-gray-50 font-dirooz">
-
-    <header
-        class="navbar z-[9999] mx-auto flex justify-between items-center w-full max-w-[1200px] px-4 bg-white/80 backdrop-blur-sm rounded-full shadow-sm">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-5 max-w-[1200px] mx-auto">
-                <a href="#" class="flex items-center">
-                    <img src="../images/baseImg/logo.png" alt="کدیوز" class="h-10">
+    <header class="relative">
+        <div
+            class="navbar z-[9999] mx-auto flex justify-between items-center w-full max-w-[1200px] px-4 my-4 bg-white/80 backdrop-blur-sm rounded-full shadow-sm">
+            <strong>
+                <a href="/index.html" target="_blank" rel="noopener">
+                    <img class="w-32 md:w-40 lg:w-48" oncontextmenu="return false;" src="/src/images/baseImg/logo.png"
+                        alt="لوگو کدیوز" />
                 </a>
+            </strong>
 
-                <nav class="hidden md:flex items-center space-x-2 space-x-reverse">
-                    <a href="../index.html" class="px-3 py-2 text-gray-700 hover:text-primary transition">خانه</a>
-                    <a href="../pages/comment.html" class="px-3 py-2 text-gray-700 hover:text-primary transition">ارتباط
-                        با ما</a>
-                    <a href="#categories" class="px-3 py-2 text-gray-700 hover:text-primary transition">دسته‌بندی‌ها</a>
-                    <a href="#" class="px-3 py-2 text-gray-700 hover:text-primary transition">زبان‌های پرطرفدار</a>
-                    <a href="#" class="px-3 py-2 text-gray-700 hover:text-primary transition">رده‌های قیمتی</a>
-                </nav>
-                <button id="desktop-filter-toggle" class="hidden md:flex items-center text-gray-700 mr-4">
-                    <i class="fas fa-filter ml-2"></i>
-                    فیلترها
-                </button>
-                <div class="flex items-center space-x-4 space-x-reverse md:hidden">
-                    <button id="filter-toggle" class="text-gray-700">
-                        <i class="fas fa-filter text-xl"></i>
-                    </button>
-                    <button id="menu-toggle" class="flex flex-col justify-center items-center w-8 h-8">
-                        <span class="block w-6 h-0.5 bg-gray-800 mb-1.5"></span>
-                        <span class="block w-6 h-0.5 bg-gray-800 mb-1.5"></span>
-                        <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <div class="relative flex-1 mx-4 max-w-md hidden md:block">
+                <div class="relative">
+                    <input type="text" id="searchInputField"
+                        class="w-full py-2 px-4 pr-10 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#315098] focus:border-transparent transition-all"
+                        placeholder="جستجو در صفحه..." autocomplete="off" />
+                    <button id="searchActionBtn"
+                        class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-[#315098] transition-colors">
+                        <i class="fas fa-search"></i>
                     </button>
                 </div>
+                <div id="searchResultsContainer"
+                    class="absolute z-[9999] w-full mt-2 bg-white rounded-lg shadow-lg hidden overflow-hidden">
+                    <div id="searchResultsContent" class="py-2 max-h-60 overflow-y-auto"></div>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-2 md:space-x-4 lg:space-x-6 text-base md:text-lg">
+                <ul class="flex items-center space-x-2 md:space-x-4 lg:space-x-6">
+                    <li>
+                        <a class="px-3 py-2 transition-all hover:text-[#315098]" href="/src/pages/aboutus.html">درباره
+                            ما</a>
+                    </li>
+                    <li>
+                        <a class="px-3 py-2 transition-all hover:text-[#315098]" href="/src/pages/contactus.html">ارتباط
+                            با ما</a>
+                    </li>
+                    <li>
+                        <a class="font-medium px-3 py-2 transition-all hover:text-[#315098]"
+                            href="/index.html"><b>خانه</b></a>
+                    </li>
+                    <li class="relative">
+                        <a href="../pages/favorit.html"
+                            class="px-3 py-2 transition-all hover:text-[#315098] flex items-center">
+                            <i class="fas fa-heart mr-2"></i>
+                            <span>علاقه‌مندی‌ها</span>
+                            <span id="desktop-cart-count" class="cart-badge">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="flex items-center md:hidden">
+                <a href="../pages/favorit.html" class="relative p-3">
+                    <i class="fas fa-heart text-gray-800"></i>
+                    <span id="mobile-cart-count" class="cart-badge">0</span>
+                </a>
+                <button id="menu-toggle" class="flex flex-col space-y-1.5 p-3 focus:outline-none group">
+                    <span
+                        class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:rotate-45 group-[.active]:translate-y-1.5"></span>
+                    <span class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:opacity-0"></span>
+                    <span
+                        class="w-6 h-0.5 bg-gray-800 transition-all group-[.active]:-rotate-45 group-[.active]:-translate-y-1.5"></span>
+                </button>
             </div>
         </div>
     </header>
-
     <div id="filter-menu"
         class="fixed top-20 right-[-100%] w-4/5 max-w-xs h-[calc(100vh-80px)] bg-filter shadow-2xl z-30 p-6 overflow-y-auto">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl font-bold text-gray-800">فیلتر دوره‌ها</h2>
-            <button id="close-filter" class="text-2xl text-gray-600">×</button>
+            <button id="close-filter" class="text-2xl text-blue-600">×</button>
         </div>
-
         <div class="mb-6">
-            <label class="block text-gray-700 font-medium mb-3">سطح دوره</label>
+            <label class="block text-blue-700 font-medium mb-3">سطح دوره</label>
             <div class="space-y-2">
                 <label class="flex items-center">
                     <input type="checkbox" class="level-filter" value="رایگان" checked>
@@ -166,9 +224,8 @@
                 </label>
             </div>
         </div>
-
         <div class="mb-6">
-            <label class="block text-gray-700 font-medium mb-3">محدوده قیمت</label>
+            <label class="block text-blue-700 font-medium mb-3">محدوده قیمت</label>
             <div class="mb-2">
                 <span id="price-value" class="text-primary font-medium">0 - 5,000,000 تومان</span>
             </div>
@@ -180,16 +237,15 @@
             </div>
         </div>
         <div class="mb-6">
-            <label class="block text-gray-700 font-medium mb-3">نوع دوره</label>
-            <select id="course-type" class="w-full p-2 border border-gray-300 rounded-lg">
+            <label class="block text-blue-500 font-medium mb-3">نوع دوره</label>
+            <select id="course-type" class="w-full p-2 border border-blue-300 rounded-lg">
                 <option value="all">همه دوره‌ها</option>
                 <option value="programming">جاوااسکریپت</option>
                 <option value="design">html&css</option>
             </select>
         </div>
-        <button id="apply-filter" class="w-full py-3 bg-primary text-white rounded-lg mt-4 filter-btn">
-            اعمال فیلترها
-        </button>
+        <button id="apply-filter" class="w-full py-3 bg-primary text-white rounded-lg mt-4 filter-btn">اعمال
+            فیلترها</button>
     </div>
     <div id="mobile-menu"
         class="fixed top-20 left-[-100%] w-4/5 max-w-xs h-[calc(100vh-80px)] bg-white shadow-2xl z-40 p-6">
@@ -198,20 +254,17 @@
         </div>
         <nav class="flex flex-col space-y-4">
             <a href="https://codeuse.ir" class="py-2 text-gray-700 hover:text-primary transition">خانه</a>
-            <a href="#" class="py-2 text-gray-700 hover:text-primary transition">درباره کدیوز</a>
-            <a href="#categories" class="py-2 text-gray-700 hover:text-primary transition">دسته‌بندی‌ها</a>
-            <a href="#" class="py-2 text-gray-700 hover:text-primary transition">زبان‌های پرطرفدار</a>
-            <a href="#" class="py-2 text-gray-700 hover:text-primary transition">رده‌های قیمتی</a>
+            <a href="../pages/aboutus.html" class="py-2 text-gray-700 hover:text-primary transition">درباره ما</a>
+            <a href="../pages/contactus.html" class="py-2 text-gray-700 hover:text-primary transition">ارتباط با ما</a>
+            <a href="../pages/favorit.html" class="py-2 text-gray-700 hover:text-primary transition">علاقه‌مندی‌ها</a>
         </nav>
     </div>
-
     <div id="desktop-filter-panel"
         class="fixed top-20 right-0 h-[calc(100vh-80px)] w-64 bg-white shadow-lg z-20 p-6 overflow-y-auto">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl font-bold text-gray-800">فیلتر دوره‌ها</h2>
             <button id="close-desktop-filter" class="text-2xl text-gray-600">×</button>
         </div>
-
         <div class="mb-6">
             <label class="block text-gray-700 font-medium mb-3">سطح دوره</label>
             <div class="space-y-2">
@@ -229,7 +282,6 @@
                 </label>
             </div>
         </div>
-
         <div class="mb-6">
             <label class="block text-gray-700 font-medium mb-3">محدوده قیمت</label>
             <div class="mb-2">
@@ -242,7 +294,6 @@
                 <span>5,000,000</span>
             </div>
         </div>
-
         <div class="mb-6">
             <label class="block text-gray-700 font-medium mb-3">نوع دوره</label>
             <select id="desktop-course-type" class="w-full p-2 border border-gray-300 rounded-lg">
@@ -253,39 +304,39 @@
                 <option value="rob">ربات</option>
             </select>
         </div>
-
-        <button id="desktop-apply-filter" class="w-full py-3 bg-primary text-white rounded-lg mt-4 filter-btn">
-            اعمال فیلترها
-        </button>
+        <button id="desktop-apply-filter" class="w-full py-3 bg-primary text-white rounded-lg mt-4 filter-btn">اعمال
+            فیلترها</button>
     </div>
-
     <main class="flex-grow container mx-auto px-4 py-24">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- دوره 1 -->
-            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="پرمیوم"
-                data-price="1699000" data-type="all">
-                <img src="../images/courseImg/jadi.png.webp" alt="پایتون" class="w-full h-48 object-cover">
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="پرمیوم" data-price="1699000" data-type="all" data-course-id="1">
+                <img src="../images/courseImg/jadi.png.webp" alt="پایتون"
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-gray-800">پایتون جامع | مکتب خونه</h3>
                     <div class="flex items-center mt-2">
-                        <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">پرمیوم</span>
-                        <span class="text-green-600 font-medium mr-auto">1,699,000 تومان</span>
+                        <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">جادی میرمیرانی</span>
+                        <span class="text-green-600 font-medium mr-auto">مکتبخونه</span>
                     </div>
                     <p class="text-gray-600 mt-3 line-clamp-2">
-                        دوره جامع آموزش پایتون از مقدماتی تا پیشرفته با تدریس جادی میرمیرانی. مناسب برای شروع
-                        برنامه‌نویسی و ورود به بازار کار.
+                        دوره درحال بروزرسانی ویدئو ها و قیمت میباشد و تا ساعات دیگر دوره در دسترس قرار خواهد...😊🧑‍💻
                     </p>
-                    <a href="../pages/python-page.html"
-                        class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
-                        مشاهده بیشتر
-                    </a>
+                    <div class="flex space-x-2 space-x-reverse mt-16">
+                        <a href="../pages/python-page.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">⏳</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="1">⏳</button>
+                    </div>
                 </div>
             </div>
-
             <!-- دوره 2 -->
-            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="پرمیوم"
-                data-price="2430000" data-type="programming">
-                <img src="../images/courseImg/js.png.jpg" alt="جاوااسکریپت" class="w-full h-48 object-cover">
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="پرمیوم" data-price="2430000" data-type="programming" data-course-id="2">
+                <img src="../images/courseImg/js.png.jpg" alt="جاوااسکریپت"
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-gray-800">دوره جامع جاوا اسکریپت | راکت</h3>
                     <div class="flex flex-col mt-2">
@@ -296,70 +347,113 @@
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-gray-500 font-medium line-through">5,400,000 تومان</span>
-                            <span class="text-green-600 font-medium">2,430,000 تومان</span>
+                            <span class="text-green-600 font-medium">4,320,000 تومان</span>
                         </div>
                     </div>
                     <p class="text-gray-600 mt-3 line-clamp-2">
                         آموزش جاوا اسکریپت وب‌سایت راکت، مسیری سریع و جامع برای یادگیری یکی از محبوب‌ترین و
-                        پراستفاده‌ترین زبان‌ برنامه‌نویسی...
+                        پراستفاده‌ترین زبان‌های برنامه‌نویسی...
                     </p>
-                    <a href="../pages/js-rocet.html"
-                        class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
-                        مشاهده بیشتر
-                    </a>
+                    <div class="flex space-x-2 space-x-reverse mt-4">
+                        <a href="../pages/js-rocet.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">مشاهده
+                            بیشتر<br>☝️</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="2">افزودن به علاقه‌مندی‌ها 😍</button>
+                    </div>
                 </div>
             </div>
-
             <!-- دوره 3 -->
-            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="اقتصادی"
-                data-price="759000" data-type="design">
-                <img src="../images/courseImg/boto.png" alt="طراحی وب" class="w-full h-48 object-cover">
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="اقتصادی" data-price="759000" data-type="design" data-course-id="3">
+                <img src="../images/courseImg/boto.png" alt="طراحی وب"
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-gray-800">دوره جامع HTML و CSS | بوتو استارت</h3>
                     <div class="flex items-center mt-2">
                         <span class="text-blue-600 bg-blue-300 px-2 py-1 rounded text-sm">اقتصادی</span>
-                        <span class="text-green-600 font-medium mr-auto">759,000 تومان</span>
+                        <span class="text-green-600 font-medium mr-auto">659,000 تومان</span>
                     </div>
-                    <p class="text-gray-600 mt-3 line-clamp-2">
-                        اولین قدم برای ورود به دنیای برنامه نویسی وب و فرانت اند یادگیری HTML&CSS است که به ما این امکان
-                        را میدهد تا ظاهر استاتیک سایت را پیاده بکنیم...
+                    <p class="text-gray-600 mt-8 line-clamp-2">
+                        اولین قدم برای ورود به دنیای برنامه‌نویسی وب و فرانت‌اند یادگیری HTML&CSS است که به ما این امکان
+                        را می‌دهد تا ظاهر استاتیک سایت را پیاده کنیم...
                     </p>
-                    <a href="../pages/html&css-boto.html"
-                        class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
-                        مشاهده بیشتر
-                    </a>
+                    <div class="flex space-x-2 space-x-reverse mt-16">
+                        <a href="../pages/html&css-boto.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">مشاهده
+                            بیشتر<br>☝️</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="3">افزودن به علاقه‌مندی‌ها 😍</button>
+                    </div>
                 </div>
             </div>
-
             <!-- دوره 4 -->
-            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="پرمیوم"
-                data-price="3300000" data-type="ai">
-                <img src="../images/courseImg/ai.png" alt="هوش مصنوعی" class="w-full h-48 object-cover">
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="پرمیوم" data-price="3300000" data-type="ai" data-course-id="4">
+                <img src="../images/courseImg/ai.png" alt="هوش مصنوعی"
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-gray-800">هوش مصنوعی | مجتمع فنی تهران</h3>
                     <div class="flex flex-col mt-2">
                         <div class="flex items-center">
-                            <span class="text-amber-600 bg-amber-五十px-2 py-1 rounded text-sm">پرمیوم</span>
+                            <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">پرمیوم</span>
                         </div>
                         <div class="flex flex-col items-end">
                             <span class="text-green-600 font-medium">3,300,000 تومان</span>
                         </div>
                     </div>
-                    <p class="text-gray-600 mt-3 line-clamp-2">
-                        در دوره هوش مصنوعی هر آنچه را که باید در رابطه با هوش مصنوعی (AI) و ورود به بازار کار آن بدانید،
-                        در قالب آموزش های عملی و پروژه محور، خواهید آموخت...
+                    <p class="text-gray-600 mt-12 line-clamp-2">
+                        در دوره هوش مصنوعی هر آنچه را که باید در رابطه با هوش مصنوعی (AI) و ورود به بازار کار آن بدانید
+
                     </p>
-                    <a href="../pages/ai-fanit.html"
-                        class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
-                        مشاهده بیشتر
-                    </a>
+                    <div class="flex space-x-2 space-x-reverse mt-4">
+                        <a href="../pages/ai-fanit.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">مشاهده
+                            بیشتر<br>☝️</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="4">افزودن به علاقه‌مندی‌ها 😍</button>
+                    </div>
                 </div>
             </div>
+            <!-- دوره 8 -->
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="اقتصادی" data-price="3300000" data-type="ai" data-course-id="4">
+                <img src="../images/baseImg/java.png" alt="جاوا"
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-gray-800">آموزش برنامه نویسی جاوا | گواهینامه</h3>
+                    <div class="flex flex-col mt-2">
+                        <div class="flex items-center">
+                            <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">اقتصادی</span>
+                            <span class="mr-3 text-yellow-600 bg-red-100 px-2 py-1 rounded text-sm">دوره دارای تخفیف
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-gray-500 font-medium line-through">980,000 تومان</span>
+                            <span class="text-green-600 font-medium">490,000 تومان</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-12 line-clamp-2">
+                        از جاوا برای توسعه برنامه‌های کاربردی وب، برنامه‌های موبایل، سیستم‌های تحت شبکه و…
 
+                    </p>
+                    <div class="flex space-x-2 space-x-reverse mt-4">
+                        <a href="../pages/java.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">مشاهده
+                            بیشتر<br>☝️</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="4">افزودن به علاقه‌مندی‌ها 😍</button>
+                    </div>
+                </div>
+            </div>
             <!-- دوره 5 -->
-            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="رایگان"
-                data-price="0" data-type="all">
-                <img src="../images/courseImg/react-ract.png" alt="ریکت" class="w-full h-48 object-cover">
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="رایگان" data-price="0" data-type="all" data-course-id="5">
+                <img src="../images/courseImg/react-ract.png" alt="ریکت"
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-gray-800">دوره ریکت | راکت</h3>
                     <div class="flex flex-col mt-2">
@@ -375,18 +469,108 @@
                         قرار دهد اگر به یادگیری React علاقه دارید به دو چیز نیاز دارید! دانش مناسب جاوا اسکریپت و علاقه
                         به یادگیری
                     </p>
-                    <a href="../pages/react-racet.html"
-                        class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
-                        مشاهده بیشتر
-                    </a>
+                    <div class="flex space-x-2 space-x-reverse mt-4">
+                        <a href="../pages/react-racet.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">مشاهده
+                            بیشتر <br>☝️</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="5">افزودن به علاقه‌مندی‌ها 😍</button>
+                    </div>
                 </div>
             </div>
+            <!-- دوره 9 -->
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="اقتصادی" data-price="0" data-type="all" data-course-id="5">
+                <img src="../images/baseImg/C++.png" alt="c++" ّ
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-gray-800">دوره ++C | فرادرس</h3>
+                    <div class="flex flex-col mt-2">
+                        <div class="flex items-center">
+                            <span class="text-green-600 bg-green-50 px-2 py-1 rounded text-sm">اقتصادی</span>
+                            <span class="mr-3 text-yellow-600 bg-red-100 px-2 py-1 rounded text-sm">دوره دارای تخفیف
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-gray-500 font-medium line-through ">980.000</span>
+                            <span class="text-green-600 font-medium">89.000</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-3 line-clamp-2">
+                        آموزش رایگان React سعی دارد تا تمام مفاهیم اساسی و اولیه React را به صورت رایگان در اختیار همگان
+                        قرار دهد اگر به یادگیری React علاقه دارید به دو چیز نیاز دارید! دانش مناسب جاوا اسکریپت و علاقه
+                        به یادگیری
+                    </p>
+                    <div class="flex space-x-2 space-x-reverse mt-4">
+                        <a href="../pages/c++.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">مشاهده
+                            بیشتر <br>☝️</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="5">افزودن به علاقه‌مندی‌ها 😍</button>
+                    </div>
+                </div>
+            </div>
+            <!-- دوره 10 -->
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="رایگان" data-price="759000" data-type="design" data-course-id="3">
+                <img src="../images/baseImg/python.png" alt="پایتون"
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-gray-800">آموزش پایتون | از مقدماتی تا پیشرفته</h3>
+                    <div class="flex items-center mt-2">
+                        <span class="text-blue-600 bg-blue-300 px-2 py-1 rounded text-sm">رایگان</span>
+                        <span class="text-green-600 font-medium mr-auto">رایگان</span>
+                    </div>
+                    <p class="text-gray-600 mt-3 line-clamp-2">
+                        اگر شما هم قصد یادگیری زبان همه کاره پایتون را دارید، مسیر درستی را انتخاب کرده اید. فرقی نمی
+                        کند که ابتدای راه باشید یا نیمه های مسیر...
+                    </p>
+                    <div class="flex space-x-2 space-x-reverse mt-16">
+                        <a href="../pages/python-codyad.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">مشاهده
+                            بیشتر<br>☝️</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="6">افزودن به علاقه‌مندی‌ها 😍</button>
+                    </div>
+                </div>
+            </div>
+            <!-- دوره 4 -->
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="رایگان" data-price="3300000" data-type="ai" data-course-id="4">
+                <img src="../images/baseImg/csharp.png" alt="سی شارپ"
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                <div class="p-4">
+                    <h3 class="text-xl font-bold text-gray-800">آموزش #C به زبان ساده | کدیاد</h3>
+                    <div class="flex flex-col mt-2">
+                        <div class="flex items-center">
+                            <span class="text-amber-600 bg-amber-50 px-2 py-1 rounded text-sm">رایگان</span>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <span class="text-green-600 font-medium">رایگان</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-12 line-clamp-2">
+                        زبان برنامه نویسی سی شارپ (c#) از شاهکارترین و پرطرفدارترین زبان های برنامه نویسی است که دارای
+                        قدرت و امنیت بسیار بالایی بوده...
 
+                    </p>
+                    <div class="flex space-x-2 space-x-reverse mt-4">
+                        <a href="../pages/csharp.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">مشاهده
+                            بیشتر<br>☝️</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="4">افزودن به علاقه‌مندی‌ها 😍</button>
+                    </div>
+                </div>
+            </div>
             <!-- دوره 6 -->
-            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden" data-level="رایگان"
-                data-price="0" data-type="ssd">
+            <div class="course-card bg-white rounded-xl shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                data-level="رایگان" data-price="0" data-type="ssd" data-course-id="6">
                 <img src="../images/courseImg/robot.png" alt="برنامه نویسی برد اردوینو"
-                    class="w-full h-48 object-cover">
+                    class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
                 <div class="p-4">
                     <h3 class="text-xl font-bold text-gray-800">دوره برنامه نویسی برد آردوینو | داناپ</h3>
                     <div class="flex flex-col mt-2">
@@ -397,26 +581,29 @@
                             <span class="text-green-600 font-medium">رایگان</span>
                         </div>
                     </div>
-                    <p class="text-gray-600 mt-3 line-clamp-2">
-                        در آردوینو تعداد بسیار زیادی ماژول از جمله ماژول های راه اندازی میکروکنترلر تا شیلدهای درایو
-                        موتور به طور پیش فرض وجود دارد که می توان از آنها استفاده کرد.
+                    <p class="text-gray-600 mt-12 line-clamp-2">
+                        در آردوینو تعداد بسیار زیادی ماژول از جمله ماژول‌های راه‌اندازی میکروکنترلر تا شیلدهای درایو
+                        موتور به طور پیش‌فرض وجود دارد که می‌توان از آنها استفاده کرد.
                     </p>
-                    <a href="../pages/robot-danup.html"
-                        class="block w-full mt-4 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">
-                        مشاهده بیشتر
-                    </a>
+                    <div class="flex space-x-2 space-x-reverse mt-4">
+                        <a href="../pages/robot-danup.html"
+                            class="flex-1 py-2 bg-primary text-white text-center rounded-lg hover:bg-blue-700 transition">مشاهده
+                            بیشتر<br>☝️</a>
+                        <button
+                            class="add-to-cart flex-1 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            data-course-id="6">افزودن به علاقه‌مندی‌ها 😍</button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
-
-    <footer class="bg-gray-300 text-black pt-10">
+    <footer class="bg-blue-200 text-black pt-10 border-slate-800">
         <div class="max-w-screen-xl mx-auto px-4 md:px-8">
             <div class="grid md:grid-cols-3 gap-8 text-center md:text-right items-start">
                 <div>
                     <h3 class="text-lg font-bold mb-4">تماس با ما</h3>
                     <div class="flex justify-center md:justify-start gap-4">
-                        <a href="https://youtube.com/@CODEUSE04" class="transition">
+                        <a href="https://youtube.com/@codeuse04" class="transition">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60px" height="60px">
                                 <linearGradient id="SVGID_1_" x1="39.108" x2="8.892" y1="8.892" y2="39.108"
                                     gradientUnits="userSpaceOnUse">
@@ -430,15 +617,16 @@
                                     <stop offset="1" stop-color="#fff" />
                                 </linearGradient>
                                 <path fill="url(#SVGID_1_)"
-                                    d="M36.542,40H11.458C9.272,40,7.5,38.281,7.5,36.162V11.838C7.5,9.719,9.272,8,11.458,8h25.083	c2.186,0,3.958,1.719,3.958,3.838v24.323C40.5,38.281,38.728,40,36.542,40z" />
+                                    d="M36.542,40H11.458C9.272,40,7.5,38.281,7.5,36.162V11.838C7.5,9.719,9.272,8,11.458,8h25.083 c2.186,0,3.958,1.719,3.958,3.838v24.323C40.5,38.281,38.728,40,36.542,40z" />
                                 <path fill="#e02f24"
-                                    d="M26.253,14.557h1.561v5.088c0,0.309,0.034,0.529,0.103,0.661s0.181,0.198,0.34,0.198	c0.135,0,0.265-0.04,0.39-0.124c0.124-0.082,0.217-0.189,0.277-0.317v-5.507h1.559v6.931h-1.222l-0.135-0.848h-0.034	C28.761,21.28,28.263,21.6,27.6,21.6c-0.459,0-0.799-0.151-1.018-0.452s-0.328-0.772-0.328-1.413v-5.179L26.253,14.557	L26.253,14.557z" />
+                                    d="M26.253,14.557h1.561v5.088c0,0.309,0.034,0.529,0.103,0.661s0.181,0.198,0.34,0.198 c0.135,0,0.265-0.04,0.39-0.124c0.124-0.082,0.217-0.189,0.277-0.317v-5.507h1.559v6.931h-1.222l-0.135-0.848h-0.034 C28.761,21.28,28.263,21.6,27.6,21.6c-0.459,0-0.799-0.151-1.018-0.452s-0.328-0.772-0.328-1.413v-5.179L26.253,14.557 L26.253,14.557z" />
                                 <path fill="#e02f24"
-                                    d="M23.285,20.539c0.217-0.001,0.371-0.113,0.458-0.34c0.086-0.225,0.13-0.595,0.13-1.107v-2.16	c0-0.498-0.043-0.861-0.13-1.091c-0.086-0.231-0.24-0.344-0.459-0.344c-0.211,0-0.36,0.115-0.447,0.344	c-0.086,0.231-0.13,0.594-0.13,1.091v2.16c0,0.513,0.04,0.882,0.124,1.107S23.066,20.539,23.285,20.539z M22.056,14.731	c0.32-0.208,0.74-0.31,1.261-0.31c0.513,0,0.923,0.105,1.233,0.317c0.309,0.211,0.535,0.541,0.678,0.988	c0.143,0.448,0.215,1.046,0.215,1.791v1.007c0,0.74-0.07,1.332-0.209,1.781s-0.366,0.776-0.678,0.984	c-0.312,0.208-0.737,0.31-1.272,0.31c-0.549,0-0.981-0.105-1.295-0.317c-0.313-0.211-0.535-0.539-0.667-0.984	s-0.198-1.037-0.198-1.775v-1.007c0-0.747,0.076-1.345,0.225-1.798C21.5,15.268,21.736,14.938,22.056,14.731z" />
+                                    d="M23.285,20.539c0.217-0.001,0.371-0.113,0.458-0.34c0.086-0.225,0.13-0.595,0.13-1.107v-2.16 c0-0.498-0.043-0.861-0.13-1.091c-0.086-0.231-0.24-0.344-0.459-0.344c-0.211,0-0.36,0.115-0.447,0.344 c-0.086,0.231-0.13,0.594-0.130,1.091v2.16c0,0.513,0.04,0.882,0.124,1.107S23.066,20.539,23.285,20.539z M22.056,14.731 c0.32-0.208,0.74-0.31,1.261-0.31c0.513,0,0.923,0.105,1.233,0.317c0.309,0.211,0.535,0.541,0.678,0.988 c0.143,0.448,0.215,1.046,0.215,1.791v1.007c0,0.74-0.07,1.332-0.209,1.781s-0.366,0.776-0.678,0.984 c-0.312,0.208-0.737,0.310-1.272,0.31c-0.549,0-0.981-0.105-1.295-0.317c-0.313-0.211-0.535-0.539-0.667-0.984 s-0.198-1.037-0.198-1.775v-1.007c0-0.747,0.076-1.345,0.225-1.798C21.5,15.268,21.736,14.938,22.056,14.731z" />
                                 <path fill="#e02f24"
-                                    d="M17.964,12l0.621,2.907c0.158,0.715,0.275,1.326,0.351,1.831h0.046c0.053-0.362,0.169-0.968,0.351-1.82	L19.977,12h1.55l-1.798,6.411v3.075H18.19v-3.075L16.414,12H17.964z" />
+                                    d="M17.964,12l0.621,2.907c0.158,0.715,0.275,1.326,0.351,1.831h0.046c0.053-0.362,0.169-0.968,0.351-1.82 L19.977,12h1.55l-1.798,6.411v3.075H18.19v-3.075L16.414,12H17.964z" />
                                 <path fill="#e02f24"
-                                    d="M27.742,30.126c0-0.655-0.039-1.168-0.119-1.538c-0.08-0.369-0.209-0.636-0.386-0.802	s-0.423-0.248-0.734-0.248c-0.243,0-0.468,0.069-0.678,0.205c-0.211,0.136-0.373,0.316-0.487,0.539h-0.009V25.2H24.06v8.304h1.088	l0.134-0.553h0.028c0.103,0.198,0.254,0.354,0.459,0.468c0.204,0.113,0.429,0.171,0.678,0.171c0.445,0,0.772-0.205,0.983-0.616	c0.211-0.41,0.316-1.052,0.316-1.924h-0.001v-0.925L27.742,30.126L27.742,30.126z M26.416,30.975c0,0.427-0.018,0.761-0.053,1.002	c-0.035,0.243-0.093,0.414-0.177,0.516c-0.084,0.101-0.193,0.153-0.333,0.153c-0.109,0-0.209-0.027-0.301-0.077	c-0.092-0.051-0.167-0.127-0.224-0.229v-3.321c0.045-0.158,0.122-0.289,0.229-0.391c0.108-0.103,0.225-0.153,0.352-0.153	c0.135,0,0.238,0.053,0.310,0.157c0.072,0.104,0.124,0.282,0.153,0.531c0.028,0.248,0.043,0.601,0.043,1.06v0.752H26.416z M21.948,32.301c-0.051,0.108-0.128,0.198-0.234,0.267c-0.104,0.07-0.215,0.105-0.329,0.105c-0.135,0-0.229-0.055-0.286-0.167	c-0.058-0.111-0.086-0.297-0.086-0.558v-4.296h-1.319v4.371c0,0.54,0.092,0.938,0.277,1.193c0.185,0.254,0.47,0.382,0.859,0.382	c0.56,0,0.98-0.27,1.261-0.813h0.028l0.113,0.717h1.031h0.001v-5.851h-1.316V32.301z M20.086,25.497h-3.903v1.058h1.308v6.948h1.287	v-6.948h1.308L20.086,25.497z M35,33.6c0,1.32-1.08,2.4-2.4,2.4H15.4c-1.32,0-2.4-1.08-2.4-2.4v-8.2c0-1.32,1.08-2.4,2.4-2.4h17.2	c1.32,0,2.4,1.08,2.4,2.4V33.6z M31.815,31.017v-1.003c0-0.617-0.049-1.1-0.147-1.451ten
+                                    d="M27.742,30.126c0-0.655-0.039-1.168-0.119-1.538c-0.08-0.369-0.209-0.636-0.386-0.802 s-0.423-0.248-0.734-0.248c-0.243,0-0.468,0.069-0.678,0.205c-0.211,0.136-0.373,0.316-0.487,0.539h-0.009V25.2H24.06v8.304h1.088 l0.134-0.553h0.028c0.103,0.198,0.254,0.354,0.459,0.468c0.204,0.113,0.429,0.171,0.678,0.171c0.445,0,0.772-0.205,0.983-0.616 c0.211-0.41,0.316-1.052,0.316-1.924h-0.001v-0.925L27.742,30.126L27.742,30.126z M26.416,30.975c0,0.427-0.018,0.761-0.053,1.002 c-0.035,0.243-0.093,0.414-0.177,0.516c-0.084,0.101-0.193,0.153-0.333,0.153c-0.109,0-0.209-0.027-0.301-0.077 c-0.092-0.051-0.167-0.127-0.224-0.229v-3.321c0.045-0.158,0.122-0.289,0.229-0.391c0.108-0.103,0.225-0.153,0.352-0.153 c0.135,0,0.238,0.053,0.31,0.157c0.072,0.104,0.124,0.282,0.153,0.531c0.028,0.248,0.043,0.601,0.043,1.06v0.752H26.416z M21.948,32.301c-0.051,0.108-0.128,0.198-0.234,0.267c-0.104,0.07-0.215,0.105-0.329,0.105c-0.135,0-0.229-0.055-0.286-0.167 c-0.058-0.111-0.086-0.297-0.086-0.558v-4.296h-1.319v4.371c0,0.54,0.092,0.938,0.277,1.193c0.185,0.254,0.47,0.382,0.859,0.382 c0.56,0,0.98-0.27,1.261-0.813h0.028l0.113,0.717h1.031h0.001v-5.851h-1.316V32.301z M20.086,25.497h-3.903v1.058h1.308v6.948h1.287 v-6.948h1.308L20.086,25.497z M35,33.6c0,1.32-1.08,2.4-2.4,2.4H15.4c-1.32,0-2.4-1.08-2.4-2.4v-8.2c0-1.32,1.08-2.4,2.4-2.4h17.2 c1.32,0,2.4,1.08,2.4,2.4V33.6z M31.815,31.017v-1.003c0-0.617-0.049-1.1-0.147-1.451c-0.1-0.35-0.27-0.607-0.512-0.772 c-0.243-0.166-0.589-0.248-1.041-0.248c-0.655,0-1.118,0.201-1.388,0.606s-0.405,1.045-0.405,1.924v1.022 c0,0.853,0.13,1.484,0.391,1.89c0.262,0.406,0.717,0.61,1.366,0.61c0.541,0,0.958-0.134,1.255-0.401 c0.297-0.266,0.444-0.671,0.444-1.212c0-0.089-0.004-0.159-0.009-0.211l-1.137-0.067c-0.005,0.356-0.046,0.61-0.119,0.763 s-0.209,0.229-0.405,0.229c-0.146,0-0.254-0.042-0.324-0.128c-0.07-0.085-0.115-0.223-0.138-0.41 c-0.023-0.188-0.034-0.47-0.034-0.845v-0.297h2.2v0.001H31.815z M29.611,30.236v-0.42c0-0.382,0.011-0.667,0.034-0.855 c0.022-0.188,0.066-0.323,0.134-0.405c0.067-0.081,0.17-0.124,0.31-0.124s0.243,0.039,0.31,0.119s0.113,0.216,0.136,0.41 c0.026,0.194,0.038,0.479,0.038,0.855v0.42L29.611,30.236z" />
+                                <path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="3"
                                     d="M40.5,30.277V36.5c0,2.209-1.791,4-4,4h-25c-2.209,0-4-1.791-4-4V21.106" />
                                 <path fill="none" stroke="#e02f24" stroke-linecap="round" stroke-linejoin="round"
@@ -446,7 +634,7 @@
                                     d="M7.5,14.915V11.5c0-2.209,1.791-4,4-4h25c2.209,0,4,1.791,4,4v12.096" />
                             </svg>
                         </a>
-                        <a href="mailto:info@codeuse.ir" class="hover:scale-110 transition">
+                        <a href="mailto:codeuse04@codeuse.ir" class="hover:scale-110 transition">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="60px" height="60px">
                                 <linearGradient id="SVGID_1_" x1="38.631" x2="9.369" y1="9.619" y2="38.881"
                                     gradientUnits="userSpaceOnUse">
@@ -460,7 +648,7 @@
                                     <stop offset="1" stop-color="#fff" />
                                 </linearGradient>
                                 <path fill="url(#SVGID_1_)"
-                                    d="M34.5,40.5h-21c-3.314,0-6-2.646-6-5.909V13.909C7.5,10.646,10.186,8,13.5,8h21c3.314,0,6,2.646,6,5.909v20.682	C40.5,37.854,37.814,40.5,34.5,40.5z" />
+                                    d="M34.5,40.5h-21c-3.314,0-6-2.646-6-5.909V13.909C7.5,10.646,10.186,8,13.5,8h21c3.314,0,6,2.646,6,5.909v20.682 C40.5,37.854,37.814,40.5,34.5,40.5z" />
                                 <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-miterlimit="10" stroke-width="3"
                                     d="M27.532,40.5H13.5c-3.314,0-6-2.686-6-6V21.809" />
@@ -469,7 +657,7 @@
                                     d="M7.5,16.064V13.5c0-3.314,2.686-6,6-6h21c3.314,0,6,2.686,6,6v21c0,3.314-2.686,6-6,6" />
                                 <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-miterlimit="10" stroke-width="3"
-                                    d="M23.383,31.516H13.5c-0.552,0-1-0.448-1-1V17.484c0-0.552,0.448-1,1-1h21c0.552,0,1,0.448,1,1v13.032	c0,0.552-0.448,1-1,1h-4.862H23.383z" />
+                                    d="M23.383,31.516H13.5c-0.552,0-1-0.448-1-1V17.484c0-0.552,0.448-1,1-1h21c0.552,0,1,0.448,1,1v13.032 c0,0.552-0.448,1-1-1h-4.862H23.383z" />
                                 <path fill="none" stroke="#10cfe3" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-miterlimit="10" stroke-width="3"
                                     d="M34.856,17.319l-9.022,7.347c-1.073,0.874-2.613,0.873-3.685-0.001l-4.381-3.573" />
@@ -479,8 +667,8 @@
                                     stroke-miterlimit="10" stroke-width="3" />
                             </svg>
                         </a>
-                        <a href="https://instagram.com/codeuse.ir" class="hover:scale-110 transition" target="_blank"
-                            rel="noopener">
+                        <a href="https://www.instagram.com/codeuse.ir?igsh=M3RrZ2NnYmptOW04"
+                            class="hover:scale-110 transition" target="_blank" rel="noopener">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60px" height="60px"
                                 viewBox="0 0 48 48">
                                 <linearGradient id="SVGID_1__NHuAZUgwkbJo_gr1" x1="38.571" x2="9.429" y1="9.429"
@@ -495,7 +683,7 @@
                                     <stop offset="1" stop-color="#fff"></stop>
                                 </linearGradient>
                                 <path fill="url(#SVGID_1__NHuAZUgwkbJo_gr1)"
-                                    d="M16.5,41.5h15c5.523,0,10-4.477,10-10v-15c0-5.523-4.477-10-10-10h-15c-5.523,0-10,4.477-10,10v15	C6.5,37.023,10.977,41.5,16.5,41.5z">
+                                    d="M16.5,41.5h15c5.523,0,10-4.477,10-10v-15c0-5.523-4.477-10-10-10h-15c-5.523,0-10,4.477-10,10v15 C6.5,37.023,10.977,41.5,16.5,41.5z">
                                 </path>
                                 <path fill="none" stroke="#fa2aab" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-miterlimit="10" stroke-width="3"
@@ -513,7 +701,6 @@
                         </a>
                     </div>
                 </div>
-
                 <div>
                     <h3 class="text-lg font-bold mb-4">درباره ما</h3>
                     <p class="text-sm leading-6 px-4 md:px-0">
@@ -522,13 +709,13 @@
                         کشور سهیم باشیم... شما می‌توانید با حمایت مالی و معنوی، در این کار نیک مشارکت کنید...
                     </p>
                 </div>
-
                 <div>
                     <h3 class="text-lg font-bold mb-4">لینک‌های مفید</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="https://codeuse.ir" class="hover:underline">صفحه اصلی</a></li>
-                        <li><a href="https://codeuse.ir/aboutus.html" class="hover:underline">درباره ما</a></li>
-                        <li><a href="https://codeuse.ir/all-courses.html" class="hover:underline">همه دوره‌ها</a></li>
+                        <li><a href="/index.html" class="hover:underline">صفحه اصلی</a></li>
+                        <li><a href="./src/pages/aboutus.html" class="hover:underline">درباره ما</a></li>
+                        <li><a href="/src/pages/all-courses.html" class="hover:underline">همه دوره‌ها</a></li>
+                        <li><a href="/cart.html" class="hover:underline">سبد خرید</a></li>
                         <li><a href="https://hamibash.com/codeuse" class="hover:underline" target="_blank">حمایت
                                 مالی</a></li>
                     </ul>
@@ -541,6 +728,86 @@
         </div>
     </footer>
     <script>
+        // تغییر رفتار اسکرول نوار ناوبری
+        window.onscroll = function () {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("bg-[#c5d1eb]", "shadow-lg", "py-2", "w-full", "fixed", "left-0", "right-0", "top-0");
+                navbar.classList.remove("bg-transparent");
+            } else {
+                navbar.classList.remove("bg-[#c5d1eb]", "shadow-lg", "py-2", "fixed", "left-0", "right-0", "top-0");
+                navbar.classList.add("bg-transparent");
+            }
+        };
+
+        // جستجو
+        document.addEventListener('DOMContentLoaded', function () {
+            const searchInput = document.getElementById('searchInputField');
+            const searchButton = document.getElementById('searchActionBtn');
+            const searchResultsContainer = document.getElementById('searchResultsContainer');
+            const searchResultsContent = document.getElementById('searchResultsContent');
+            const courseCards = document.querySelectorAll('.course-card');
+
+            // تابع جستجو
+            function performSearch() {
+                const query = searchInput.value.trim().toLowerCase();
+                searchResultsContainer.classList.add('hidden'); // مخفی کردن نتایج در ابتدا
+                searchResultsContent.innerHTML = ''; // پاک کردن نتایج قبلی
+
+                if (query === '') {
+                    courseCards.forEach(card => card.classList.remove('hidden'));
+                    return;
+                }
+
+                let hasResults = false;
+                courseCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    const isMatch = title.includes(query) || description.includes(query);
+
+                    if (isMatch) {
+                        card.classList.remove('hidden');
+                        hasResults = true;
+                        const resultItem = document.createElement('div');
+                        resultItem.classList.add('px-4', 'py-2', 'hover:bg-gray-100', 'cursor-pointer');
+                        resultItem.textContent = card.querySelector('h3').textContent;
+                        resultItem.addEventListener('click', () => {
+                            card.scrollIntoView({ behavior: 'smooth' });
+                            searchResultsContainer.classList.add('hidden');
+                        });
+                        searchResultsContent.appendChild(resultItem);
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                if (hasResults) {
+                    searchResultsContainer.classList.remove('hidden');
+                } else {
+                    searchResultsContent.innerHTML = '<div class="px-4 py-2 text-gray-500">نتیجه‌ای یافت نشد</div>';
+                    searchResultsContainer.classList.remove('hidden');
+                }
+            }
+
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('input', performSearch);
+
+            document.addEventListener('click', function (event) {
+                if (!searchResultsContainer.contains(event.target) && event.target !== searchInput && event.target !== searchButton) {
+                    searchResultsContainer.classList.add('hidden');
+                }
+            });
+
+            searchInput.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    searchInput.value = '';
+                    searchResultsContainer.classList.add('hidden');
+                    courseCards.forEach(card => card.classList.remove('hidden'));
+                }
+            });
+        });
+
+        // مدیریت منو و فیلترها
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -548,52 +815,9 @@
             const filterToggle = document.getElementById('filter-toggle');
             const filterMenu = document.getElementById('filter-menu');
             const closeFilter = document.getElementById('close-filter');
-    
-            menuToggle.addEventListener('click', function () {
-                this.classList.toggle('active');
-                mobileMenu.style.right = mobileMenu.style.right === '0px' ? '-100%' : '0px';
-                if (filterMenu.style.right === '0px') {
-                    filterMenu.style.right = '-100%';
-                }
-            });
-    
-            closeMenu.addEventListener('click', function () {
-                menuToggle.classList.remove('active');
-                mobileMenu.style.right = '-100%';
-            });
-    
-            filterToggle.addEventListener('click', function () {
-                filterMenu.style.right = filterMenu.style.right === '0px' ? '-100%' : '0px';
-                if (mobileMenu.style.right === '0px') {
-                    mobileMenu.style.right = '-100%';
-                    menuToggle.classList.remove('active');
-                }
-            });
-    
-            closeFilter.addEventListener('click', function () {
-                filterMenu.style.right = '-100%';
-            });
-    
             const desktopFilterToggle = document.getElementById('desktop-filter-toggle');
             const desktopFilterPanel = document.getElementById('desktop-filter-panel');
             const closeDesktopFilter = document.getElementById('close-desktop-filter');
-    
-            desktopFilterToggle.addEventListener('click', function () {
-                desktopFilterPanel.classList.toggle('show');
-            });
-    
-            closeDesktopFilter.addEventListener('click', function () {
-                desktopFilterPanel.classList.remove('show');
-            });
-    
-            document.addEventListener('click', function (event) {
-                if (!desktopFilterPanel.contains(event.target) &&
-                    event.target !== desktopFilterToggle &&
-                    !desktopFilterToggle.contains(event.target)) {
-                    desktopFilterPanel.classList.remove('show');
-                }
-            });
-    
             const levelFilters = document.querySelectorAll('.level-filter');
             const desktopLevelFilters = document.querySelectorAll('.desktop-level-filter');
             const priceRange = document.getElementById('price-range');
@@ -606,67 +830,121 @@
             const desktopApplyFilter = document.getElementById('desktop-apply-filter');
             const courseCards = document.querySelectorAll('.course-card');
             const filterButtons = document.querySelectorAll('.filter-btn');
-    
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+            // به‌روزرسانی تعداد اقلام سبد خرید
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                const count = cart.length;
+                const desktopCartCount = document.getElementById('desktop-cart-count');
+                const mobileCartCount = document.getElementById('mobile-cart-count');
+                if (desktopCartCount) desktopCartCount.textContent = count;
+                if (mobileCartCount) mobileCartCount.textContent = count;
+            }
+
+            updateCartCount();
+
+            // منوی موبایل
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    mobileMenu.style.right = mobileMenu.style.right === '0px' ? '-100%' : '0px';
+                    if (filterMenu.style.right === '0px') {
+                        filterMenu.style.right = '-100%';
+                    }
+                });
+            }
+            if (closeMenu) {
+                closeMenu.addEventListener('click', function () {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.style.right = '-100%';
+                });
+            }
+
+            // منوی فیلتر
+            if (filterToggle) {
+                filterToggle.addEventListener('click', function () {
+                    filterMenu.style.right = filterMenu.style.right === '0px' ? '-100%' : '0px';
+                    if (mobileMenu.style.right === '0px') {
+                        mobileMenu.style.right = '-100%';
+                        menuToggle.classList.remove('active');
+                    }
+                });
+            }
+            if (closeFilter) {
+                closeFilter.addEventListener('click', function () {
+                    filterMenu.style.right = '-100%';
+                });
+            }
+
+            // پنل فیلتر دسکتاپ
+            if (desktopFilterToggle) {
+                desktopFilterToggle.addEventListener('click', function () {
+                    desktopFilterPanel.classList.toggle('show');
+                });
+            }
+            if (closeDesktopFilter) {
+                closeDesktopFilter.addEventListener('click', function () {
+                    desktopFilterPanel.classList.remove('show');
+                });
+            }
+            document.addEventListener('click', function (event) {
+                if (desktopFilterPanel && desktopFilterToggle && !desktopFilterPanel.contains(event.target) && event.target !== desktopFilterToggle && !desktopFilterToggle.contains(event.target)) {
+                    desktopFilterPanel.classList.remove('show');
+                }
+            });
+
+            // همگام‌سازی فیلترها
             function syncFilters() {
                 levelFilters.forEach((filter, index) => {
                     filter.checked = desktopLevelFilters[index].checked;
                 });
-    
                 priceRange.value = desktopPriceRange.value;
                 priceValue.textContent = desktopPriceValue.textContent;
-    
                 courseType.value = desktopCourseType.value;
             }
-    
+
+            // به‌روزرسانی نمایش قیمت
             function updatePriceDisplay(rangeElement, valueElement) {
                 const value = parseInt(rangeElement.value).toLocaleString('fa-IR');
                 valueElement.textContent = `0 - ${value} تومان`;
             }
-    
+
             priceRange.addEventListener('input', function () {
                 updatePriceDisplay(priceRange, priceValue);
                 desktopPriceRange.value = this.value;
                 updatePriceDisplay(desktopPriceRange, desktopPriceValue);
             });
-    
             desktopPriceRange.addEventListener('input', function () {
                 updatePriceDisplay(desktopPriceRange, desktopPriceValue);
                 priceRange.value = this.value;
                 updatePriceDisplay(priceRange, priceValue);
             });
-    
+
+            // اعمال فیلترها
             function applyFilters() {
-                const selectedLevels = Array.from(levelFilters)
-                    .filter(filter => filter.checked)
-                    .map(filter => filter.value);
-    
+                const selectedLevels = Array.from(levelFilters).filter(filter => filter.checked).map(filter => filter.value);
                 const maxPrice = parseInt(priceRange.value);
                 const selectedType = courseType.value;
-    
                 courseCards.forEach(card => {
                     const cardLevel = card.dataset.level;
                     const cardPrice = parseInt(card.dataset.price);
                     const cardType = card.dataset.type;
-    
                     const levelMatch = selectedLevels.length === 0 || selectedLevels.includes(cardLevel);
                     const priceMatch = cardPrice <= maxPrice;
                     const typeMatch = selectedType === 'all' || cardType === selectedType;
-    
                     if (levelMatch && priceMatch && typeMatch) {
                         card.classList.remove('hidden');
                     } else {
                         card.classList.add('hidden');
                     }
                 });
-    
                 filterButtons.forEach(btn => {
                     btn.classList.add('filter-animation');
-                    setTimeout(() => {
-                        btn.classList.remove('filter-animation');
-                    }, 500);
+                    setTimeout(() => btn.classList.remove('filter-animation'), 500);
                 });
             }
-    
+
             applyFilterBtn.addEventListener('click', function () {
                 syncFilters();
                 applyFilters();
@@ -674,46 +952,53 @@
                     filterMenu.style.right = '-100%';
                 }
             });
-    
             desktopApplyFilter.addEventListener('click', function () {
                 syncFilters();
                 applyFilters();
                 desktopFilterPanel.classList.remove('show');
             });
-    
             levelFilters.forEach(filter => {
                 filter.addEventListener('change', function () {
                     desktopLevelFilters[Array.from(levelFilters).indexOf(filter)].checked = this.checked;
                     applyFilters();
                 });
             });
-    
             desktopLevelFilters.forEach(filter => {
                 filter.addEventListener('change', function () {
                     levelFilters[Array.from(desktopLevelFilters).indexOf(filter)].checked = this.checked;
                     applyFilters();
                 });
             });
-    
-            priceRange.addEventListener('change', function () {
-                applyFilters();
-            });
-    
-            desktopPriceRange.addEventListener('change', function () {
-                applyFilters();
-            });
-    
-            courseType.addEventListener('change', function () {
-                applyFilters();
-            });
-    
-            desktopCourseType.addEventListener('change', function () {
-                applyFilters();
-            });
-    
+            priceRange.addEventListener('change', applyFilters);
+            desktopPriceRange.addEventListener('change', applyFilters);
+            courseType.addEventListener('change', applyFilters);
+            desktopCourseType.addEventListener('change', applyFilters);
             updatePriceDisplay(priceRange, priceValue);
             updatePriceDisplay(desktopPriceRange, desktopPriceValue);
             applyFilters();
+
+            // مدیریت سبد خرید
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const courseCard = this.closest('.course-card');
+                    const course = {
+                        id: courseCard.dataset.courseId,
+                        title: courseCard.querySelector('h3').textContent,
+                        price: parseInt(courseCard.dataset.price),
+                        level: courseCard.dataset.level,
+                        type: courseCard.dataset.type
+                    };
+                    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                    if (!cart.some(item => item.id === course.id)) {
+                        cart.push(course);
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        alert('دوره به علاقه‌مندی‌ها اضافه شد 👌');
+                        updateCartCount();
+                    } else {
+                        alert('این دوره قبلاً به علاقه‌مندی‌ها اضافه شده است! 😒');
+                    }
+                });
+            });
         });
     </script>
 </body>
